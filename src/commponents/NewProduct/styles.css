@@ -1,0 +1,57 @@
+.div-container {
+  width: 100%;
+  height: 100vh;
+  background: #264653;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #bde0fe;
+  font-size: 20px;
+}
+
+.div-product{
+  box-sizing: border-box;
+  width: 470px;
+  column-count:4;
+  column-gap: 3em;
+  column-width: 130px;
+  column-rule: 1px solid #bbb;
+  margin: 20px;
+  border-radius: 5%;
+  border: solid 1px #219ebc;
+  padding: 5px;
+}
+
+.container-product {
+  width: 180px;
+  height: 55px;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  padding: 2px;
+}
+
+.errorValidation {
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-product {
+  width: 120px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  border: none;
+  background: #219ebc;
+  border-radius: 5px;
+}
+
+select {
+  width: 177px;
+}
