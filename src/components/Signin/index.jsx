@@ -14,7 +14,6 @@ const SingIn = () => {
     }
     navigate('/dashboard')
   }
-  console.log("aqui")
   //   try {
   //     const { data } = await axios({
   //       method: 'GET',
