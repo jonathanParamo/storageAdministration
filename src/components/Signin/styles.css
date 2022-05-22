@@ -18,11 +18,29 @@
 
 .singUpSingIn {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 button {
+  width: 120px;
+  height: 30px;
+  margin: 10px;
+  background: #E91E63;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 500;
+  box-shadow: 2px 2px 5px #ef233c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.6s;
+}
+
+.signup {
   width: 120px;
   height: 30px;
   margin: 30px;
@@ -40,4 +58,20 @@ button:hover {
   cursor: pointer;
   background: #E91E69;
   box-shadow: none;
+}
+
+.register {
+  width: 120px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #E91E69;
+  transition: 0.6s;
+}
+
+.register:hover {
+  cursor: pointer;
+  color: #ffffff;
+  background:#E91E69;
 }

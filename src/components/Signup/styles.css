@@ -53,8 +53,8 @@ label{
   width: 90px;
 }
 
-.register {
-  width: 150px;
+.createAccount {
+  width: 180px;
   height: 30px;
   margin: 15px;
   background: #E91E63;
@@ -66,8 +66,29 @@ label{
   transition: 0.6s;
 }
 
-.register:hover {
+.createAccount:hover {
   cursor: pointer;
+  background: #E91E69;
+}
+
+.regis {
+  width: 300px;
+  height: 30px;
+  margin: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #E91E69;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: 0.6s;
+}
+
+.regis:hover {
+  cursor: pointer;
+  color: #ffffff;
   background: #E91E69;
 }
 

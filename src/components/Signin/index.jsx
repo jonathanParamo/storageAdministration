@@ -1,23 +1,43 @@
-import { useState } from "react"
-import "./styles.css"
 import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
+import "./styles.css"
 
 const SingIn = () => {
-  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState(false)
+  const [validation, setValidation] = useState(false)
+  const [email, setEmail] = useState('')
   const navigate = useNavigate()
+
+  useEffect(() => {
+    setError(false)
+  }, [email, password])
 
   const handleSubmit = () => {
     if(!email || !password ) {
-      alert("email or password invalids")
+      setValidation(true)
       return;
     }
-    navigate('/dashboard')
-  }
+    setValidation(false)
+    const user = {
+      correo: "j@text.com",
+      contrasena: "1234"
+    }
+
+    if(email === user.correo && password === user.contrasena) {
+      setError(false)
+      localStorage.setItem("token", "asdasdsdsdgsd")
+      alert("inicio seccion exitosamente")
+      // navigate('/dashboard')
+    } else {
+      setError(true)
+      return
+    }
+
   //   try {
   //     const { data } = await axios({
   //       method: 'GET',
-  //       baseURL: process.env.
+  //       baseURL: process.env,
   //       url: '/',
   //       headers: {
   //         Authorization: `Bearer ${token}`,
@@ -27,56 +47,71 @@ const SingIn = () => {
   //       message: data,
   //     })
   //   } catch(error) {
-
-  //   }
-  // }
-
-  navigate('/signup')
+    //}
+  }
 
   return(
     <div className="cardSignIn">
-      <h2>Sing in</h2>
+      <h2>Log in</h2>
       <div className="email">
         <label
           htmlFor="email"
-        >Email:
+        >
+          Email:
         </label>
         <input
           type="email"
           name="email"
           id="email"
+          onChange={e =>{
+            setEmail(e.target.value)
+            setValidation(false)
+          }}
           value={email}
-          onSubmit={e => setEmail(e.target.value)}
         />
       </div>
       <div className="password">
         <label
           htmlFor="password"
-        >Password:
+        >
+          Password:
         </label>
         <input
           type="password"
           name="password"
           id="password"
+          onChange={e => {
+            setPassword(e.target.value)
+            setValidation(false)
+          }}
           value={password}
-          onSubmit={e => setPassword(e.target.value)}
         />
       </div>
       <div className="singUpSingIn">
         <button
+          className="signup"
           name="signUp"
-          onClick={() => navigate('/dashboard')}
+
+          onClick={handleSubmit}
         >
-          Sign In
+          Enter
         </button>
-        <button
+        {/* <p
           name="signIn"
           value={handleSubmit}
           onClick={() => handleSubmit()}
-        >
-          Sing Up
-        </button>
+          >
+          Do you already have an account? enter
+        </p> */}
+        <p
+        className="register"
+        onClick={() => navigate('/signup')}
+      >
+        Sing Up
+      </p>
       </div>
+      {error && <p>correo o contraseña invalido</p>}
+      {validation && <p>faltan campos por llenar</p>}
     </div>
   )
 }

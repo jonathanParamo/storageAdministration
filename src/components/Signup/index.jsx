@@ -1,5 +1,5 @@
-import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useState } from "react"
 import "./styles.css"
 
 const Signup = () => {
@@ -17,7 +17,7 @@ const Signup = () => {
     }
     setFailValidation(false);
 
-    navigate('/signin')
+    // navigate('/signin')
     // try {
 
     // } catch (error) {
@@ -27,7 +27,7 @@ const Signup = () => {
 
   return(
     <div className="cardSignUp">
-      <h2>Sing up</h2>
+      <h2>Sign up</h2>
       <div className="userName">
         <label
           htmlFor="userName"
@@ -85,18 +85,18 @@ const Signup = () => {
         />
       </div>
       <button
-          className='register'
+          className='createAccount'
           type="submit"
           onClick={handleSubmit}
         >
           Create Account
       </button>
-      <button
-        className="register"
+      <div
+        className="regis"
         onClick={() => navigate('/signin')}
       >
-        Log in
-      </button>
+        <p>you have an account? enter</p>
+      </div>
       {failValidation && <p className="errorValidation">All fields are required</p>}
     </div>
   )
