@@ -1,4 +1,4 @@
-import NewProduct from "../NewProduct"
+import "./styles.css"
 
 const Product = ({
     productName,
@@ -7,18 +7,18 @@ const Product = ({
     productAmount,
     image}) => {
   return(
-    <article>
+    <div className="product">
       <img>{image}</img>
-      <h2>{productName}</h2>
+      <h3
+        className="titleProduct">
+          {productName}
+        </h3>
       <p>{productPrice}</p>
       <p>{productCategory}</p>
       <input type="number">
         {productAmount}
       </input>
-      <button onclick={deleteProduct}>
-        Eliminar producto
-      </button>
-    </article>
+    </div>
   )
 }
 

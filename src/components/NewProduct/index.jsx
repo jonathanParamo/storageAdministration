@@ -1,9 +1,11 @@
-import './styles.css'
-import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import UploadImage from "../UploadImage";
+import { useState } from "react";
 import axios from 'axios';
+import './styles.css'
 
-function NewProduct() {
+
+const NewProduct = () => {
 
   const [productName, setProductName] = useState('');
   const [productCategory, setProductCategory] = useState('ninguna');
@@ -11,6 +13,7 @@ function NewProduct() {
   const [productAmount, setProductAmount] = useState('');
   const [file, setFile] = useState([]);
   const [failValidation, setFailValidation] = useState(false);
+  const navigate = useNavigate()
 
 
   const handleSubmit = () => {
@@ -27,20 +30,19 @@ function NewProduct() {
       productAmount,
       file
     }
-    // async function createNewProduct (product) {
-    //   try {
-    //     const res = await axios({
-    //       url: '',
-    //       method: 'POST',
-    //       baseURL: '',
-    //       URL: ''
-    //     })
-    //     return res
-    //   } catch (error) {
-    //     alert(error)
-    //   }
+    async function createNewProduct () {
+      try {
+        const res = await axios({
+          method: 'POST',
+          baseURL: 'http://localhost:8000',
+          data: product
+        })
+        navigate('/dasbord')
+      } catch (error) {
+        alert(error)
+      }
     }
-
+  }
   return (
     <div className="divContainer">
       <h1>Create a new product</h1>
@@ -77,9 +79,9 @@ function NewProduct() {
             value={productCategory}
           >
             <option value="ninguna">Ninguna</option>
-            <option value="granos">Granos</option>
-            <option value="harinas">Harinas</option>
-            <option value="lacteos">Lacteos</option>
+            <option value="granos">Alimentos</option>
+            <option value="harinas">Tecnologia</option>
+            <option value="lacteos">Construccion</option>
           </select>
         </div>
         <div className="count">
