@@ -112,20 +112,20 @@ const Signup = () => {
           >
             Create Account
         </button>
+          <button
+            className="cleanForm"
+            onClick={(e) => {
+              e.stopPropagation()
+              cleanForm()}}
+          >
+            Clean form
+          </button>
         <div
           className="regis"
           onClick={() => navigate('/signin')}
         >
           <p>you have an account? enter</p>
         </div>
-          <button
-            className="button"
-            onClick={(e) => {
-              e.stopPropagation()
-              cleanForm()}}
-          >
-            borrar datos
-          </button>
         {failValidation && <p className="errorValidation">All fields are required</p>}
       </div>
     </div>

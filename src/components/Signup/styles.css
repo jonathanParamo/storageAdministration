@@ -100,3 +100,22 @@ label{
   cursor: pointer;
   color: #E91E69;
 }
+
+.cleanForm {
+  width: 180px;
+  height: 30px;
+  margin: 5px;
+  background: #E91E63;
+  text-align: center;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: 0.6s;
+}
+
+.creanForm:hover {
+  cursor: pointer;
+  background: #E91E69;
+}
