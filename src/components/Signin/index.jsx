@@ -5,12 +5,14 @@ import "./styles.css"
 const SingIn = () => {
   const [errorFieldValidation, setErrorFieldValidation] = useState(false)
   const [password, setPassword] = useState('')
-  const [signUpError, setsignUpError] = useState(false)
+  const [signUpError, setSignUpError] = useState(false)
   const [email, setEmail] = useState('')
   const navigate = useNavigate()
 
   useEffect(() => {
-    setsignUpError(false)
+    if (signUpError) {
+      setSignUpError(false)
+    }
   }, [email, password])
 
   const handleSubmit = () => {
@@ -25,12 +27,12 @@ const SingIn = () => {
     }
 
     if(email === user.correo && password === user.contrasena) {
-      setsignUpError(false)
+      setSignUpError(false)
       localStorage.setItem("token", "asdasdsdsdgsd")
       alert("inicio seccion exitosamente")
       //navigate('/dashboard')
     } else {
-      setsignUpError(true)
+      setSignUpError(true)
       return
     }
 // const user = {
@@ -95,7 +97,6 @@ const SingIn = () => {
           <button
             className="signupButton"
             name="signUp"
-
             onClick={handleSubmit}
           >
             Enter

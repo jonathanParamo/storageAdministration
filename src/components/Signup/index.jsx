@@ -112,14 +112,14 @@ const Signup = () => {
           >
             Create Account
         </button>
-          <button
-            className="cleanForm"
-            onClick={(e) => {
-              e.stopPropagation()
-              cleanForm()}}
-          >
-            Clean form
-          </button>
+        <button
+          className="cleanForm"
+          onClick={(e) => {
+            e.stopPropagation()
+            cleanForm()}}
+        >
+          Clean form
+        </button>
         <div
           className="regis"
           onClick={() => navigate('/signin')}
