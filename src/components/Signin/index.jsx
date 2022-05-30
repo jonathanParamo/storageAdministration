@@ -3,57 +3,60 @@ import { useEffect, useState } from "react"
 import "./styles.css"
 
 const SingIn = () => {
+  const [errorFieldValidation, setErrorFieldValidation] = useState(false)
   const [password, setPassword] = useState('')
-  const [error, setError] = useState(false)
-  const [validation, setValidation] = useState(false)
+  const [signUpError, setsignUpError] = useState(false)
   const [email, setEmail] = useState('')
   const navigate = useNavigate()
 
   useEffect(() => {
-    setError(false)
+    setsignUpError(false)
   }, [email, password])
 
   const handleSubmit = () => {
     if(!email || !password ) {
-      setValidation(true)
+      setErrorFieldValidation(true)
       return;
     }
-    setValidation(false)
+    setErrorFieldValidation(false)
     const user = {
       correo: "j@text.com",
       contrasena: "1234"
     }
 
     if(email === user.correo && password === user.contrasena) {
-      setError(false)
+      setsignUpError(false)
       localStorage.setItem("token", "asdasdsdsdgsd")
       alert("inicio seccion exitosamente")
-      navigate('/dashboard')
+      //navigate('/dashboard')
     } else {
-      setError(true)
+      setsignUpError(true)
       return
     }
-
-  //   try {
-  //     const { data } = await axios({
-  //       method: 'GET',
-  //       baseURL: process.env,
-  //       url: '/',
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       }
-  //     })
-  //     this.setState({
-  //       message: data,
-  //     })
-  //   } catch(error) {
-    //}
+// const user = {
+//   email,
+//   password
+// }
+//   try {
+//     await axios({
+//       method: 'GET',
+//       baseURL: process.env,
+//       url: '/',
+//       headers: {
+//       Authorization: `Bearer ${token}`,
+//       }
+//     })
+//     user({
+//       message: data,
+//     })
+//   } catch(signUpError) {
+//  }
   }
 
   return(
     <div className="containerSignIn">
       <div className="cardSignIn">
-        <h2>Log in</h2>
+        <h2>Sing in</h2>
         <div className="email">
           <label
             htmlFor="email"
@@ -66,7 +69,7 @@ const SingIn = () => {
             id="email"
             onChange={e =>{
               setEmail(e.target.value)
-              setValidation(false)
+              setErrorFieldValidation(false)
             }}
             value={email}
           />
@@ -83,7 +86,7 @@ const SingIn = () => {
             id="password"
             onChange={e => {
               setPassword(e.target.value)
-              setValidation(false)
+              setErrorFieldValidation(false)
             }}
             value={password}
           />
@@ -97,13 +100,6 @@ const SingIn = () => {
           >
             Enter
           </button>
-          {/* <p
-            name="signIn"
-            value={handleSubmit}
-            onClick={() => handleSubmit()}
-            >
-            Do you already have an account? enter
-          </p> */}
           <p
           className="register"
           onClick={() => navigate('/signup')}
@@ -111,8 +107,8 @@ const SingIn = () => {
           Sing Up
         </p>
         </div>
-        {error && <p>correo o contraseña invalido</p>}
-        {validation && <p>faltan campos por llenar</p>}
+        {signUpError && <p>correo o contraseña invalido</p>}
+        {errorFieldValidation && <p>faltan campos por llenar</p>}
       </div>
     </div>
   )
