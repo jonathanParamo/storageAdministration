@@ -13,7 +13,7 @@ const SingIn = () => {
     if (signUpError) {
       setSignUpError(false)
     }
-  }, [email, password])
+  }, [email, password], signUpError)
 
   const handleSubmit = () => {
     if(!email || !password ) {

@@ -1,19 +1,23 @@
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
+import Loader from "../Loader"
 import axios from "axios"
 import "./styles.css"
 
 const Signup = () => {
-  const [name, setName] = useState('')
+  const [failValidation, setFailValidation] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [password, setPassword] = useState('')
   const [surname, setSurname] = useState('')
   const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [failValidation, setFailValidation] = useState(false)
+  const [name, setName] = useState('')
   const navigate = useNavigate()
 
   const handleSubmit = async () => {
+    setLoading(true)
     if(!name || !surname || !email || !password) {
       setFailValidation(true);
+      setLoading(false)
       return;
     }
     setFailValidation(false);
@@ -25,17 +29,19 @@ const Signup = () => {
       password,
     }
     try {
-      await axios({
+      const {data} = await axios({
         method: 'POST',
-        baseURL: 'https://safe-reef-90017.herokuapp.com',
+        baseURL: process.env.SERVER,
         url: '/users/signup',
         data: newUser
       })
       cleanForm()
-      //navigate('/dasbord')
-      alert("fin")
+      setLoading(false)
+      localStorage.setItem("token", data)
+      navigate('/dashbord')
     } catch (error) {
       console.log(error);
+      setLoading(false)
     }
   }
 
@@ -105,13 +111,15 @@ const Signup = () => {
             value={password}
           />
         </div>
-        <button
-            className='createAccount'
-            type="submit"
-            onClick={() => handleSubmit()}
-          >
-            Create Account
-        </button>
+        {!loading ?
+          <button
+              className='createAccount'
+              type="submit"
+              onClick={() => handleSubmit()}
+            >
+              Create Account
+          </button> : <Loader />
+        }
         <button
           className="cleanForm"
           onClick={(e) => {
@@ -124,7 +132,7 @@ const Signup = () => {
           className="regis"
           onClick={() => navigate('/signin')}
         >
-          <p>you have an account? enter</p>
+          <p>You have an account? enter</p>
         </div>
         {failValidation && <p className="errorValidation">All fields are required</p>}
       </div>
