@@ -6,7 +6,7 @@ import "./styles.css"
 
 const Signup = () => {
   const [failValidation, setFailValidation] = useState(false)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [password, setPassword] = useState('')
   const [surname, setSurname] = useState('')
   const [email, setEmail] = useState('')
