@@ -6,7 +6,7 @@ import "./styles.css"
 
 const Signup = () => {
   const [failValidation, setFailValidation] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [password, setPassword] = useState('')
   const [surname, setSurname] = useState('')
   const [email, setEmail] = useState('')
@@ -38,6 +38,7 @@ const Signup = () => {
       cleanForm()
       setLoading(false)
       localStorage.setItem("token", data)
+      console.log(data.token);
       navigate('/dashbord')
     } catch (error) {
       console.log(error);
@@ -132,7 +133,7 @@ const Signup = () => {
           className="regis"
           onClick={() => navigate('/signin')}
         >
-          <p>You have an account? enter</p>
+          <p>You have an account? Enter</p>
         </div>
         {failValidation && <p className="errorValidation">All fields are required</p>}
       </div>
