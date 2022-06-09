@@ -31,13 +31,14 @@ const Signup = () => {
     try {
       const {data} = await axios({
         method: 'POST',
-        baseURL: process.env.SERVER,
+        baseURL: process.env.REACT_APP_SERVER,
         url: '/users/signup',
         data: newUser
       })
       cleanForm()
       setLoading(false)
-      localStorage.setItem("token", data)
+      localStorage.setItem("token", data.token)
+      console.log(data.token);
       navigate('/dashbord')
     } catch (error) {
       console.log(error);
