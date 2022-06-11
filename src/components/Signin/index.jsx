@@ -27,7 +27,7 @@ const Signin = () => {
         data: { email, password}
       })
       setLoading(false)
-      localStorage.getItem("token", data.token )
+      localStorage.setItem("token", data )
       navigate('/dashboard')
     } catch(signInError){
       setSignInError(true)
