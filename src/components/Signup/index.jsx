@@ -38,10 +38,9 @@ const Signup = () => {
       cleanForm()
       setLoading(false)
       localStorage.setItem("token", data.token)
-      console.log(data.token);
       navigate('/dashbord')
     } catch (error) {
-      console.log(error);
+      alert('algo salio mal')
       setLoading(false)
     }
   }
