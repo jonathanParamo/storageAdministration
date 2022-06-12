@@ -24,7 +24,7 @@ const Signin = () => {
         method: 'POST',
         baseURL: process.env.REACT_APP_SERVER,
         url: '/users/signin',
-        data: { email, password}
+        data: { email, password }
       })
       setLoading(false)
       localStorage.setItem("token", data )
@@ -84,11 +84,11 @@ const Signin = () => {
           </button> : <Loader />
         }
           <p
-          className="register"
-          onClick={() => navigate('/signup')}
-        >
-          Sign Up
-        </p>
+            className="register"
+            onClick={() => navigate('/signup')}
+          >
+            Sign Up
+          </p>
         </div>
         {signInError && <p>correo o contraseña invalido</p>}
         {errorFieldValidation && <p>faltan campos por llenar</p>}
