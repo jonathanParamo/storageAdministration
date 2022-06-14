@@ -83,12 +83,12 @@ const Signin = () => {
             Enter
           </button> : <Loader />
         }
-          <p
-            className="register"
-            onClick={() => navigate('/signup')}
-          >
-            Sign Up
-          </p>
+        <p
+          className="register"
+          onClick={() => navigate('/signup')}
+        >
+          Sign Up
+        </p>
         </div>
         {signInError && <p>correo o contraseña invalido</p>}
         {errorFieldValidation && <p>faltan campos por llenar</p>}
