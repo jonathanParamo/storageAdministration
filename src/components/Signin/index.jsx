@@ -27,7 +27,8 @@ const Signin = () => {
         data: { email, password }
       })
       setLoading(false)
-      localStorage.setItem("token", data )
+      console.log(data);
+      localStorage.setItem("token", data)
       navigate('/dashboard')
     } catch(signInError){
       setSignInError(true)
@@ -74,21 +75,21 @@ const Signin = () => {
           />
         </div>
         <div className="singUpSingIn">
-        {!loading ?
-          <button
-            className="signupButton"
-            name="signUp"
-            onClick={handleSubmit}
+          {!loading ?
+            <button
+              className="signupButton"
+              name="signUp"
+              onClick={handleSubmit}
+            >
+              Enter
+            </button> : <Loader />
+          }
+          <p
+            className="register"
+            onClick={() => navigate('/signup')}
           >
-            Enter
-          </button> : <Loader />
-        }
-        <p
-          className="register"
-          onClick={() => navigate('/signup')}
-        >
-          Sign Up
-        </p>
+            Sign Up
+          </p>
         </div>
         {signInError && <p>correo o contraseña invalido</p>}
         {errorFieldValidation && <p>faltan campos por llenar</p>}
