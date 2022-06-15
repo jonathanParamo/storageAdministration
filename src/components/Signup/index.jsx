@@ -37,11 +37,11 @@ const Signup = () => {
       })
       cleanForm()
       setLoading(false)
-      localStorage.setItem("token", data.token)
-      console.log(data.token);
+      console.log(data);
+      localStorage.setItem("token", data)
       navigate('/dashbord')
     } catch (error) {
-      console.log(error);
+      alert('algo salio mal')
       setLoading(false)
     }
   }

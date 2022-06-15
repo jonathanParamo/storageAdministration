@@ -1,64 +1,45 @@
 import { useNavigate } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import Loader from "../Loader"
+import axios from "axios"
 import "./styles.css"
 
-const SingIn = () => {
+const Signin = () => {
   const [errorFieldValidation, setErrorFieldValidation] = useState(false)
+  const [signInError, setSignInError] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [password, setPassword] = useState('')
-  const [signUpError, setSignUpError] = useState(false)
   const [email, setEmail] = useState('')
   const navigate = useNavigate()
 
-  useEffect(() => {
-    if (signUpError) {
-      setSignUpError(false)
-    }
-  }, [email, password, signUpError])
-
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    setLoading(true)
     if(!email || !password ) {
       setErrorFieldValidation(true)
       return;
     }
     setErrorFieldValidation(false)
-    const user = {
-      correo: "j@text.com",
-      contrasena: "1234"
+    try {
+      const {data} = await axios({
+        method: 'POST',
+        baseURL: process.env.REACT_APP_SERVER,
+        url: '/users/signin',
+        data: { email, password }
+      })
+      setLoading(false)
+      console.log(data);
+      localStorage.setItem("token", data)
+      navigate('/dashboard')
+    } catch(signInError){
+      setSignInError(true)
+      setLoading(false)
     }
-
-    if(email === user.correo && password === user.contrasena) {
-      setSignUpError(false)
-      localStorage.setItem("token", "asdasdsdsdgsd")
-      alert("inicio seccion exitosamente")
-      //navigate('/dashboard')
-    } else {
-      setSignUpError(true)
-      return
-    }
-// const user = {
-//   email,
-//   password
-// }
-//   try {
-//     await axios({
-//       method: 'GET',
-//       baseURL: process.env,
-//       url: '/',
-//       headers: {
-//       Authorization: `Bearer ${token}`,
-//       }
-//     })
-//     user({
-//       message: data,
-//     })
-//   } catch(signUpError) {
-//  }
   }
 
   return(
     <div className="containerSignIn">
       <div className="cardSignIn">
-        <h2>Sing in</h2>
+        <h2>Sign in</h2>
         <div className="email">
           <label
             htmlFor="email"
@@ -94,25 +75,27 @@ const SingIn = () => {
           />
         </div>
         <div className="singUpSingIn">
-          <button
-            className="signupButton"
-            name="signUp"
-            onClick={handleSubmit}
-          >
-            Enter
-          </button>
+          {!loading ?
+            <button
+              className="signupButton"
+              name="signUp"
+              onClick={handleSubmit}
+            >
+              Enter
+            </button> : <Loader />
+          }
           <p
-          className="register"
-          onClick={() => navigate('/signup')}
-        >
-          Sing Up
-        </p>
+            className="register"
+            onClick={() => navigate('/signup')}
+          >
+            Sign Up
+          </p>
         </div>
-        {signUpError && <p>correo o contraseña invalido</p>}
+        {signInError && <p>correo o contraseña invalido</p>}
         {errorFieldValidation && <p>faltan campos por llenar</p>}
       </div>
     </div>
   )
 }
 
-export default SingIn
+export default Signin
