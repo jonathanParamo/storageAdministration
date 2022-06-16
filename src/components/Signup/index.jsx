@@ -39,7 +39,7 @@ const Signup = () => {
       setLoading(false)
       console.log(data);
       localStorage.setItem("token", data)
-      navigate('/dashbord')
+      navigate('/dashboard')
     } catch (error) {
       alert('algo salio mal')
       setLoading(false)

@@ -8,6 +8,7 @@ import {
 import './App.css';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
+import Home from './components/Home';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<Signin />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/dashboard" element={<Home />} />
       </Routes>
     </Router>
   );
