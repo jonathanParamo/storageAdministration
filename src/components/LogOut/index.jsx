@@ -4,9 +4,10 @@ import "./styles.css"
 
 const LogOut = () => {
   const navigate = useNavigate()
+  const token = localStorage.getItem("token")
 
   useEffect(() => {
-    if(!localStorage.getItem("token")) navigate("/")
+    if(!token) navigate("/")
   }, [])
 
   return (
