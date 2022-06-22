@@ -77,7 +77,7 @@ const Signin = () => {
         <div className="singUpSingIn">
           {!loading ?
             <button
-              className="signupButton"
+              className="signInButton"
               name="signUp"
               onClick={handleSubmit}
             >

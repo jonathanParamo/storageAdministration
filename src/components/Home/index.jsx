@@ -1,17 +1,9 @@
-import { useNavigate } from "react-router-dom"
-import { useEffect } from "react"
-import LogOut from "../LogOut"
+import MainMenu from "../MainMenu"
 
 const Home = () => {
-  const navigate = useNavigate()
-  const token = localStorage.getItem("token")
-
-  useEffect(() =>{
-    if(!token) navigate("/")
-  }, [])
 
   return (
-    <LogOut />
+    <MainMenu />
   )
 }
 

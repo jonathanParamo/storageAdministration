@@ -1,9 +1,15 @@
 import { useNavigate } from "react-router-dom"
+import { useEffect } from "react"
 import LogOut from "../LogOut"
 import "./styles.css"
 
 const MainMenu = () => {
+  const token = localStorage.getItem("token")
   const navigate = useNavigate()
+
+  useEffect(() =>{
+    if(!token) navigate("/")
+  }, [])
 
   return (
 
