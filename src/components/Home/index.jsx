@@ -1,9 +1,15 @@
 import MainMenu from "../MainMenu"
+import ProductMenu from "../ProductMenu"
 
 const Home = () => {
 
   return (
-    <MainMenu />
+    <div className="containerDashboard">
+      <MainMenu />
+      <div className="containerProductMenuProducts">
+        <ProductMenu />
+      </div>
+    </div>
   )
 }
 

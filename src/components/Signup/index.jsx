@@ -37,7 +37,6 @@ const Signup = () => {
       })
       cleanForm()
       setLoading(false)
-      console.log(data);
       localStorage.setItem("token", data)
       navigate('/dashboard')
     } catch (error) {
