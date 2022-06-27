@@ -71,40 +71,40 @@ const ProductMenu = () => {
       <h2 className="titleProducts">Products</h2>
       <button
         className="btnProducts"
-        onClick={() => {
+        onClick={(e) => {
           handleSubmit()
           //foods()
-          ().stopPropagation()
+          e.stopPropagation()
         }}
       >
         Foods
       </button>
       <button
         className="btnProducts"
-        onClick={() => {
+        onClick={(e) => {
           handleSubmit()
           //homeAppliances()
-          ().stopPropagation()
+          e.stopPropagation()
         }}
         >
           Home appliances
       </button>
       <button
         className="btnProducts"
-        onClick={() => {
+        onClick={(e) => {
           handleSubmit()
           //constructionMaterials()
-          ().stopPropagation()
+          e.stopPropagation()
         }}
       >
         Construction materials
       </button>
       <button
         className="btnProducts"
-        onClick={() => {
+        onClick={(e) => {
           handleSubmit()
           //morePopular()
-          ().stopPropagation()
+          e.stopPropagation()
         }}
       >
         More popular

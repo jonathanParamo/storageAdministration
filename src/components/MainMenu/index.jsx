@@ -23,24 +23,24 @@ const MainMenu = () => {
         name="search"
       />
       <div className="containerButtonsMainMenu">
-        <button
-          className="butonsMainMenu"
+        <p
+          className="buttonsMainMenu"
           onClick={() => navigate('/createNewProduct')}
         >
           Create a product
-        </button>
-        <button
-          className="butonsMainMenu"
-          onClick={() => navigate('/myproducts')}
+        </p>
+        <p
+          className="buttonsMainMenu"
+          onClick={() => navigate('/mycellars')}
         >
-          My products
-        </button>
-        <button
-          className="butonsMainMenu"
+          My cellars
+        </p>
+        <p
+          className="buttonsMainMenu"
           onClick={() => navigate('/myProfile')}
         >
           My profile
-        </button>
+        </p>
       </div>
       <LogOut />
     </div>

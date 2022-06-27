@@ -1,15 +1,16 @@
 .containerMainMenu {
   width: 100%;
-  height: 40px;
   display: flex;
+  background-color: #ffffff30;
 }
 
+
 .logoMainMenu {
+  box-sizing: border-box;
   width: 150px;
-  height: 30px;
   background: #8B69B4;
   border-radius: 5px;
-  margin: 3px 15px;
+  margin: 5px 15px;
   font-weight: 700;
   color: #ffffff;
   display: flex;
@@ -19,11 +20,11 @@
 
 .searchMainMenu {
   width: 260px;
-  height: 30px;
+  padding-left: 20px;
   border: none;
   outline: none;
   border-radius: 5px;
-  margin: 3px 60px;
+  margin: 5px 60px;
 }
 
 ::placeholder {
@@ -32,17 +33,18 @@
 }
 
 .containerButtonsMainMenu {
-  width: 500px;
+  width: 550px;
   display: flex;
-  margin-left: 120px;
+  margin-left: 50px;
 }
 
-.butonsMainMenu {
+.buttonsMainMenu {
   width: 190px;
-  height: 30px;
   outline: none;
-  margin: 3px 10px;
-  text-align: center;
+  margin: 5px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #E91E63;
   color: #ffffff;
   border: none;
@@ -52,7 +54,7 @@
   box-shadow: #E91E63 3px 3px 5px;
 }
 
-.butonsMainMenu {
+.buttonsMainMenu {
   cursor: pointer;
   box-shadow: none;
   background: #E91E60;

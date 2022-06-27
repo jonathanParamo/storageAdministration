@@ -1,27 +1,23 @@
 .containerProducMenu {
   width: 240px;
+  height: calc(100vh - 50px);
   display: flex;
   flex-direction: column;
-  margin-top: 15px;
+  border-right: 1px solid #ffffff;
+  border-radius: 2px;
 }
 
 .titleProducts {
   width: 210px;
   height: 35px;
   color: #ffffff;
-  margin: 5px;
+  margin: 10px;
   padding: 5px;
-  border-radius: 5px;
+  border-bottom: 1px solid #ffffff;
   font-size: 16px;
   font-weight: 600;
   transition: 0.6s;
 }
-
-.titleProducts:hover {
-  cursor: pointer;
-  background: #7469b4;
-}
-
 
 .btnProducts {
   width: 200px;
@@ -34,6 +30,7 @@
   text-align: justify;
   font-weight: 500;
   color: #ffffff;
+  box-shadow: 2px 2px 3px#7469b4;
   transition: 0.6s;
 }
 
