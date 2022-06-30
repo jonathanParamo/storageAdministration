@@ -27,7 +27,6 @@ const Signin = () => {
         data: { email, password }
       })
       setLoading(false)
-      console.log(data);
       localStorage.setItem("token", data)
       navigate('/dashboard')
     } catch(signInError){
