@@ -1,7 +1,7 @@
-import thunk from 'redux-thunk'
-import logger from 'redux-logger'
-import { StorageReducer } from './StorageReducer'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { StorageReducer } from './StorageReducer'
+import logger from 'redux-logger'
+import thunk from 'redux-thunk'
 
 const appReducers = combineReducers({
   StorageReducer,
