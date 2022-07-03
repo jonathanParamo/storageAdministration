@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import LogOut from "../LogOut"
+import logo from "./logo.png"
 import "./styles.css"
 
 const MainMenu = () => {
@@ -13,8 +14,8 @@ const MainMenu = () => {
 
   return (
     <div className="containerMainMenu">
-      <div className="logoMainMenu">
-        Logo
+      <div >
+        <img src={logo} className="logoMainMenu"/>
       </div>
       <input
         className="searchMainMenu"
@@ -27,7 +28,7 @@ const MainMenu = () => {
           className="buttonsMainMenu"
           onClick={() => navigate('/createNewProduct')}
         >
-          Create a product
+          New product
         </p>
         <p
           className="buttonsMainMenu"
