@@ -1,0 +1,57 @@
+.containerProducMenu {
+  width: 240px;
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #ffffff;
+  border-radius: 2px;
+}
+
+.titleProducts {
+  width: 210px;
+  height: 35px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 10px;
+  padding: 5px;
+  border-bottom: 1px solid #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.6s;
+}
+
+.btnProducts {
+  width: 200px;
+  height: 30px;
+  font-size: 15px;
+  background: none;
+  border: none;
+  border-radius: 5px;
+  margin: 5px 7px;
+  text-align: justify;
+  font-weight: 500;
+  color: #ffffff;
+  transition: 0.6s;
+}
+
+.btnProducts:hover {
+  cursor: pointer;
+  background: #7469b4;
+}
+
+@media(max-width: 720px) {
+  .containerProducMenu {
+    width: 120px;
+  }
+
+  .titleProducts {
+    width: 100px;
+    font-size: 14px;
+  }
+
+  .btnProducts {
+    width: 100px;
+    margin: 5px 5px;
+    font-size: 12px;
+  }
+}

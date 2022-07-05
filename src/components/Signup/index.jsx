@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
 import { useState } from "react"
 import Loader from "../Loader"
 import axios from "axios"
@@ -12,6 +13,7 @@ const Signup = () => {
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const handleSubmit = async () => {
     setLoading(true)
@@ -35,9 +37,9 @@ const Signup = () => {
         url: '/users/signup',
         data: newUser
       })
+      dispatch({ type: "STORAGE_SUCCESS", payload: data.storage })
       cleanForm()
       setLoading(false)
-      console.log(data);
       localStorage.setItem("token", data)
       navigate('/dashboard')
     } catch (error) {

@@ -1,7 +1,7 @@
 import "./styles.css"
 
 const Loader = () =>
-  <div class="lds-spinner">
+  <div className="lds-spinner">
     <div></div>
     <div></div>
     <div></div>
