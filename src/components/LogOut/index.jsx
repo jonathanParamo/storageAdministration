@@ -10,13 +10,12 @@ const LogOut = () => {
 
   useEffect(() => {
     if(!token) navigate("/")
-  }, [token])
+  }, [])
 
   return (
     <p onClick={e =>{
       localStorage.removeItem("token")
-      dispatch(({type: "USER_LOGOUT"}))
-      console.log(token);
+      dispatch({type: "USER_LOGOUT"})
       navigate("/signin")
     }}
     className="logOut">

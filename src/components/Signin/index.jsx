@@ -3,19 +3,27 @@ import { useState } from "react"
 import Loader from "../Loader"
 import axios from "axios"
 import "./styles.css"
+import { useDispatch, useSelector } from "react-redux"
 
 const Signin = () => {
   const [errorFieldValidation, setErrorFieldValidation] = useState(false)
-  const [signInError, setSignInError] = useState(false)
   const [loading, setLoading] = useState(false)
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const {
+    error,
+  } = useSelector(({StorageReducer})=> ({
+    error: StorageReducer.error,
+  }))
 
   const handleSubmit = async () => {
     setLoading(true)
     if(!email || !password ) {
       setErrorFieldValidation(true)
+      setLoading(false)
       return;
     }
     setErrorFieldValidation(false)
@@ -29,8 +37,8 @@ const Signin = () => {
       setLoading(false)
       localStorage.setItem("token", data)
       navigate('/dashboard')
-    } catch(signInError){
-      setSignInError(true)
+    } catch(error){
+      dispatch({ type: "STORAGE_ERROR", payload: error })
       setLoading(false)
     }
   }
@@ -90,7 +98,7 @@ const Signin = () => {
             Sign Up
           </p>
         </div>
-        {signInError && <p>correo o contraseña invalido</p>}
+        {error ? <p>correo o contraseña invalido</p> : "" }
         {errorFieldValidation && <p>faltan campos por llenar</p>}
       </div>
     </div>

@@ -10,6 +10,7 @@
 .titleProducts {
   width: 210px;
   height: 35px;
+  text-transform: uppercase;
   color: #ffffff;
   margin: 10px;
   padding: 5px;
