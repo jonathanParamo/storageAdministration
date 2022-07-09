@@ -32,9 +32,9 @@ const MainMenu = () => {
         </p>
         <p
           className="buttonsMainMenu"
-          onClick={() => navigate('/mycellars')}
+          onClick={() => navigate('/myStorage')}
         >
-          My cellars
+          My storage
         </p>
         <p
           className="buttonsMainMenu"
