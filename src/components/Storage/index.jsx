@@ -54,6 +54,9 @@ const Storages = () => {
         baseURL: process.env.REACT_APP_SERVER,
         url: '/users/signup',
         data: newStorage,
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
       })
       dispatch({type: "NEW_STORAGE", payload: storages })
       setLoading(false)
