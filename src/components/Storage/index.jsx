@@ -6,21 +6,14 @@ import Loader from "../Loader"
 import "./styles.css"
 
 const Storages = () => {
-  const [validationAmount, setValidationAmount] =useState(false)
-  const [validation, setValidation] = useState(false)
+  const [validation, setValidation] = useState("")
   const [loading, setLoading] = useState(false)
   const [category, setCategory] = useState("")
   const token = localStorage.getItem("token")
   const [amount, setAmount] = useState(0)
-  const [title, setTitle] = useState("")
+  const [name, setName] = useState("")
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
-  const {
-    storages,
-  } = useSelector(({StorageReducer})=> ({
-    storages: StorageReducer.storages,
-  }))
 
   const {
     error,
@@ -32,40 +25,47 @@ const Storages = () => {
     if(!token) navigate("/")
   }, [])
 
-  const handleSubmit = () => {
+  const validationData = () => {
     setLoading(true)
-    if(!title) {
-      dispatch({ type: "STORAGE_ERROR", payload: error })
+    if(!name) {
+      setValidation("Title's required")
       setLoading(false)
+      return (false)
     }
-    if(amount === 0) {
-      setValidationAmount(true)
+    if(!category) {
+      setValidation("Category's required")
       setLoading(false)
+      return (false)
     }
-
-    const newStorage = {
-      title,
-      category,
-      amount,
-    }
-    try {
-      const {data} = axios({
-        method: 'POST',
-        baseURL: process.env.REACT_APP_SERVER,
-        url: '/users/signup',
-        data: newStorage,
-        headers: {
-          'Authorization': `Bearer ${token}`
-        },
-      })
-      dispatch({type: "NEW_STORAGE", payload: storages })
+    if(!amount) {
+      setValidation("Amount's required")
       setLoading(false)
-    } catch (error) {
-      dispatch({ type: "STORAGE_ERROR", payload: error })
-      setLoading(false)
+      return (false)
     }
-    setLoading(false)
+    setValidation('')
   }
+
+  const handleSubmit = async () => {
+    if(validationData()) {
+      try {
+        const {data} = await axios({
+          method: 'POST',
+          baseURL: process.env.REACT_APP_SERVER,
+          url: '/storages/create',
+          data: { name, category, amount, },
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
+        })
+        dispatch({type: "STORAGE_SUCCESS", payload: data })
+        setLoading(false)
+      } catch (error) {
+        dispatch({ type: "STORAGE_ERROR", payload: error })
+        setLoading(false)
+      }
+    }
+  }
+
 
   return (
     <div className="mainStore">
@@ -83,50 +83,37 @@ const Storages = () => {
             type="text"
             name="titleStore"
             id="titleStore"
-            onChange={e => {
-              setTitle(e.target.value)
-              setValidation(false)
-            }}
+            onChange={e => {setName(e.target.value)}}
           />
         </div>
         <div className="categoryStorage">
-          <p className="categoryTitle">Category store: </p>
-          <select
-            className="selectOption"
+          <label className="categoryTitle">Category store: </label>
+          <input
+            className="inputOption"
             name="amount"
-            onClick={e => setCategory(e.target.value)}
-          >
-            <option value="food">Foods</option>
-            <option value="homeAppliances">Home appliances</option>
-            <option value="constructionMaterials">Construction materials</option>
-          </select>
+            placeholder="For example cereals"
+            onChange={e => {setCategory(e.target.value)}}
+          />
         </div>
         <div className="amountStore">
-          <p className="amountTitle">Amount store:</p>
-          <select
-            className="selectOption"
+          <label className="amountTitle">Amount store:</label>
+          <input
+            type="number"
+            className="inputOption"
             name="amount"
-            onClick={e => setAmount(e.target.value)}
-          >
-            <option value=""></option>
-            <option value="oneHundred">100 Units</option>
-            <option value="twoHundredFifty">250 Units</option>
-            <option value="fiveHundred">500 Units</option>
-          </select>
+            placeholder="Number of items"
+            onChange={e => setAmount(e.target.value)}
+          />
         </div>
         {!loading ?
           <button
             className='createStorage'
-            onClick={e => {
-              handleSubmit()
-              e.stopPropagation()
-            }}
+            onClick={handleSubmit}
           >
             Create storage
           </button> : <Loader />
         }
-        {error && <p>Title store is required.</p>}
-        {validationAmount && <p>Title store is required.</p>}
+        {validation && <p>{validation}</p>}
         {error && <p>Algo salio mal.</p>}
       </div>
     </div>
