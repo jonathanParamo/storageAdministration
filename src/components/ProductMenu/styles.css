@@ -1,6 +1,6 @@
 .containerProducMenu {
   width: 240px;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 54px);
   display: flex;
   flex-direction: column;
   border-right: 1px solid #ffffff;

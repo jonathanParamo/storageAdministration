@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: baseline;
+  margin: 0px;
   padding: 5px 0px;
   background-color: #ffffff30;
 }

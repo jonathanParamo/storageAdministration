@@ -30,22 +30,29 @@ const Storages = () => {
     if(!name) {
       setValidation("Title's required")
       setLoading(false)
-      return (false)
+      return false
     }
     if(!category) {
       setValidation("Category's required")
       setLoading(false)
-      return (false)
+      return false
     }
     if(!amount) {
       setValidation("Amount's required")
       setLoading(false)
-      return (false)
+      return false
     }
     setValidation('')
+    return true
   }
 
   const handleSubmit = async () => {
+    const cleanForm = () => {
+      setName("")
+      setCategory("")
+      setAmount("")
+    }
+
     if(validationData()) {
       try {
         const {data} = await axios({
@@ -57,15 +64,16 @@ const Storages = () => {
             'Authorization': `Bearer ${token}`
           },
         })
+        console.log(data);
         dispatch({type: "STORAGE_SUCCESS", payload: data })
         setLoading(false)
+        cleanForm()
       } catch (error) {
         dispatch({ type: "STORAGE_ERROR", payload: error })
         setLoading(false)
       }
     }
   }
-
 
   return (
     <div className="mainStore">
