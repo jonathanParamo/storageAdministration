@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import { Toaster, toast } from "react-hot-toast"
 import { useEffect, useState } from "react"
-import axios from "axios"
 import Loader from "../Loader"
+import axios from "axios"
 import "./styles.css"
 
 const Storages = () => {
@@ -46,13 +47,13 @@ const Storages = () => {
     return true
   }
 
-  const handleSubmit = async () => {
     const cleanForm = () => {
       setName("")
       setCategory("")
       setAmount("")
     }
 
+  const handleSubmit = async () => {
     if(validationData()) {
       try {
         const {data} = await axios({
@@ -64,11 +65,12 @@ const Storages = () => {
             'Authorization': `Bearer ${token}`
           },
         })
-        console.log(data);
+        toast.success("Storage successfully created")
         dispatch({type: "STORAGE_SUCCESS", payload: data })
         setLoading(false)
         cleanForm()
       } catch (error) {
+        toast.error("Error in the creation of the storage")
         dispatch({ type: "STORAGE_ERROR", payload: error })
         setLoading(false)
       }
@@ -84,10 +86,11 @@ const Storages = () => {
             htmlFor="titleStore"
             className="titleStore"
           >
-            Title store:
+            Code store:
           </label>
           <input
             className="titleStoreInput"
+            placeholder="For example A25"
             type="text"
             name="titleStore"
             id="titleStore"
@@ -116,11 +119,18 @@ const Storages = () => {
         {!loading ?
           <button
             className='createStorage'
-            onClick={handleSubmit}
+            onClick={() => {
+              handleSubmit()
+              toast("processing")
+            }}
           >
             Create storage
           </button> : <Loader />
         }
+        <Toaster
+          position="button-right"
+          duration="3000"
+        />
         {validation && <p>{validation}</p>}
         {error && <p>Algo salio mal.</p>}
       </div>
