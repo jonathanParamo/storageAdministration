@@ -31,17 +31,14 @@ const Storages = () => {
     if(!name) {
       setValidation("Title's required")
       setLoading(false)
-      return false
     }
     if(!category) {
       setValidation("Category's required")
       setLoading(false)
-      return false
     }
     if(!amount) {
       setValidation("Amount's required")
       setLoading(false)
-      return false
     }
     setValidation('')
     return true
@@ -119,10 +116,7 @@ const Storages = () => {
         {!loading ?
           <button
             className='createStorage'
-            onClick={() => {
-              handleSubmit()
-              toast("processing")
-            }}
+            onClick={handleSubmit}
           >
             Create storage
           </button> : <Loader />
