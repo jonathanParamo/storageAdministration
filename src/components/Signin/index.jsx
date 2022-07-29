@@ -57,7 +57,7 @@ const Signin = () => {
             type="email"
             name="email"
             id="email"
-            onChange={e =>{
+            onChange={e => {
               setEmail(e.target.value)
               setErrorFieldValidation(false)
             }}
@@ -98,8 +98,8 @@ const Signin = () => {
             Sign Up
           </p>
         </div>
-        {error ? <p>correo o contraseña invalido</p> : "" }
-        {errorFieldValidation && <p>faltan campos por llenar</p>}
+        {error ? <p>Email or password invalid</p> : "" }
+        {errorFieldValidation && <p>Missing fields to fill</p>}
       </div>
     </div>
   )
