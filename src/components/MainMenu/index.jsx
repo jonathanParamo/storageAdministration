@@ -26,15 +26,15 @@ const MainMenu = () => {
       <div className="containerButtonsMainMenu">
         <p
           className="buttonsMainMenu"
-          onClick={() => navigate('/createNewProduct')}
+          onClick={() => navigate('newproduct')}
         >
           New product
         </p>
         <p
           className="buttonsMainMenu"
-          onClick={() => navigate('/myStorage')}
+          onClick={() => navigate('myStorage')}
         >
-          My storage
+          New storage
         </p>
         <p
           className="buttonsMainMenu"

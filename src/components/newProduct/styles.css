@@ -1,0 +1,35 @@
+.cardNewProduct {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff90;
+  border: 1px solid #264653;
+  padding: 5px 15px;
+  margin: 10px;
+}
+
+.imageNewProduct {
+  box-sizing: border-box;
+  width: 60px;
+  height: 60px;
+  background: #ffffff90;
+  margin: 10px;
+}
+
+.productImage {
+  width: 100%;
+  margin: 5px;
+  text-align: center;
+}
+
+.inputAmount {
+  width: 270px;
+  padding-left: 10px;
+}
+
+.selectStorage {
+  width: 270px;
+  padding-left: 10px;
+}

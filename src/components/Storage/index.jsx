@@ -47,11 +47,11 @@ const Storages = () => {
     return true
   }
 
-    const cleanForm = () => {
-      setName("")
-      setCategory("")
-      setAmount("")
-    }
+  const cleanForm = () => {
+    setName("")
+    setCategory("")
+    setAmount("")
+  }
 
   const handleSubmit = async () => {
     if(validationData()) {
@@ -68,6 +68,7 @@ const Storages = () => {
         toast.success("Storage successfully created")
         dispatch({type: "STORAGE_SUCCESS", payload: data })
         setLoading(false)
+        navigate("/dashboard")
         cleanForm()
       } catch (error) {
         toast.error("Error in the creation of the storage")
