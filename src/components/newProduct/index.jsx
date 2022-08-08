@@ -9,11 +9,12 @@ import "./styles.css"
 
 
 const NewProduct = () => {
-  const [loading, setLoading] = useState(false)
+  const [image, setImage] = useState("https://t4.ftcdn.net/jpg/04/00/24/31/240_F_400243185_BOxON3h9avMUX10RsDkt3pJ8iQx72kS3.jpg")
   const [validation, setValidation] = useState("")
-  const [amount, setAmount] = useState(0)
+  const [loading, setLoading] = useState(false)
   const token = localStorage.getItem("token")
   const [destiny, setDestiny] = useState("")
+  const [count, setCount] =  useState(0)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -44,9 +45,10 @@ const NewProduct = () => {
 
   const validationData = () => {
     setLoading(true)
-    if(amount === 0){
-      setValidation("amount cannot be 0")
+    if(!count) {
+      setValidation("Amount is reuired")
       setLoading(false)
+      toast.error("Error in the added in the storage")
       return false
     }
     if(!storages) {
@@ -59,39 +61,60 @@ const NewProduct = () => {
   }
 
   const handleSubmit = async () => {
-    // if(validationData()) {
-    //   try {
-    //     toast.success("The product was added")
-    //     setLoading(false)
-    //     cleanForm()
-    //   } catch (error) {
-    //     toast.error("Error in the added in the storage")
-    //     dispatch({ type: "STORAGE_ERROR", payload: error })
-    //     setLoading(false)
-    //   }
-    // }
+    if(validationData()) {
+      try {
+        toast.success("The product was added")
+        setLoading(false)
+      } catch (error) {
+        toast.error("Error in the added in the storage")
+        dispatch({ type: "STORAGE_ERROR", payload: error })
+        setLoading(false)
+      }
+    }
   }
-  console.log('xxx destiny: ', destiny);
+
   return (
     <div className="cardNewProduct">
-      <div className="imageNewProduct">
-        <img src="https://cutewallpaper.org/24/react-logo-png/view-page-24.html" alt="" />
-      </div>
         <p className="productImage">Product image</p>
-      <div className="amountProduct">
-        <input
-          className="inputAmount"
-          type="number"
-          placeholder="Units available"
-          onChange={e => setAmount(e.target.value)}
-          />
+      <div>
+        <img className="imageNewProduct" src={image} />
       </div>
-      <div className="selectStorage">
-        <p>Add to storage</p>
-        <select onChange={(e) => setDestiny(e.target.value)}>
+        <input
+          className="inputImageProduct"
+          type="text"
+          placeholder="Add link image"
+          onClick={e => setImage(e.target.value)}
+        />
+      <div className="amountProduct">
+        <p className="unitsAvailable">Units available:</p>
+        <div className="containerAmount">
+          <button
+            className="buttonCountMas"
+            onClick={() => {
+              setCount(count >= 20 ? count : count + 1)}}>
+            +
+          </button>
+          <p className="unids">{count} unids</p>
+          <button
+            className="buttonCountMenos"
+            onClick={() => {
+              setCount(count <= 1 ? count : count - 1)}}>
+            -
+          </button>
+        </div>
+      </div>
+      <div className="containerSelectStorage">
+        <p className="selectStorage">Add to storage:</p>
+        <select
+          className="selectOptionsStorage"
+          value={destiny}
+          onChange={(e) => setDestiny(e.target.value)}>
           {!!storages && storages.length > 0 ? storages.map(({ name }) => {
             return (
-              <option value={name}>{name}</option>
+              <option
+                value={name}>
+                  {name}
+              </option>
             )
           }) : (
             <option>No existen bodegas</option>

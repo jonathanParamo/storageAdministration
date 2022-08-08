@@ -24,12 +24,73 @@
   text-align: center;
 }
 
+.inputImageProduct {
+  width: 270px;
+}
+
+.amountProduct {
+  margin: 10px;
+}
+
+.unitsAvailable {
+  width: 270px;
+  margin: 5px 0px;
+}
+
+.containerAmount {
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.buttonCountMas {
+  width: 35px;
+  border: none;
+  background: #023047;
+  color: #ffffff;
+  font-weight: 800;
+  border-radius: 3px;
+}
+
+.buttonCountMenos {
+  width: 35px;
+  border: none;
+  background: #023047;
+  color: #ffffff;
+  font-weight: 800;
+  border-radius: 3px;
+}
+
+.unids {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+}
+
 .inputAmount {
   width: 270px;
   padding-left: 10px;
 }
 
 .selectStorage {
+  margin: 5px;
+}
+
+.containerSelectStorage {
   width: 270px;
+  margin: 10px 0px;
+}
+.selectStorage {
+  width: 270px;
+}
+
+.selectOptionsStorage {
+  width: 270px;
+  height: 25px;
   padding-left: 10px;
+  outline: none;
+  color: #E91E63;
 }
