@@ -1,8 +1,6 @@
-import { Route, Routes } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 import ProductMenu from "../ProductMenu"
-import NewProduct from "../newProduct"
 import MainMenu from "../MainMenu"
-import Storage from "../Storage"
 import * as React from "react"
 import "./styles.css"
 
@@ -14,10 +12,7 @@ const Home = () => {
       <div className="containerProductMenuProducts">
         <ProductMenu />
         <div className="visualContent">
-          <Routes>
-            <Route path="mystorage" element={<Storage />} />
-            <Route path="newproduct" element={<NewProduct />} />
-          </Routes>
+          <Outlet />
         </div>
       </div>
     </div>
