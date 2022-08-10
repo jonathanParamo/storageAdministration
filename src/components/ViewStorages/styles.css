@@ -1,0 +1,169 @@
+.containerProductMenuProducts {
+  width: 100%;
+  height: calc(100vh - 54px);
+  display: flex;
+  justify-content: space-around;
+}
+
+.visualContent {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prueba {
+  box-sizing: border-box;
+  overflow: scroll;
+  width: 100%;
+  height: calc(100vh - 54px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: initial;
+  flex-wrap: wrap;
+}
+
+.cardStorages {
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff70;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.nameStorage {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 2px;
+  padding: 2px 5px;
+}
+
+.labelStorage {
+  width: 90px;
+  padding: 2px;
+}
+
+.componentStorage {
+  width: 30px;
+  margin: 5px 5px;
+}
+
+.buttonsStorages {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.editStorage {
+  width : 100px;
+  background: #0077b6;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 3px 5px #00b4d8;
+}
+
+.editStorage:hover {
+  cursor: pointer;
+  box-shadow: none;
+  transition: 0.8s;
+}
+
+.deleteStorage {
+  width: 100px;
+  margin: 8px;
+  color: #fff;
+  background: #f21b3f;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 3px 5px #f21b3f;
+}
+
+.deleteStorage:hover {
+  cursor: pointer;
+  box-shadow: none;
+  transition: 0.8s;
+}
+
+@media(max-width: 720px) {
+.cardStorages {
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff90;
+  margin: 5px;
+  border-radius: 3px;
+}
+
+.nameStorage {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px;
+  padding: 2px 5px;
+}
+
+.labelStorage {
+  width: 50px;
+  height: 16px;
+  font-size: 12px;
+  margin-right: 5px;
+  padding: 2px;
+}
+
+.componentStorage {
+  width: 30px;
+  height: 16px;
+  font-size: 12px;
+  margin: 5px 5px;
+}
+
+.buttonsStorages {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.editStorage {
+  width : 100px;
+  background: #0077b6;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 3px 5px #00b4d8;
+}
+
+.editStorage:hover {
+  cursor: pointer;
+  box-shadow: none;
+  transition: 0.8s;
+}
+
+.deleteStorage {
+  width: 100px;
+  margin: 8px;
+  color: #fff;
+  background: #f21b3f;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 3px 5px #f21b3f;
+}
+
+.deleteStorage:hover {
+  cursor: pointer;
+  box-shadow: none;
+  transition: 0.8s;
+}
+}

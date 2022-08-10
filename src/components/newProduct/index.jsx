@@ -9,7 +9,8 @@ import "./styles.css"
 
 
 const NewProduct = () => {
-  const [image, setImage] = useState("https://t4.ftcdn.net/jpg/04/00/24/31/240_F_400243185_BOxON3h9avMUX10RsDkt3pJ8iQx72kS3.jpg")
+  const noImage = "https://t4.ftcdn.net/jpg/04/00/24/31/240_F_400243185_BOxON3h9avMUX10RsDkt3pJ8iQx72kS3.jpg"
+  const [image, setImage] = useState("")
   const [validation, setValidation] = useState("")
   const [loading, setLoading] = useState(false)
   const token = localStorage.getItem("token")
@@ -77,13 +78,13 @@ const NewProduct = () => {
     <div className="cardNewProduct">
         <p className="productImage">Product image</p>
       <div>
-        <img className="imageNewProduct" src={image} />
+        <img className="imageNewProduct" src={image || noImage} />
       </div>
         <input
           className="inputImageProduct"
           type="text"
           placeholder="Add link image"
-          onClick={e => setImage(e.target.value)}
+          onSubmit={e => setImage(e.target.value)}
         />
       <div className="amountProduct">
         <p className="unitsAvailable">Units available:</p>

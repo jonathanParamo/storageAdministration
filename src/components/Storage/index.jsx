@@ -126,7 +126,7 @@ const Storages = () => {
           </button> : <Loader />
         }
         <Toaster
-          position="button-right"
+          position="button-center"
           duration="3000"
         />
         {validation && <p>{validation}</p>}

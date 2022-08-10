@@ -1,5 +1,6 @@
 import ProductMenu from '../../components/ProductMenu';
 import Storage from '../../components/Storage';
+import ViewStorages from '../../components/ViewStorages';
 import { useDispatch } from "react-redux";
 import "./styles.css";
 import { useSelector } from 'react-redux';
@@ -36,9 +37,9 @@ const Storages = () => {
         {section === 'create' && <Storage />}
 
         {/* crear el componente ViewStorages */}
-        {section === 'view' && <Storage />}
+        {section === 'view' && <ViewStorages />}
 
-        {/* crear el componente ViewStorages */}
+        {/* crear el componente EditMode */}
         {section === 'update' && <Storage editMode />}
       </div>
     </div>
