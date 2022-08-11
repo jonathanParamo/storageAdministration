@@ -26,7 +26,7 @@ const Storages = () => {
     },
     update: {
       label: 'Update storage',
-      onClick: () => dispatch({ type: 'STORAGE_SECTION', payload: 'update'}),
+      onClick: undefined,
       currentSection: 'update',
     },
   };

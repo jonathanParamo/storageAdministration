@@ -8,7 +8,7 @@ import "./styles.css"
 
 const Storages = ({ editMode, storageId }) => {
   const [validation, setValidation] = useState("")
-  const [defaultValues, setDefaultValues] = useState([]);
+  const [defaultValues, setDefaultValues] = useState();
   const [loading, setLoading] = useState(false)
   const [category, setCategory] = useState("")
   const token = localStorage.getItem("token")
@@ -27,7 +27,7 @@ const Storages = ({ editMode, storageId }) => {
 
   useEffect(() =>{
     if(!token) navigate("/")
-    if (editMode) setDefaultValues(storages?.filter(({ _id }) => storageId === _id ));
+    if (editMode) getStorage()
   }, [])
 
   const validationData = () => {
@@ -55,6 +55,13 @@ const Storages = ({ editMode, storageId }) => {
     setName("")
     setCategory("")
     setAmount("")
+  }
+
+  const getStorage = () => {
+    const storage = storages?.filter(({ _id }) => storageId === _id );
+    setName(storage[0].name)
+    setCategory(storage[0].category)
+    setAmount(storage[0].amount)
   }
 
   const handleSubmit = async () => {
@@ -86,6 +93,8 @@ const Storages = ({ editMode, storageId }) => {
     dispatch({ type: 'CANCEL_UPDATE' })
   }
 
+  console.log('xxx defaultValues: ', defaultValues);
+
   return (
     <div className="mainStore">
       <div className="cardMainStore">
@@ -104,6 +113,7 @@ const Storages = ({ editMode, storageId }) => {
             name="titleStore"
             id="titleStore"
             onChange={e => {setName(e.target.value)}}
+            value={name}
           />
         </div>
         <div className="categoryStorage">
@@ -113,6 +123,7 @@ const Storages = ({ editMode, storageId }) => {
             name="amount"
             placeholder="For example cereals"
             onChange={e => {setCategory(e.target.value)}}
+            value={category}
           />
         </div>
         <div className="amountStore">
@@ -123,6 +134,7 @@ const Storages = ({ editMode, storageId }) => {
             name="amount"
             placeholder="Number of items"
             onChange={e => setAmount(e.target.value)}
+            value={amount}
           />
         </div>
         {!loading ?
