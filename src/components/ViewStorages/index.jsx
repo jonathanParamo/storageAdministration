@@ -39,54 +39,50 @@ const ViewStorages = () => {
   }
 
   return (
-    <div className="containerProductMenuProducts">
-      <div className="visualContent">
-        <div className="prueba">
-          {!!storages && storages.length > 0 ? storages.map(({ name, amount, category, id }) => {
-            return (
-              <div className="cardStorages">
-                <div className="nameStorage">
-                  <label className="labelStorage">Storage:</label>
-                  <p className="componentStorage"
-                    value={name}
-                    >
-                    {name}
-                  </p>
-                </div>
-                <div className="nameStorage">
-                  <label className="labelStorage">Amount:</label>
-                  <p className="componentStorage">{amount}</p>
-                </div>
-                <div className="nameStorage">
-                  <label className="labelStorage">Category:</label>
-                  <p className="componentStorage">{category}</p>
-                </div>
-                <div className="buttonsStorages">
-                  <button
-                    className="editStorage"
-                    value={id}
-                    // onClick={}
-                    >
-                    Edit storage
-                  </button>
-                  <button
-                    className="deleteStorage"
-                    value={id}
-                    // onClick={}
-                    >
-                    Delete storage
-                  </button>
-                </div>
-              </div>
-            )
-          }) : (
-            <Toaster
-            position="button-center"
-            />
-            // <p>No existen bodegas</p>
-            )}
-        </div>
-      </div>
+    <div className="MainContainer">
+      {!!storages && storages.length > 0 ? storages.map(({ name, amount, category, id }) => {
+        return (
+          <div className="cardStorages">
+            <div className="nameStorage">
+              <label className="labelStorage">Storage:</label>
+              <p className="componentStorage"
+                value={name}
+                >
+                {name}
+              </p>
+            </div>
+            <div className="nameStorage">
+              <label className="labelStorage">Amount:</label>
+              <p className="componentStorage">{amount}</p>
+            </div>
+            <div className="nameStorage">
+              <label className="labelStorage">Category:</label>
+              <p className="componentStorage">{category}</p>
+            </div>
+            <div className="buttonsStorages">
+              <button
+                className="editStorage"
+                value={id}
+                // onClick={}
+                >
+                Edit storage
+              </button>
+              <button
+                className="deleteStorage"
+                value={id}
+                // onClick={}
+                >
+                Delete storage
+              </button>
+            </div>
+          </div>
+        )
+      }) : (
+        <Toaster
+          position="button-center"
+        />
+        // <p>No existen bodegas</p>
+      )}
     </div>
   )
 }

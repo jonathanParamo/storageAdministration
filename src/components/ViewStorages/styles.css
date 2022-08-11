@@ -1,27 +1,11 @@
-.containerProductMenuProducts {
-  width: 100%;
-  height: calc(100vh - 54px);
-  display: flex;
-  justify-content: space-around;
-}
-
-.visualContent {
+.MainContainer {
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.prueba {
-  box-sizing: border-box;
-  overflow: scroll;
-  width: 100%;
-  height: calc(100vh - 54px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: initial;
   flex-wrap: wrap;
+  overflow-y: auto;
+  align-items: flex-start;
+  height: calc(100vh - 54px);
+  justify-content: flex-start;
 }
 
 .cardStorages {
