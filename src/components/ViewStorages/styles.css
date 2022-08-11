@@ -8,7 +8,7 @@
   justify-content: flex-start;
 }
 
-.cardStorages {
+.card {
   width: 160px;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@
   border-radius: 5px;
 }
 
-.nameStorage {
+.cardSection {
   width: 100%;
   display: flex;
   align-items: center;
@@ -27,17 +27,17 @@
   padding: 2px 5px;
 }
 
-.labelStorage {
+.cardLabel {
   width: 90px;
   padding: 2px;
 }
 
-.componentStorage {
+.cardText {
   width: 30px;
   margin: 5px 5px;
 }
 
-.buttonsStorages {
+.cardButton {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -77,7 +77,7 @@
 }
 
 @media(max-width: 720px) {
-.cardStorages {
+.card {
   width: 120px;
   display: flex;
   flex-direction: column;
@@ -88,7 +88,7 @@
   border-radius: 3px;
 }
 
-.nameStorage {
+.cardSection {
   width: 100%;
   display: flex;
   align-items: center;
@@ -97,7 +97,7 @@
   padding: 2px 5px;
 }
 
-.labelStorage {
+.cardLabel {
   width: 50px;
   height: 16px;
   font-size: 12px;
@@ -105,14 +105,14 @@
   padding: 2px;
 }
 
-.componentStorage {
+.cardText {
   width: 30px;
   height: 16px;
   font-size: 12px;
   margin: 5px 5px;
 }
 
-.buttonsStorages {
+.cardButton {
   width: 100%;
   display: flex;
   flex-direction: column;

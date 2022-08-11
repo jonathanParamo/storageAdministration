@@ -8,8 +8,9 @@ import { useSelector } from 'react-redux';
 const Storages = () => {
   const dispatch = useDispatch();
 
-  const { section } = useSelector(({ StorageReducer}) => ({
+  const { section, storageId } = useSelector(({ StorageReducer}) => ({
     section: StorageReducer.section,
+    storageId: StorageReducer.storageId
   }));
 
   const storagesMenu = {
@@ -40,7 +41,7 @@ const Storages = () => {
         {section === 'view' && <ViewStorages />}
 
         {/* crear el componente EditMode */}
-        {section === 'update' && <Storage editMode />}
+        {section === 'update' && <Storage editMode  storageId={storageId} />}
       </div>
     </div>
   )

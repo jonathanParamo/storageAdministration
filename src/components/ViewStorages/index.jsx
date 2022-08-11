@@ -38,40 +38,42 @@ const ViewStorages = () => {
     }
   }
 
+  const hasData = !!storages && storages.length > 0;
+
+  const editStorage = (id) => {
+    dispatch({ type: 'UPDATE_STORAGE', payload: id })
+  }
+
   return (
     <div className="MainContainer">
-      {!!storages && storages.length > 0 ? storages.map(({ name, amount, category, id }) => {
+      {hasData ? storages.map(({ name, amount, category, _id }) => {
         return (
-          <div className="cardStorages">
-            <div className="nameStorage">
-              <label className="labelStorage">Storage:</label>
-              <p className="componentStorage"
-                value={name}
-                >
+          <div className="card">
+            <div className="cardSection">
+              <label className="cardLabel">Storage:</label>
+              <p className="cardText">
                 {name}
               </p>
             </div>
-            <div className="nameStorage">
-              <label className="labelStorage">Amount:</label>
-              <p className="componentStorage">{amount}</p>
+            <div className="cardSection">
+              <label className="cardLabel">Amount:</label>
+              <p className="cardText">{amount}</p>
             </div>
-            <div className="nameStorage">
-              <label className="labelStorage">Category:</label>
-              <p className="componentStorage">{category}</p>
+            <div className="cardSection">
+              <label className="cardLabel">Category:</label>
+              <p className="cardText">{category}</p>
             </div>
-            <div className="buttonsStorages">
+            <div className="cardButton">
               <button
                 className="editStorage"
-                value={id}
-                // onClick={}
-                >
+                onClick={() => editStorage(_id)}
+              >
                 Edit storage
               </button>
               <button
                 className="deleteStorage"
-                value={id}
                 // onClick={}
-                >
+              >
                 Delete storage
               </button>
             </div>

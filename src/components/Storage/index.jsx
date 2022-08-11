@@ -6,8 +6,9 @@ import Loader from "../Loader"
 import axios from "axios"
 import "./styles.css"
 
-const Storages = () => {
+const Storages = ({ editMode, storageId }) => {
   const [validation, setValidation] = useState("")
+  const [defaultValues, setDefaultValues] = useState([]);
   const [loading, setLoading] = useState(false)
   const [category, setCategory] = useState("")
   const token = localStorage.getItem("token")
@@ -18,12 +19,15 @@ const Storages = () => {
 
   const {
     error,
+    storages,
   } = useSelector(({StorageReducer})=> ({
     error: StorageReducer.error,
+    storages: StorageReducer.storages,
   }))
 
   useEffect(() =>{
     if(!token) navigate("/")
+    if (editMode) setDefaultValues(storages?.filter(({ _id }) => storageId === _id ));
   }, [])
 
   const validationData = () => {
@@ -78,10 +82,14 @@ const Storages = () => {
     }
   }
 
+  const onCancel = () => {
+    dispatch({ type: 'CANCEL_UPDATE' })
+  }
+
   return (
     <div className="mainStore">
       <div className="cardMainStore">
-        <p className="newStorage">New storage</p>
+        <p className="newStorage">{editMode ? 'Edit storage' : 'New storage'}</p>
         <div className="titleStoreContainer">
           <label
             htmlFor="titleStore"
@@ -122,9 +130,17 @@ const Storages = () => {
             className='createStorage'
             onClick={handleSubmit}
           >
-            Create storage
+            {editMode ? 'Update' : 'Create'}
           </button> : <Loader />
         }
+        {editMode && (
+          <button
+            className='createStorage'
+            onClick={onCancel}
+          >
+            Cancel
+          </button>
+          )}
         <Toaster
           position="button-center"
           duration="3000"
