@@ -3,7 +3,6 @@ import { Toaster, toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import axios from "axios"
-
 import "./styles.css"
 
 const ViewStorages = () => {
@@ -22,9 +21,28 @@ const ViewStorages = () => {
     storages : StorageReducer.storages
   }))
 
-  const dataStorages = async () => {
+  const handleDelete = async (_id) => {
     try {
       const {data} = await axios({
+        method: 'PuT',
+        baseURL: process.env.REACT_APP_SERVER,
+        url: '/storages/destroy',
+        data: { _id },
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+      })
+      toast.success("Storage has delete")
+      dispatch({type: "STORAGE_SUCCESS", payload: data })
+    } catch (error) {
+      toast.error("Error in the creation of the storage")
+      dispatch({ type: "STORAGE_ERROR", payload: error })
+    }
+  }
+
+  const dataStorages = async () => {
+    try {
+      const { data } = await axios({
         method: 'GET',
         baseURL: process.env.REACT_APP_SERVER,
         url: '/storages/getAll',
@@ -72,7 +90,7 @@ const ViewStorages = () => {
               </button>
               <button
                 className="deleteStorage"
-                // onClick={}
+                onClick={() => handleDelete(_id)}
               >
                 Delete storage
               </button>

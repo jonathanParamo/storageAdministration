@@ -64,7 +64,7 @@ const Storages = ({ editMode, storageId }) => {
     setAmount(storage[0].amount)
   }
 
-  const handleSubmit = async () => {
+  const handleCreate = async () => {
     if(validationData()) {
       try {
         const {data} = await axios({
@@ -79,7 +79,30 @@ const Storages = ({ editMode, storageId }) => {
         toast.success("Storage successfully created")
         dispatch({type: "STORAGE_SUCCESS", payload: data })
         setLoading(false)
-        navigate("/dashboard")
+        cleanForm()
+      } catch (error) {
+        toast.error("Error in the creation of the storage")
+        dispatch({ type: "STORAGE_ERROR", payload: error })
+        setLoading(false)
+      }
+    }
+  }
+
+  const handleDelete = async () => {
+    if(validationData()) {
+      try {
+        const {data} = await axios({
+          method: 'PUT',
+          baseURL: process.env.REACT_APP_SERVER,
+          url: '/storages/create',
+          data: { name, category, amount, _id: storageId },
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
+        })
+        toast.success("Storage successfully created")
+        dispatch({type: "STORAGE_SUCCESS", payload: data })
+        setLoading(false)
         cleanForm()
       } catch (error) {
         toast.error("Error in the creation of the storage")
@@ -140,7 +163,7 @@ const Storages = ({ editMode, storageId }) => {
         {!loading ?
           <button
             className='createStorage'
-            onClick={handleSubmit}
+            onClick={editMode ? handleDelete : handleCreate}
           >
             {editMode ? 'Update' : 'Create'}
           </button> : <Loader />
