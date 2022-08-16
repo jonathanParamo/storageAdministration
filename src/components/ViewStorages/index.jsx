@@ -24,7 +24,7 @@ const ViewStorages = () => {
   const handleDelete = async (_id) => {
     try {
       const {data} = await axios({
-        method: 'PuT',
+        method: 'PUT',
         baseURL: process.env.REACT_APP_SERVER,
         url: '/storages/destroy',
         data: { _id },

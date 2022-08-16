@@ -50,7 +50,7 @@ const ViewProducts = () => {
           'Authorization': `Bearer ${token}`
         },
       })
-      dispatch({type: "STORAGE_SUCCESS", payload: data.storages.products })
+      dispatch({type: "STORAGE_SUCCESS", payload: data.products })
     } catch (error) {
       toast.error("There are no storages")
     }
