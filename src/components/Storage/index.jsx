@@ -88,19 +88,19 @@ const Storages = ({ editMode, storageId }) => {
     }
   }
 
-  const handleDelete = async () => {
+  const handleEdit = async () => {
     if(validationData()) {
       try {
         const {data} = await axios({
           method: 'PUT',
           baseURL: process.env.REACT_APP_SERVER,
-          url: '/storages/create',
+          url: '/storages/update',
           data: { name, category, amount, _id: storageId },
           headers: {
             'Authorization': `Bearer ${token}`
           },
         })
-        toast.success("Storage successfully created")
+        toast.success("Storage successfully updated")
         dispatch({type: "STORAGE_SUCCESS", payload: data })
         setLoading(false)
         cleanForm()
@@ -163,7 +163,7 @@ const Storages = ({ editMode, storageId }) => {
         {!loading ?
           <button
             className='createStorage'
-            onClick={editMode ? handleDelete : handleCreate}
+            onClick={editMode ? handleEdit : handleCreate}
           >
             {editMode ? 'Update' : 'Create'}
           </button> : <Loader />
