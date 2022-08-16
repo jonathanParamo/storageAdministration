@@ -21,6 +21,14 @@ const ViewStorages = () => {
     storages : StorageReducer.storages
   }))
 
+  const confirmDelete = () => {
+    const confirm = window.confirm("Are you sure you want to delete the storage?") 
+    console.log(confirm);
+    if(confirm) {
+      handleDelete()
+    }
+  }
+
   const handleDelete = async (_id) => {
     try {
       const {data} = await axios({
@@ -90,7 +98,7 @@ const ViewStorages = () => {
               </button>
               <button
                 className="deleteStorage"
-                onClick={() => handleDelete(_id)}
+                onClick={() => confirmDelete(_id)}
               >
                 Delete storage
               </button>
