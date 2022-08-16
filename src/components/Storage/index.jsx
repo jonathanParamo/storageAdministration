@@ -100,7 +100,7 @@ const Storages = ({ editMode, storageId }) => {
             'Authorization': `Bearer ${token}`
           },
         })
-        toast.success("Storage successfully created")
+        toast.success("Storage successfully updated")
         dispatch({type: "STORAGE_SUCCESS", payload: data })
         setLoading(false)
         cleanForm()

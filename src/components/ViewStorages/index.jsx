@@ -21,11 +21,11 @@ const ViewStorages = () => {
     storages : StorageReducer.storages
   }))
 
-  const confirmDelete = () => {
-    const confirm = window.confirm("Are you sure you want to delete the storage?") 
+  const confirmDelete = (_id) => {
+    const confirm = window.confirm("Are you sure you want to delete the storage?")
     console.log(confirm);
     if(confirm) {
-      handleDelete()
+      handleDelete(_id)
     }
   }
 
