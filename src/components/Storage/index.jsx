@@ -116,8 +116,6 @@ const Storages = ({ editMode, storageId }) => {
     dispatch({ type: 'CANCEL_UPDATE' })
   }
 
-  console.log('xxx defaultValues: ', defaultValues);
-
   return (
     <div className="mainStore">
       <div className="cardMainStore">

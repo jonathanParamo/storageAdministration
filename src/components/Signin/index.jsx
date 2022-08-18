@@ -36,6 +36,7 @@ const Signin = () => {
       })
       setLoading(false)
       localStorage.setItem("token", data)
+      dispatch({type: "STORAGE_SUCCESS", payload: data.storages})
       navigate('/dashboard')
     } catch(error){
       dispatch({ type: "STORAGE_ERROR", payload: error })

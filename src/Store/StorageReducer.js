@@ -9,7 +9,7 @@ const initialState = {
   storages: {},
   loading: false,
   error: null,
-  section: 'create',
+  section: 'view',
   storageId: '',
 }
 
