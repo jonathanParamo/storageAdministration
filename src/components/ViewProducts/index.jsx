@@ -66,7 +66,7 @@ const ViewProducts = () => {
     <div className="MainContainer">
       {hasData ? products.map(({ name, amount, category, _id }) => {
         return (
-          <div className="card">
+          <div className="card" key={_id}>
             <div className="cardSection">
               <label className="cardLabel">Product:</label>
               <p className="cardText">

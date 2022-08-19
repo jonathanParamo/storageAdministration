@@ -4,6 +4,7 @@ const UPDATE_STORAGE = 'UPDATE_STORAGE'
 const STORAGE_SUCCESS = 'STORAGE_SUCCESS'
 const STORAGE_LOADING = 'STORAGE_LOADING'
 const STORAGE_SECTION = 'STORAGE_SECTION'
+const PRODUCT_SUCCESS = 'PRODUCT_SUCCESS'
 
 const initialState = {
   storages: {},
@@ -11,6 +12,7 @@ const initialState = {
   error: null,
   section: 'view',
   storageId: '',
+  products: {},
 }
 
 export function StorageReducer(state = initialState, action){
@@ -46,6 +48,11 @@ export function StorageReducer(state = initialState, action){
         ...state,
         section: 'view',
         storageId: '',
+      }
+    case PRODUCT_SUCCESS:
+      return {
+        ...state,
+        products: action.payload,
       }
     default:
       return state

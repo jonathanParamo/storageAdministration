@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import "./styles.css"
 
-const ProductMenu = ({ listItems }) => {
+const Menu = ({ listItems }) => {
 
   const { section } = useSelector(({ StorageReducer }) => ({
     section: StorageReducer.section,
@@ -13,6 +13,7 @@ const ProductMenu = ({ listItems }) => {
       {Object.values(listItems)?.map(({ label, onClick, currentSection}) => {
           return (
             <button
+              key={label}
               className={`btnProducts ${currentSection === section && 'selected'}`}
               onClick={onClick}
             >
@@ -25,4 +26,4 @@ const ProductMenu = ({ listItems }) => {
   )
 }
 
-export default ProductMenu
+export default Menu

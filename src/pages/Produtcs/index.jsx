@@ -1,9 +1,8 @@
-import ProductMenu from '../../components/ProductMenu';
+import Menu from '../../components/Menu';
 import NewProduct from '../../components/Storage';
 import ViewProducts from '../../components/ViewProducts';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
-import { useSelector } from 'react-redux';
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -14,15 +13,15 @@ const Products = () => {
   }));
 
   const productMenu = {
-    create: {
-      label: 'Create product',
-      onClick: () => dispatch({ type: 'STORAGE_SECTION', payload: 'create'}),
-      currentSection: 'create',
-    },
     listView: {
       label: 'All products',
       onClick: () => dispatch({ type: 'STORAGE_SECTION', payload: 'view'}),
       currentSection: 'view',
+    },
+    create: {
+      label: 'Create product',
+      onClick: () => dispatch({ type: 'STORAGE_SECTION', payload: 'create'}),
+      currentSection: 'create',
     },
     update: {
       label: 'Update products',
@@ -33,7 +32,7 @@ const Products = () => {
 
   return (
     <div className="containerProduct">
-      <ProductMenu listItems={productMenu} />
+      <Menu listItems={productMenu} />
       <div className="visualContent">
         {section === 'create' && <NewProduct />}
 

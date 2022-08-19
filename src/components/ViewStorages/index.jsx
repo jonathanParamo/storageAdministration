@@ -73,7 +73,7 @@ const ViewStorages = () => {
     <div className="MainContainer">
       {hasData ? storages.map(({ name, amount, category, _id }) => {
         return (
-          <div className="card">
+          <div className="card" key={_id}>
             <div className="cardSection">
               <label className="cardLabel">Storage:</label>
               <p className="cardText">

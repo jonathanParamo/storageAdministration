@@ -1,4 +1,4 @@
-import ProductMenu from '../../components/ProductMenu';
+import Menu from '../../components/Menu';
 import Storage from '../../components/Storage';
 import ViewStorages from '../../components/ViewStorages';
 import { useDispatch } from "react-redux";
@@ -33,14 +33,12 @@ const Storages = () => {
 
   return (
     <div className="containerProductMenuProducts">
-      <ProductMenu listItems={storagesMenu} />
+      <Menu listItems={storagesMenu} />
       <div className="visualContent">
         {section === 'create' && <Storage />}
 
-        {/* crear el componente ViewStorages */}
         {section === 'view' && <ViewStorages />}
 
-        {/* crear el componente EditMode */}
         {section === 'update' && <Storage editMode  storageId={storageId} />}
       </div>
     </div>
