@@ -3,8 +3,8 @@ import "./styles.css"
 
 const Menu = ({ listItems }) => {
 
-  const { section } = useSelector(({ StorageReducer }) => ({
-    section: StorageReducer.section,
+  const { section } = useSelector(({ MenuReducer }) => ({
+    section: MenuReducer.section,
   }));
 
   return (

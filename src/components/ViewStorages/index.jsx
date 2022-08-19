@@ -67,6 +67,7 @@ const ViewStorages = () => {
 
   const editStorage = (id) => {
     dispatch({ type: 'UPDATE_STORAGE', payload: id })
+    dispatch({ type: 'CHANGE_SECTION', payload: 'update' })
   }
 
   return (

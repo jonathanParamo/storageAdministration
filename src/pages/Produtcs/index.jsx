@@ -7,24 +7,24 @@ import "./styles.css";
 const Products = () => {
   const dispatch = useDispatch();
 
-  const { section, storageId } = useSelector(({ StorageReducer}) => ({
-    section: StorageReducer.section,
-    storageId: StorageReducer.storageId
+  const { section, products } = useSelector(({ ProductReducer}) => ({
+    section: ProductReducer.section,
+    products: ProductReducer.products,
   }));
 
   const productMenu = {
     listView: {
       label: 'All products',
-      onClick: () => dispatch({ type: 'STORAGE_SECTION', payload: 'view'}),
+      onClick: () => dispatch({ type: 'CHANGE_SECTION', payload: 'view'}),
       currentSection: 'view',
     },
     create: {
       label: 'Create product',
-      onClick: () => dispatch({ type: 'STORAGE_SECTION', payload: 'create'}),
+      onClick: () => dispatch({ type: 'CHANGE_SECTION', payload: 'create'}),
       currentSection: 'create',
     },
     update: {
-      label: 'Update products',
+      label: 'Update product',
       onClick: undefined,
       currentSection: 'update',
     },
@@ -34,13 +34,12 @@ const Products = () => {
     <div className="containerProduct">
       <Menu listItems={productMenu} />
       <div className="visualContent">
+
+        {/* {section === 'view' && <ViewProducts products={products} />} */}
+
         {section === 'create' && <NewProduct />}
 
-        {/* crear el componente ViewStorages */}
-        {section === 'view' && <ViewProducts />}
-
-        {/* crear el componente EditMode */}
-        {section === 'update' && <NewProduct editMode  storageId={storageId} />}
+        {/* {section === 'update' && <NewProduct editMode />} */}
       </div>
     </div>
   )

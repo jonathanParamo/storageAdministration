@@ -114,6 +114,7 @@ const Storages = ({ editMode, storageId }) => {
 
   const onCancel = () => {
     dispatch({ type: 'CANCEL_UPDATE' })
+    dispatch({ type: 'CHANGE_SECTION', payload: 'view' })
   }
 
   return (
