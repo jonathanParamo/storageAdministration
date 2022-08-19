@@ -23,7 +23,6 @@ const ViewStorages = () => {
 
   const confirmDelete = (_id) => {
     const confirm = window.confirm("Are you sure you want to delete the storage?")
-    console.log(confirm);
     if(confirm) {
       handleDelete(_id)
     }
@@ -40,7 +39,7 @@ const ViewStorages = () => {
           'Authorization': `Bearer ${token}`
         },
       })
-      toast.success("Storage has delete")
+      toast.success("Storage deleted")
       dispatch({type: "STORAGE_SUCCESS", payload: data })
     } catch (error) {
       toast.error("Error in the creation of the storage")
@@ -109,7 +108,6 @@ const ViewStorages = () => {
         <Toaster
           position="button-center"
         />
-        // <p>No existen bodegas</p>
       )}
     </div>
   )

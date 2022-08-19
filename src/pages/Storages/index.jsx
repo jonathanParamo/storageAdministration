@@ -8,21 +8,21 @@ import { useSelector } from 'react-redux';
 const Storages = () => {
   const dispatch = useDispatch();
 
-  const { section, storageId } = useSelector(({ StorageReducer}) => ({
+  const { section, storageId } = useSelector(({ StorageReducer }) => ({
     section: StorageReducer.section,
     storageId: StorageReducer.storageId
   }));
 
   const storagesMenu = {
-    create: {
-      label: 'Create storage',
-      onClick: () => dispatch({ type: 'STORAGE_SECTION', payload: 'create'}),
-      currentSection: 'create',
-    },
     listView: {
       label: 'All storages',
       onClick: () => dispatch({ type: 'STORAGE_SECTION', payload: 'view'}),
       currentSection: 'view',
+    },
+    create: {
+      label: 'Create storage',
+      onClick: () => dispatch({ type: 'STORAGE_SECTION', payload: 'create'}),
+      currentSection: 'create',
     },
     update: {
       label: 'Update storage',

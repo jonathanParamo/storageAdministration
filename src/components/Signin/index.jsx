@@ -35,7 +35,8 @@ const Signin = () => {
         data: { email, password }
       })
       setLoading(false)
-      localStorage.setItem("token", data)
+      localStorage.setItem("token", data.token)
+      dispatch({type: "STORAGE_SUCCESS", payload: data.storages})
       navigate('/dashboard')
     } catch(error){
       dispatch({ type: "STORAGE_ERROR", payload: error })

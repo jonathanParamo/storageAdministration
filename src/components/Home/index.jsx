@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
 import MainMenu from "../MainMenu"
-import * as React from "react"
+import React from "react"
 import "./styles.css"
 
 const Home = () => {
