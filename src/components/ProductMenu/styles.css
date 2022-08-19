@@ -39,6 +39,10 @@
   background: #7469b4;
 }
 
+.selected {
+  background: #7469b4;
+}
+
 @media(max-width: 720px) {
   .containerProducMenu {
     width: 120px;

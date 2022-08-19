@@ -6,8 +6,9 @@ import Loader from "../Loader"
 import axios from "axios"
 import "./styles.css"
 
-const Storages = () => {
+const Storages = ({ editMode, storageId }) => {
   const [validation, setValidation] = useState("")
+  const [defaultValues, setDefaultValues] = useState();
   const [loading, setLoading] = useState(false)
   const [category, setCategory] = useState("")
   const token = localStorage.getItem("token")
@@ -18,12 +19,15 @@ const Storages = () => {
 
   const {
     error,
+    storages,
   } = useSelector(({StorageReducer})=> ({
     error: StorageReducer.error,
+    storages: StorageReducer.storages,
   }))
 
   useEffect(() =>{
     if(!token) navigate("/")
+    if (editMode) getStorage()
   }, [])
 
   const validationData = () => {
@@ -47,13 +51,20 @@ const Storages = () => {
     return true
   }
 
-    const cleanForm = () => {
-      setName("")
-      setCategory("")
-      setAmount("")
-    }
+  const cleanForm = () => {
+    setName("")
+    setCategory("")
+    setAmount("")
+  }
 
-  const handleSubmit = async () => {
+  const getStorage = () => {
+    const storage = storages?.filter(({ _id }) => storageId === _id );
+    setName(storage[0].name)
+    setCategory(storage[0].category)
+    setAmount(storage[0].amount)
+  }
+
+  const handleCreate = async () => {
     if(validationData()) {
       try {
         const {data} = await axios({
@@ -77,10 +88,38 @@ const Storages = () => {
     }
   }
 
+  const handleEdit = async () => {
+    if(validationData()) {
+      try {
+        const {data} = await axios({
+          method: 'PUT',
+          baseURL: process.env.REACT_APP_SERVER,
+          url: '/storages/update',
+          data: { name, category, amount, _id: storageId },
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
+        })
+        toast.success("Storage successfully updated")
+        dispatch({type: "STORAGE_SUCCESS", payload: data })
+        setLoading(false)
+        cleanForm()
+      } catch (error) {
+        toast.error("Error in the creation of the storage")
+        dispatch({ type: "STORAGE_ERROR", payload: error })
+        setLoading(false)
+      }
+    }
+  }
+
+  const onCancel = () => {
+    dispatch({ type: 'CANCEL_UPDATE' })
+  }
+
   return (
     <div className="mainStore">
       <div className="cardMainStore">
-        <p className="newStorage">New storage</p>
+        <p className="newStorage">{editMode ? 'Edit storage' : 'New storage'}</p>
         <div className="titleStoreContainer">
           <label
             htmlFor="titleStore"
@@ -95,6 +134,7 @@ const Storages = () => {
             name="titleStore"
             id="titleStore"
             onChange={e => {setName(e.target.value)}}
+            value={name}
           />
         </div>
         <div className="categoryStorage">
@@ -104,6 +144,7 @@ const Storages = () => {
             name="amount"
             placeholder="For example cereals"
             onChange={e => {setCategory(e.target.value)}}
+            value={category}
           />
         </div>
         <div className="amountStore">
@@ -114,18 +155,27 @@ const Storages = () => {
             name="amount"
             placeholder="Number of items"
             onChange={e => setAmount(e.target.value)}
+            value={amount}
           />
         </div>
         {!loading ?
           <button
             className='createStorage'
-            onClick={handleSubmit}
+            onClick={editMode ? handleEdit : handleCreate}
           >
-            Create storage
+            {editMode ? 'Update' : 'Create'}
           </button> : <Loader />
         }
+        {editMode && (
+          <button
+            className='createStorage'
+            onClick={onCancel}
+          >
+            Cancel
+          </button>
+          )}
         <Toaster
-          position="button-right"
+          position="button-center"
           duration="3000"
         />
         {validation && <p>{validation}</p>}

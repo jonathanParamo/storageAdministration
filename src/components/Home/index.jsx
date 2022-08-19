@@ -1,14 +1,13 @@
+import { Outlet } from "react-router-dom"
 import MainMenu from "../MainMenu"
-import ProductMenu from "../ProductMenu"
+import React from "react"
+import "./styles.css"
 
 const Home = () => {
-
   return (
     <div className="containerDashboard">
       <MainMenu />
-      <div className="containerProductMenuProducts">
-        <ProductMenu />
-      </div>
+      <Outlet />
     </div>
   )
 }

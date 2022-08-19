@@ -1,0 +1,13 @@
+.containerProductMenuProducts {
+  width: 100%;
+  height: calc(100vh - 54px);
+  display: flex;
+  justify-content: space-around;
+}
+
+.visualContent {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
