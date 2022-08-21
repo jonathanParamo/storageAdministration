@@ -9,7 +9,6 @@ const initialState = {
   loading: false,
   error: null,
   storageId: '',
-  products: {},
 }
 
 export function StorageReducer(state = initialState, action){

@@ -101,7 +101,6 @@ const ViewProducts = () => {
         <Toaster
           position="button-center"
         />
-        // <p>No existen bodegas</p>
       )}
     </div>
   )

@@ -8,7 +8,6 @@ import "./styles.css"
 
 const Storages = ({ editMode, storageId }) => {
   const [validation, setValidation] = useState("")
-  const [defaultValues, setDefaultValues] = useState();
   const [loading, setLoading] = useState(false)
   const [category, setCategory] = useState("")
   const token = localStorage.getItem("token")
