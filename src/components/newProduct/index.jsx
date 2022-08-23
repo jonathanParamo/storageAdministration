@@ -26,9 +26,9 @@ const NewProduct = () => {
   const {
     error,
     storages,
-  } = useSelector(({StorageReducer})=> ({
+  } = useSelector(({StorageReducer, ProductReducer})=> ({
     error: StorageReducer.error,
-    storages : StorageReducer.storages
+    storages : ProductReducer.storages
   }))
 
   const dataStorages = async () => {

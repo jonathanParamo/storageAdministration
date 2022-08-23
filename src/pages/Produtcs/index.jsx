@@ -1,5 +1,5 @@
 import Menu from '../../components/Menu';
-import NewProduct from '../../components/Storage';
+import NewProduct from '../../components/NewProduct';
 import ViewProducts from '../../components/ViewProducts';
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
@@ -7,8 +7,8 @@ import "./styles.css";
 const Products = () => {
   const dispatch = useDispatch();
 
-  const { section, products } = useSelector(({ ProductReducer}) => ({
-    section: ProductReducer.section,
+  const { section, products } = useSelector(({ ProductReducer, MenuReducer }) => ({
+    section: MenuReducer.section,
     products: ProductReducer.products,
   }));
 
@@ -31,11 +31,11 @@ const Products = () => {
   };
 
   return (
-    <div className="containerProduct">
+    <div className="containerProductMenuProducts">
       <Menu listItems={productMenu} />
       <div className="visualContent">
 
-        {/* {section === 'view' && <ViewProducts products={products} />} */}
+        {section === 'view' && <ViewProducts products={products} />}
 
         {section === 'create' && <NewProduct />}
 

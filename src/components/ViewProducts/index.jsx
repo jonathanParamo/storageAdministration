@@ -15,16 +15,16 @@ const ViewProducts = () => {
     dataProducts()
   }, [])
 
-  const {
-    products,
-  } = useSelector(({StorageReducer})=> ({
-    products : StorageReducer.storages.products
-  }))
+  // const {
+  //   products,
+  // } = useSelector(({ProductReducer})=> ({
+  //   products : ProductReducer.products
+  // }))
 
   const handleDelete = async (_id) => {
     try {
       const {data} = await axios({
-        method: 'PuT',
+        method: 'PUT',
         baseURL: process.env.REACT_APP_SERVER,
         url: '/storages/destroy',
         data: { _id },
@@ -52,14 +52,22 @@ const ViewProducts = () => {
       })
       dispatch({type: "STORAGE_SUCCESS", payload: data.products })
     } catch (error) {
-      toast.error("There are no storages")
+      toast.error("There are no products")
     }
+  }
+
+  const products = {
+    name: "a",
+    amount: 15,
+    category: "cafe",
+    _id: 122313123
   }
 
   const hasData = !!products && products.length > 0;
 
-  const editStorage = (id) => {
+  const editProduct = (id) => {
     dispatch({ type: 'UPDATE_STORAGE', payload: id })
+    dispatch({ type: 'CHANGE_SECTION', payload: 'update' })
   }
 
   return (
@@ -84,15 +92,15 @@ const ViewProducts = () => {
             <div className="cardButton">
               <button
                 className="editStorage"
-                onClick={() => editStorage(_id)}
+                onClick={() => editProduct(_id)}
               >
-                Edit storage
+                Edit product
               </button>
               <button
                 className="deleteStorage"
                 onClick={() => handleDelete(_id)}
               >
-                Delete storage
+                Delete product
               </button>
             </div>
           </div>

@@ -1,9 +1,8 @@
 import Menu from '../../components/Menu';
 import Storage from '../../components/Storage';
 import ViewStorages from '../../components/ViewStorages';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
-import { useSelector } from 'react-redux';
 
 const Storages = () => {
   const dispatch = useDispatch();

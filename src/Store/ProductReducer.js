@@ -5,8 +5,8 @@ const PRODUCT_SECTION = 'PRODUCT_SECTION'
 const initialState = {
   loading: false,
   error: null,
-  section: 'view',
   products: {},
+  section: 'view',
 }
 
 export function ProductReducer(state = initialState, action){
@@ -14,12 +14,12 @@ export function ProductReducer(state = initialState, action){
     case PRODUCT_SECTION:
       return {
         ...state,
-        section: action.payload,
-      }
-    case CANCEL_UPDATE:
-      return {
-        ...state,
         section: 'view',
+      }
+      case CANCEL_UPDATE:
+        return {
+          ...state,
+          section: action.payload,
       }
     case PRODUCT_SUCCESS:
       return {
