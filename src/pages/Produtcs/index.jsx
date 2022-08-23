@@ -1,5 +1,5 @@
 import Menu from '../../components/Menu';
-import NewProduct from '../../components/NewProduct';
+import CreateProduct from '../../components/CreateProduct';
 import ViewProducts from '../../components/ViewProducts';
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
@@ -37,7 +37,7 @@ const Products = () => {
 
         {section === 'view' && <ViewProducts products={products} />}
 
-        {section === 'create' && <NewProduct />}
+        {section === 'create' && <CreateProduct />}
 
         {/* {section === 'update' && <NewProduct editMode />} */}
       </div>

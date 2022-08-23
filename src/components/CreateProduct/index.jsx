@@ -7,7 +7,7 @@ import Loader from "../Loader"
 import "./styles.css"
 
 
-const NewProduct = () => {
+const CreateProduct = () => {
   const noImage = "https://t4.ftcdn.net/jpg/04/00/24/31/240_F_400243185_BOxON3h9avMUX10RsDkt3pJ8iQx72kS3.jpg"
   const [image, setImage] = useState("")
   const [validation, setValidation] = useState("")
@@ -139,4 +139,4 @@ const NewProduct = () => {
   )
 }
 
-export default NewProduct
+export default CreateProduct
