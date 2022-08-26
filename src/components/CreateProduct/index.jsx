@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux"
 import { Toaster, toast } from "react-hot-toast"
-import axios from "axios"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Loader from "../Loader"
+import axios from "axios"
 import "./styles.css"
 
 
@@ -14,7 +14,8 @@ const CreateProduct = () => {
   const [loading, setLoading] = useState(false)
   const token = localStorage.getItem("token")
   const [destiny, setDestiny] = useState("")
-  const [count, setCount] =  useState(0)
+  const [amount, setAmount] =  useState(0)
+  const [name, setName] = useState("")
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -26,9 +27,9 @@ const CreateProduct = () => {
   const {
     error,
     storages,
-  } = useSelector(({StorageReducer, ProductReducer})=> ({
+  } = useSelector(({StorageReducer})=> ({
     error: StorageReducer.error,
-    storages : ProductReducer.storages
+    storages : StorageReducer.storages
   }))
 
   const dataStorages = async () => {
@@ -45,12 +46,6 @@ const CreateProduct = () => {
 
   const validationData = () => {
     setLoading(true)
-    if(!count) {
-      setValidation("Amount is reuired")
-      setLoading(false)
-      toast.error("Error in the added in the storage")
-      return false
-    }
     if(!storages) {
       setValidation("must be assigned to a storage")
       setLoading(false)
@@ -60,13 +55,23 @@ const CreateProduct = () => {
     return true
   }
 
-  const handleSubmit = async () => {
+  const handleCreate = async () => {
     if(validationData()) {
       try {
+        const { data } = await axios ({
+          method: 'POST',
+          baseURL: process.env.REACT_APP_SERVER,
+          url: '/products/create',
+          data: { name, amount, image, /*storage, userId*/ },
+          headers: {
+            'Autorization': `Bearer ${token}`
+          },
+        })
+        dispatch({type: "PRODUCT_SUCCESS", payload: data})
         toast.success("The product was added")
         setLoading(false)
       } catch (error) {
-        toast.error("Error in the added in the storage")
+        toast.error("Error in the added product in the storage")
         dispatch({ type: "STORAGE_ERROR", payload: error })
         setLoading(false)
       }
@@ -75,7 +80,23 @@ const CreateProduct = () => {
 
   return (
     <div className="cardNewProduct">
-        <p className="productImage">Product image</p>
+        <h3 className="titleProduct">Create Product</h3>
+        <div className="productTitle">
+          <label
+            htmlFor="productName"
+            className="productName"
+            >
+              Product name:
+          </label>
+          <input
+            id="productName"
+            className="labelProductName"
+            type="text"
+            placeholder="Product name"
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <p className="productImage">Product image:</p>
       <div>
         <img className="imageNewProduct" src={image || noImage} />
       </div>
@@ -91,14 +112,14 @@ const CreateProduct = () => {
           <button
             className="buttonCountMas"
             onClick={() => {
-              setCount(count >= 20 ? count : count + 1)}}>
+              setAmount(amount >= 20 ? amount : amount + 1)}}>
             +
           </button>
-          <p className="unids">{count} unids</p>
+          <p className="unids">{amount} unids:</p>
           <button
             className="buttonCountMenos"
             onClick={() => {
-              setCount(count <= 1 ? count : count - 1)}}>
+              setAmount(amount <= 1 ? amount : amount - 1)}}>
             -
           </button>
         </div>
@@ -109,10 +130,10 @@ const CreateProduct = () => {
           className="selectOptionsStorage"
           value={destiny}
           onChange={(e) => setDestiny(e.target.value)}>
-          {!!storages && storages.length > 0 ? storages.map(({ name }) => {
+          {!!storages && storages.length > 0 ? storages.map(({ name, _id }) => {
             return (
               <option
-                value={name}>
+                value={_id}>
                   {name}
               </option>
             )
@@ -124,7 +145,7 @@ const CreateProduct = () => {
       {!loading ?
         <button
           className="addNewProduct"
-          onClick={handleSubmit}
+          onClick={handleCreate}
         >
           Add product
         </button> : <Loader />

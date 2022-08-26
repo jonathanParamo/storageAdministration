@@ -1,23 +1,20 @@
 const CANCEL_UPDATE = 'CANCEL_UPDATE'
 const PRODUCT_SUCCESS = 'PRODUCT_SUCCESS'
-const PRODUCT_SECTION = 'PRODUCT_SECTION'
+const UPDATE_PRODUCT = 'UPDATE_PRODUCT'
 
 const initialState = {
   loading: false,
   error: null,
   products: {},
-  // TODO - Acá ya sobra section, cambiaría por productId
-  section: 'view',
+  productId: ''
 }
 
 export function ProductReducer(state = initialState, action){
   switch(action.type) {
-    // TODO - Acá cambiaria por update_product
-    case PRODUCT_SECTION:
+    case UPDATE_PRODUCT:
       return {
         ...state,
-        // TODO - acá cambiaria el estado productId y le meteria lo que llega en el payload
-        section: 'view',
+        productId: action.payload,
       }
       case CANCEL_UPDATE:
         return {
