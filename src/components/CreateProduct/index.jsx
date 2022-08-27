@@ -55,23 +55,23 @@ const CreateProduct = () => {
     return true
   }
 
-  const handleCreate = async () => {
+  const handleCreate = async (_id) => {
     if(validationData()) {
       try {
         const { data } = await axios ({
           method: 'POST',
           baseURL: process.env.REACT_APP_SERVER,
           url: '/products/create',
-          data: { name, amount, image, /*storage, userId*/ },
+          data: { name, amount, image, storageId: _id },
           headers: {
-            'Autorization': `Bearer ${token}`
+            'Authorization': `Bearer ${token}`
           },
         })
         dispatch({type: "PRODUCT_SUCCESS", payload: data})
         toast.success("The product was added")
         setLoading(false)
       } catch (error) {
-        toast.error("Error in the added product in the storage")
+        toast.error("Error in the added product")
         dispatch({ type: "STORAGE_ERROR", payload: error })
         setLoading(false)
       }
@@ -93,7 +93,7 @@ const CreateProduct = () => {
             className="labelProductName"
             type="text"
             placeholder="Product name"
-            onChange={(e) => setName(e.target.value)}
+            onSubmit={(e) => setName(e.target.value)}
           />
         </div>
         <p className="productImage">Product image:</p>
@@ -129,7 +129,9 @@ const CreateProduct = () => {
         <select
           className="selectOptionsStorage"
           value={destiny}
-          onChange={(e) => setDestiny(e.target.value)}>
+          onChange={(e) => setDestiny(e.target.value)}
+        >
+          <option>Choose on storage ...</option>
           {!!storages && storages.length > 0 ? storages.map(({ name, _id }) => {
             return (
               <option
@@ -145,7 +147,7 @@ const CreateProduct = () => {
       {!loading ?
         <button
           className="addNewProduct"
-          onClick={handleCreate}
+          onClick={() => handleCreate(destiny)}
         >
           Add product
         </button> : <Loader />

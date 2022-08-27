@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
+import toast, { Toast } from "react-hot-toast"
 import { useState } from "react"
 import Loader from "../Loader"
 import axios from "axios"
@@ -43,7 +44,7 @@ const Signup = () => {
       localStorage.setItem("token", data)
       navigate('/dashboard')
     } catch (error) {
-      alert('algo salio mal')
+      toast.error('Something went wrong in the new user registration')
       setLoading(false)
     }
   }
@@ -131,6 +132,9 @@ const Signup = () => {
         >
           Clean form
         </button>
+        <Toaster
+          position="button-center"
+        />
         <div
           className="regis"
           onClick={() => navigate('/signin')}
