@@ -45,7 +45,7 @@
   align-items: center;
 }
 
-.editStorage {
+.editProduct {
   width : 100px;
   background: #0077b6;
   color: #fff;
@@ -54,13 +54,13 @@
   box-shadow: 2px 3px 5px #00b4d8;
 }
 
-.editStorage:hover {
+.editProduct:hover {
   cursor: pointer;
   box-shadow: none;
   transition: 0.8s;
 }
 
-.deleteStorage {
+.deleteProduct {
   width: 100px;
   margin: 8px;
   color: #fff;
@@ -70,7 +70,7 @@
   box-shadow: 2px 3px 5px #f21b3f;
 }
 
-.deleteStorage:hover {
+.deleteProduct:hover {
   cursor: pointer;
   box-shadow: none;
   transition: 0.8s;
@@ -120,7 +120,7 @@
   align-items: center;
 }
 
-.editStorage {
+.editProduct {
   width : 100px;
   background: #0077b6;
   color: #fff;
@@ -129,13 +129,13 @@
   box-shadow: 2px 3px 5px #00b4d8;
 }
 
-.editStorage:hover {
+.editProduct:hover {
   cursor: pointer;
   box-shadow: none;
   transition: 0.8s;
 }
 
-.deleteStorage {
+.deleteProduct {
   width: 100px;
   margin: 8px;
   color: #fff;
@@ -145,7 +145,7 @@
   box-shadow: 2px 3px 5px #f21b3f;
 }
 
-.deleteStorage:hover {
+.deleteProduct:hover {
   cursor: pointer;
   box-shadow: none;
   transition: 0.8s;

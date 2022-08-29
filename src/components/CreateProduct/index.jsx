@@ -93,7 +93,7 @@ const CreateProduct = () => {
             className="labelProductName"
             type="text"
             placeholder="Product name"
-            onSubmit={(e) => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
         <p className="productImage">Product image:</p>
@@ -104,7 +104,7 @@ const CreateProduct = () => {
           className="inputImageProduct"
           type="text"
           placeholder="Add link image"
-          onSubmit={e => setImage(e.target.value)}
+          onChange={e => setImage(e.target.value)}
         />
       <div className="amountProduct">
         <p className="unitsAvailable">Units available:</p>

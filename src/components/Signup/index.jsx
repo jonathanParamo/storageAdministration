@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
-import toast, { Toast } from "react-hot-toast"
+import { Toaster, toast } from "react-hot-toast"
 import { useState } from "react"
 import Loader from "../Loader"
 import axios from "axios"
