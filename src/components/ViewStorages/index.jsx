@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import axios from "axios"
 import "./styles.css"
+import { getStorages } from "../../Store/StorageReducer"
 
 const ViewStorages = () => {
   const navigate = useNavigate()
@@ -12,7 +13,7 @@ const ViewStorages = () => {
 
   useEffect(() =>{
     if(!token) navigate("/")
-    dataStorages()
+    getStorages();
   }, [])
 
   const {
@@ -44,22 +45,6 @@ const ViewStorages = () => {
     } catch (error) {
       toast.error("Error in the creation of the storage")
       dispatch({ type: "STORAGE_ERROR", payload: error })
-    }
-  }
-
-  const dataStorages = async () => {
-    try {
-      const { data } = await axios({
-        method: 'GET',
-        baseURL: process.env.REACT_APP_SERVER,
-        url: '/storages/getAll',
-        headers: {
-          'Authorization': `Bearer ${token}`
-        },
-      })
-      dispatch({type: "STORAGE_SUCCESS", payload: data.storages })
-    } catch (error) {
-      toast.error("There are no storages")
     }
   }
 

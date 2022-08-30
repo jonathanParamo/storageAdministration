@@ -17,11 +17,11 @@ export function ProductReducer(state = initialState, action){
         ...state,
         productId: action.payload,
       }
-      case CANCEL_UPDATE:
-        return {
-          ...state,
-          section: action.payload,
-      }
+    case CANCEL_UPDATE:
+      return {
+        ...state,
+        productId: '',
+    }
     case PRODUCT_SUCCESS:
       return {
         ...state,

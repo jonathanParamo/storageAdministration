@@ -7,9 +7,8 @@ import "./styles.css";
 const Products = () => {
   const dispatch = useDispatch();
 
-  const { section, products } = useSelector(({ ProductReducer, MenuReducer }) => ({
+  const { section } = useSelector(({ MenuReducer }) => ({
     section: MenuReducer.section,
-    products: ProductReducer.products,
   }));
 
   const productMenu = {
@@ -35,7 +34,7 @@ const Products = () => {
       <Menu listItems={productMenu} />
       <div className="visualContent">
 
-        {section === 'view' && <ViewProducts products={products} />}
+        {section === 'view' && <ViewProducts />}
 
         {section === 'create' && <CreateProduct />}
 

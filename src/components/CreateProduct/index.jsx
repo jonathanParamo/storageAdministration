@@ -135,8 +135,10 @@ const CreateProduct = () => {
           {!!storages && storages.length > 0 ? storages.map(({ name, _id }) => {
             return (
               <option
-                value={_id}>
-                  {name}
+                key={_id}
+                value={_id}
+              >
+                {name}
               </option>
             )
           }) : (

@@ -1,18 +1,22 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Toaster, toast } from "react-hot-toast"
-import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useState } from "react"
 import { useEffect } from "react"
 import axios from "axios"
 import "./styles.css"
 
-const ViewProducts = (products) => {
+const ViewProducts = () => {
   const token = localStorage.getItem("token")
   const [image, setImage] = useState("")
   const [name, setName] = useState("")
   const [amount, setAmount] = useState(0)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+  const { products } = useSelector(({ ProductReducer }) => ({
+    products: ProductReducer.products,
+  }));
 
 
   useEffect(() =>{
@@ -47,7 +51,6 @@ const ViewProducts = (products) => {
   }
 
   const hasData = !!products && products.length > 0;
-  console.log(products, hasData);
 
   const editProduct = (id) => {
     dispatch({ type: 'UPDATE_PRODUCT', payload: id })
@@ -59,13 +62,15 @@ const ViewProducts = (products) => {
       {hasData ? products.map(({ image, name, amount, storageId, _id }) => {
         return (
           <div className="card" key={_id}>
+            <div className="image-product">
+              <img src={image} alt="product ilustration" />
+            </div>
             <div className="cardSection">
               <label className="cardLabel">Product:</label>
               <p className="cardText">
                 {name}
               </p>
             </div>
-            <div className="productImage">{image} </div>
             <div className="cardSection">
               <label className="cardLabel">Amount:</label>
               <p className="cardText">{amount}</p>
