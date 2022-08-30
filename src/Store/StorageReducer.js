@@ -16,21 +16,21 @@ const initialState = {
 
 export const getStorages = () => {
   return async function(dispatch){
-      try {
-        const { data } = await axios({
-          method: 'GET',
-          baseURL: process.env.REACT_APP_SERVER,
-          url: '/storages/getAll',
-          headers: {
-            'Authorization': `Bearer ${token}`
-          },
-        })
-        dispatch({type: "STORAGE_SUCCESS", payload: data.storages })
-      } catch (error) {
-        dispatch({type: "STORAGE_ERROR", payload: error })
-      }
+    try {
+      const { data } = await axios({
+        method: 'GET',
+        baseURL: process.env.REACT_APP_SERVER,
+        url: '/storages/getAll',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+      })
+      dispatch({type: "STORAGE_SUCCESS", payload: data.storages })
+    } catch (error) {
+      dispatch({type: "STORAGE_ERROR", payload: error })
     }
   }
+}
 
 export function StorageReducer(state = initialState, action){
   switch(action.type) {

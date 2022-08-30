@@ -1,10 +1,10 @@
+import { getStorages } from "../../Store/StorageReducer"
 import { useDispatch, useSelector } from "react-redux"
 import { Toaster, toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import axios from "axios"
 import "./styles.css"
-import { getStorages } from "../../Store/StorageReducer"
 
 const ViewStorages = () => {
   const navigate = useNavigate()
@@ -13,7 +13,7 @@ const ViewStorages = () => {
 
   useEffect(() =>{
     if(!token) navigate("/")
-    getStorages();
+    dispatch(getStorages());
   }, [])
 
   const {
