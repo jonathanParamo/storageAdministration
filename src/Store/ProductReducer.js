@@ -1,3 +1,6 @@
+import axios from "axios"
+const token = localStorage.getItem('token')
+
 const CANCEL_UPDATE = 'CANCEL_UPDATE'
 const PRODUCT_SUCCESS = 'PRODUCT_SUCCESS'
 const UPDATE_PRODUCT = 'UPDATE_PRODUCT'
@@ -8,6 +11,24 @@ const initialState = {
   error: null,
   products: {},
   productId: ''
+}
+
+export const getProducts = () => {
+  return async function(dispatch){
+    try {
+      const { data } = await axios({
+        method: 'GET',
+        baseURL: process.env.REACT_APP_SERVER,
+        url: '/products/getAll',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+      })
+      dispatch({type: "PRODUCTS_SUCCESS", payload: data.products })
+    } catch (error) {
+      dispatch({type: "PRODUCTS_ERROR", payload: error })
+    }
+  }
 }
 
 export function ProductReducer(state = initialState, action){

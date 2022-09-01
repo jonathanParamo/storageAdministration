@@ -1,10 +1,11 @@
+import { getProducts } from "../../Store/ProductReducer"
 import { useDispatch, useSelector } from "react-redux"
 import { Toaster, toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
-import { useState } from "react"
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
 import axios from "axios"
 import "./styles.css"
+import { getStorages } from "../../Store/StorageReducer"
 
 const ViewProducts = () => {
   const token = localStorage.getItem("token")
@@ -14,14 +15,19 @@ const ViewProducts = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const { products } = useSelector(({ ProductReducer }) => ({
+  const {
+    products,
+    storages,
+  } = useSelector(({ ProductReducer, StorageReducer }) => ({
     products: ProductReducer.products,
-  }));
+    storages: StorageReducer.storages,
 
+  }));
 
   useEffect(() =>{
     if(!token) navigate("/")
-    // getProducts()
+    dispatch(getProducts())
+    dispatch(getStorages())
   }, [])
 
   // const getProducts = () => {
@@ -57,13 +63,22 @@ const ViewProducts = () => {
     dispatch({ type: 'CHANGE_SECTION', payload: 'update' })
   }
 
+  const idStorage = (storages, storageId) => {
+    storages.filter(({name, _id}) => {
+      const storageName = name
+      if(_id === storageId) {
+        return storageName
+      }
+    })
+  }
+
   return (
     <div className="MainContainer">
-      {hasData ? products.map(({ image, name, amount, storageId, _id }) => {
+      {hasData ? products.map(({ image, name, amount, storageId, _id}) => {
         return (
           <div className="card" key={_id}>
-            <div className="image-product">
-              <img src={image} alt="product ilustration" />
+            <div>
+              <img className="imageProduct" src={image} alt="product ilustration" />
             </div>
             <div className="cardSection">
               <label className="cardLabel">Product:</label>
@@ -76,8 +91,8 @@ const ViewProducts = () => {
               <p className="cardText">{amount}</p>
             </div>
             <div className="cardSection">
-              <label className="cardLabel">Category:</label>
-              <p className="cardText">{storageId}</p>
+              <label className="cardLabel">Storage:</label>
+              <p className="cardText">{idStorage(storages, storageId)}</p>
             </div>
             <div className="cardButton">
               <button

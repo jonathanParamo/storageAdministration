@@ -13,7 +13,7 @@ const ViewStorages = () => {
 
   useEffect(() =>{
     if(!token) navigate("/")
-    dispatch(getStorages());
+    dispatch(getStorages())
   }, [])
 
   const {

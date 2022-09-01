@@ -19,15 +19,12 @@
   border-radius: 5px;
 }
 
-.image-product {
-  width: 100%;
-  height: 50px;
-}
-
-.image-product img {
-  width: 100%;
-  object-fit: contain;
-  overflow: hidden;
+.imageProduct {
+  box-sizing: border-box;
+  width: 90%;
+  height: 80px;
+  border-radius: 5PX;
+  margin: 5px;
 }
 
 .cardSection {
