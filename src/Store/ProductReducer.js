@@ -24,9 +24,9 @@ export const getProducts = () => {
           'Authorization': `Bearer ${token}`
         },
       })
-      dispatch({type: "PRODUCTS_SUCCESS", payload: data.products })
+      dispatch({type: "PRODUCT_SUCCESS", payload: data.products })
     } catch (error) {
-      dispatch({type: "PRODUCTS_ERROR", payload: error })
+      dispatch({type: "PRODUCT_ERROR", payload: error })
     }
   }
 }

@@ -63,21 +63,17 @@ const ViewProducts = () => {
     dispatch({ type: 'CHANGE_SECTION', payload: 'update' })
   }
 
-  const idStorage = (storages, storageId) => {
-    storages.filter(({name, _id}) => {
-      const storageName = name
-      if(_id === storageId) {
-        return storageName
-      }
-    })
+  const storageName = (storageId) => {
+    const [{ name }] = storages.filter(({ _id }) => (_id === storageId))
+    return name
   }
 
   return (
     <div className="MainContainer">
       {hasData ? products.map(({ image, name, amount, storageId, _id}) => {
         return (
-          <div className="card" key={_id}>
-            <div>
+          <div className="cardProducts" key={_id}>
+            <div className="containerImageProduct">
               <img className="imageProduct" src={image} alt="product ilustration" />
             </div>
             <div className="cardSection">
@@ -92,7 +88,7 @@ const ViewProducts = () => {
             </div>
             <div className="cardSection">
               <label className="cardLabel">Storage:</label>
-              <p className="cardText">{idStorage(storages, storageId)}</p>
+              <p className="cardText">{storageName(storageId)}</p>
             </div>
             <div className="cardButton">
               <button
