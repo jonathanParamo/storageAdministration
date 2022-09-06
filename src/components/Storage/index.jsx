@@ -76,7 +76,7 @@ const Storages = ({ editMode, storageId }) => {
           },
         })
         toast.success("Storage successfully created")
-        dispatch({type: "PRODUCT_SUCCESS", payload: data })
+        dispatch({type: "STORAGE_SUCCESS", payload: data })
         setLoading(false)
         cleanForm()
       } catch (error) {

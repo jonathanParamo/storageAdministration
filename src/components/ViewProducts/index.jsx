@@ -30,29 +30,22 @@ const ViewProducts = () => {
     dispatch(getStorages())
   }, [])
 
-  // const getProducts = () => {
-  //   const products = products?.filter(({ _id }) => productId === _id );
-  //   setName(products[0].name)
-  //   setImage(products[0].image)
-  //   setAmount(products[0].amount)
-  // }
-
   const handleDelete = async (_id) => {
     try {
       const {data} = await axios({
         method: 'PUT',
         baseURL: process.env.REACT_APP_SERVER,
-        url: '/product/destroy',
+        url: '/products/destroy',
         data: { _id },
         headers: {
           'Authorization': `Bearer ${token}`
         },
       })
       toast.success("Storage has delete")
-      dispatch({type: "STORAGE_SUCCESS", payload: data })
+      dispatch({type: "PRODUCTS_SUCCESS", payload: data })
     } catch (error) {
       toast.error("Error in the creation of the storage")
-      dispatch({ type: "STORAGE_ERROR", payload: error })
+      dispatch({ type: "PRODUCTS_ERROR", payload: error })
     }
   }
 

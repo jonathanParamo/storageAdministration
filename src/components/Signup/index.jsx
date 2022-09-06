@@ -44,7 +44,7 @@ const Signup = () => {
       localStorage.setItem("token", data)
       navigate('/dashboard')
     } catch (error) {
-      toast.error('Something went wrong in the new user registration')
+      toast.error('Something went wrong in the user registration')
       setLoading(false)
     }
   }
