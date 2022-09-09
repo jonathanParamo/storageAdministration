@@ -1,16 +1,35 @@
+import axios from "axios"
+const token = localStorage.getItem('token');
+
 const STORAGE_ERROR = 'STORAGE_ERROR'
 const CANCEL_UPDATE = 'CANCEL_UPDATE'
 const UPDATE_STORAGE = 'UPDATE_STORAGE'
 const STORAGE_SUCCESS = 'STORAGE_SUCCESS'
 const STORAGE_LOADING = 'STORAGE_LOADING'
-const STORAGE_SECTION = 'STORAGE_SECTION'
 
 const initialState = {
   storages: {},
   loading: false,
   error: null,
-  section: 'view',
   storageId: '',
+}
+
+export const getStorages = () => {
+  return async function(dispatch){
+    try {
+      const { data } = await axios({
+        method: 'GET',
+        baseURL: process.env.REACT_APP_SERVER,
+        url: '/storages/getAll',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+      })
+      dispatch({type: "STORAGE_SUCCESS", payload: data.storages })
+    } catch (error) {
+      dispatch({type: "STORAGE_ERROR", payload: error })
+    }
+  }
 }
 
 export function StorageReducer(state = initialState, action){
@@ -30,21 +49,14 @@ export function StorageReducer(state = initialState, action){
         ...state,
         error: action.payload,
       }
-    case STORAGE_SECTION:
-      return {
-        ...state,
-        section: action.payload,
-      }
     case UPDATE_STORAGE:
       return {
         ...state,
-        section: 'update',
         storageId: action.payload,
       }
     case CANCEL_UPDATE:
       return {
         ...state,
-        section: 'view',
         storageId: '',
       }
     default:

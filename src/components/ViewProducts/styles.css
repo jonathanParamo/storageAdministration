@@ -1,0 +1,169 @@
+.MainContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  align-items: flex-start;
+  height: calc(100vh - 54px);
+  justify-content: flex-start;
+}
+
+.cardProducts {
+  width: 180px;
+  height: 290px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff70;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.containerImageProduct {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.imageProduct {
+  box-sizing: border-box;
+  width: 115px;
+  height: 80px;
+  border-radius: 5PX;
+  margin: 5px;
+}
+
+.cardSection {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 2px;
+  padding: 2px 5px;
+}
+
+.cardLabel {
+  width: 90px;
+  padding: 2px;
+}
+
+.cardText {
+  width: 40px;
+  margin: 5px 5px;
+}
+
+.cardButton {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.editProduct {
+  width : 100px;
+  background: #0077b6;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 3px 5px #00b4d8;
+}
+
+.editProduct:hover {
+  cursor: pointer;
+  box-shadow: none;
+  transition: 0.8s;
+}
+
+.deleteProduct {
+  width: 100px;
+  margin: 8px;
+  color: #fff;
+  background: #f21b3f;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 3px 5px #f21b3f;
+}
+
+.deleteProduct:hover {
+  cursor: pointer;
+  box-shadow: none;
+  transition: 0.8s;
+}
+
+@media(max-width: 720px) {
+.cardProducts {
+  width: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff90;
+  margin: 5px;
+  border-radius: 3px;
+}
+
+.cardSection {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px;
+  padding: 2px 5px;
+}
+
+.cardLabel {
+  width: 50px;
+  height: 16px;
+  font-size: 12px;
+  margin-right: 5px;
+  padding: 2px;
+}
+
+.cardText {
+  width: 30px;
+  height: 16px;
+  font-size: 12px;
+  margin: 5px 5px;
+}
+
+.cardButton {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.editProduct {
+  width : 100px;
+  background: #0077b6;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 3px 5px #00b4d8;
+}
+
+.editProduct:hover {
+  cursor: pointer;
+  box-shadow: none;
+  transition: 0.8s;
+}
+
+.deleteProduct {
+  width: 100px;
+  margin: 8px;
+  color: #fff;
+  background: #f21b3f;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 3px 5px #f21b3f;
+}
+
+.deleteProduct:hover {
+  cursor: pointer;
+  box-shadow: none;
+  transition: 0.8s;
+}
+}

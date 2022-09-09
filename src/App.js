@@ -10,7 +10,7 @@ import Signup from './components/Signup';
 import Signin from './components/Signin';
 import Home from './components/Home';
 import Storages from './pages/Storages';
-import NewProduct from './components/newProduct';
+import Products from './pages/Produtcs';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard/*" element={<Home />} >
           <Route path="storages" element={<Storages />} />
-          <Route path="products" element={<NewProduct />} />
+          <Route path="products" element={<Products />} />
         </Route>
       </Routes>
     </Router>

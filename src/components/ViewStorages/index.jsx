@@ -1,3 +1,4 @@
+import { getStorages } from "../../Store/StorageReducer"
 import { useDispatch, useSelector } from "react-redux"
 import { Toaster, toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
@@ -12,7 +13,7 @@ const ViewStorages = () => {
 
   useEffect(() =>{
     if(!token) navigate("/")
-    dataStorages()
+    dispatch(getStorages())
   }, [])
 
   const {
@@ -31,7 +32,7 @@ const ViewStorages = () => {
   const handleDelete = async (_id) => {
     try {
       const {data} = await axios({
-        method: 'PuT',
+        method: 'PUT',
         baseURL: process.env.REACT_APP_SERVER,
         url: '/storages/destroy',
         data: { _id },
@@ -47,33 +48,18 @@ const ViewStorages = () => {
     }
   }
 
-  const dataStorages = async () => {
-    try {
-      const { data } = await axios({
-        method: 'GET',
-        baseURL: process.env.REACT_APP_SERVER,
-        url: '/storages/getAll',
-        headers: {
-          'Authorization': `Bearer ${token}`
-        },
-      })
-      dispatch({type: "STORAGE_SUCCESS", payload: data.storages })
-    } catch (error) {
-      toast.error("There are no storages")
-    }
-  }
-
   const hasData = !!storages && storages.length > 0;
 
   const editStorage = (id) => {
     dispatch({ type: 'UPDATE_STORAGE', payload: id })
+    dispatch({ type: 'CHANGE_SECTION', payload: 'update' })
   }
 
   return (
     <div className="MainContainer">
       {hasData ? storages.map(({ name, amount, category, _id }) => {
         return (
-          <div className="card">
+          <div className="card" key={_id}>
             <div className="cardSection">
               <label className="cardLabel">Storage:</label>
               <p className="cardText">

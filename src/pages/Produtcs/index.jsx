@@ -1,30 +1,29 @@
 import Menu from '../../components/Menu';
-import Storage from '../../components/Storage';
-import ViewStorages from '../../components/ViewStorages';
+import CreateProduct from '../../components/CreateProduct';
+import ViewProducts from '../../components/ViewProducts';
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
 
-const Storages = () => {
+const Products = () => {
   const dispatch = useDispatch();
 
-  const { section, storageId } = useSelector(({ StorageReducer, MenuReducer }) => ({
+  const { section } = useSelector(({ MenuReducer }) => ({
     section: MenuReducer.section,
-    storageId: StorageReducer.storageId
   }));
 
-  const storagesMenu = {
+  const productMenu = {
     listView: {
-      label: 'All storages',
+      label: 'All products',
       onClick: () => dispatch({ type: 'CHANGE_SECTION', payload: 'view'}),
       currentSection: 'view',
     },
     create: {
-      label: 'Create storage',
+      label: 'Create product',
       onClick: () => dispatch({ type: 'CHANGE_SECTION', payload: 'create'}),
       currentSection: 'create',
     },
     update: {
-      label: 'Update storage',
+      label: 'Update product',
       onClick: undefined,
       currentSection: 'update',
     },
@@ -32,16 +31,17 @@ const Storages = () => {
 
   return (
     <div className="containerProductMenuProducts">
-      <Menu listItems={storagesMenu} />
+      <Menu listItems={productMenu} />
       <div className="visualContent">
-        {section === 'create' && <Storage />}
 
-        {section === 'view' && <ViewStorages />}
+        {section === 'view' && <ViewProducts />}
 
-        {section === 'update' && <Storage editMode  storageId={storageId} />}
+        {section === 'create' && <CreateProduct />}
+
+        {/* {section === 'update' && <NewProduct editMode />} */}
       </div>
     </div>
   )
 }
 
-export default Storages;
+export default Products;
