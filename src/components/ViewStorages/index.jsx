@@ -43,7 +43,7 @@ const ViewStorages = () => {
       toast.success("Storage deleted")
       dispatch({type: "STORAGE_SUCCESS", payload: data })
     } catch (error) {
-      toast.error("Error in the creation of the storage")
+      toast.error("Error in the delete of the storage")
       dispatch({ type: "STORAGE_ERROR", payload: error })
     }
   }

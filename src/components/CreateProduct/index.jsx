@@ -7,7 +7,7 @@ import axios from "axios"
 import "./styles.css"
 
 
-const CreateProduct = () => {
+const CreateProduct = ({editMode, productId}) => {
   const noImage = "https://t4.ftcdn.net/jpg/04/00/24/31/240_F_400243185_BOxON3h9avMUX10RsDkt3pJ8iQx72kS3.jpg"
   const [image, setImage] = useState("")
   const [validation, setValidation] = useState("")
@@ -22,14 +22,17 @@ const CreateProduct = () => {
   useEffect(() =>{
     if(!token) navigate("/")
     dataStorages()
+    if(editMode) getProduct()
   }, [])
 
   const {
     error,
     storages,
-  } = useSelector(({StorageReducer})=> ({
+    products
+  } = useSelector(({StorageReducer, ProductsReducer})=> ({
     error: StorageReducer.error,
-    storages : StorageReducer.storages
+    storages : StorageReducer.storages,
+    products: ProductsReducer.products
   }))
 
   const dataStorages = async () => {
@@ -55,6 +58,13 @@ const CreateProduct = () => {
     return true
   }
 
+  const getProduct = () => {
+    const product = products?.filter(({ _id }) => productId === _id );
+    setImage(product[0].image)
+    setName(product[0].name)
+    setAmount(product[0].amount)
+  }
+
   const handleCreate = async (_id) => {
     if(validationData()) {
       try {
@@ -72,7 +82,7 @@ const CreateProduct = () => {
         setLoading(false)
       } catch (error) {
         toast.error("Error in the added product")
-        dispatch({ type: "STORAGE_ERROR", payload: error })
+        dispatch({ type: "PRODUCT_ERROR", payload: error })
         setLoading(false)
       }
     }
@@ -142,7 +152,7 @@ const CreateProduct = () => {
               </option>
             )
           }) : (
-            <option>No existen bodegas</option>
+            <option>There are no products</option>
           )}
         </select>
       </div>
