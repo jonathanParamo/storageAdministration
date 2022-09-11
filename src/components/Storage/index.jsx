@@ -104,7 +104,7 @@ const Storages = ({ editMode, storageId }) => {
         setLoading(false)
         cleanForm()
       } catch (error) {
-        toast.error("Error in the creation of the storage")
+        toast.error("Error in the edit of the storage")
         dispatch({ type: "STORAGE_ERROR", payload: error })
         setLoading(false)
       }

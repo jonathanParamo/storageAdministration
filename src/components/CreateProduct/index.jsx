@@ -7,7 +7,7 @@ import axios from "axios"
 import "./styles.css"
 
 
-const CreateProduct = ({editMode, productId}) => {
+const CreateProduct = ({ editMode, productId }) => {
   const noImage = "https://t4.ftcdn.net/jpg/04/00/24/31/240_F_400243185_BOxON3h9avMUX10RsDkt3pJ8iQx72kS3.jpg"
   const [image, setImage] = useState("")
   const [validation, setValidation] = useState("")
@@ -19,12 +19,6 @@ const CreateProduct = ({editMode, productId}) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  useEffect(() =>{
-    if(!token) navigate("/")
-    dataStorages()
-    if(editMode) getProduct()
-  }, [])
-
   const {
     error,
     storages,
@@ -34,6 +28,12 @@ const CreateProduct = ({editMode, productId}) => {
     storages : StorageReducer.storages,
     products: ProductsReducer.products
   }))
+
+  useEffect(() =>{
+    if(!token) navigate("/")
+    dataStorages()
+    if(editMode) getProduct()
+  }, [])
 
   const dataStorages = async () => {
     const {data} = await axios({
@@ -88,9 +88,37 @@ const CreateProduct = ({editMode, productId}) => {
     }
   }
 
+  const handleEdit = async () => {
+    if(validationData()) {
+      try {
+        const {data} = await axios({
+          method: 'PUT',
+          baseURL: process.env.REACT_APP_SERVER,
+          url: '/products/update',
+          data: { image, name, amount, _id: productId },
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
+        })
+        toast.success("Product successfully updated")
+        dispatch({type: "PRODUCT_SUCCESS", payload: data })
+        setLoading(false)
+      } catch (error) {
+        toast.error("Error in the edit of the product")
+        dispatch({ type: "PRODUCT_ERROR", payload: error })
+        setLoading(false)
+      }
+    }
+  }
+
+  const onCancel = () => {
+    dispatch({ type: 'CANCEL_UPDATE' })
+    dispatch({ type: 'CHANGE_SECTION', payload: 'view' })
+  }
+
   return (
     <div className="cardNewProduct">
-        <h3 className="titleProduct">Create Product</h3>
+        <h3 className="titleProduct">{editMode ? 'Edit product' : 'Create Product'}</h3>
         <div className="productTitle">
           <label
             htmlFor="productName"
@@ -159,11 +187,19 @@ const CreateProduct = ({editMode, productId}) => {
       {!loading ?
         <button
           className="addNewProduct"
-          onClick={() => handleCreate(destiny)}
+          onClick={editMode ? handleEdit : handleCreate(destiny)}
         >
-          Add product
+          {editMode ? 'Update' : 'Add product'}
         </button> : <Loader />
       }
+      {editMode && (
+        <button
+          className='createStorage'
+          onClick={onCancel}
+        >
+          Cancel
+        </button>
+      )}
       <Toaster
         position="button-right"
         duration="3000"
