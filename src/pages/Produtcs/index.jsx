@@ -35,11 +35,11 @@ const Products = () => {
       <Menu listItems={productMenu} />
       <div className="visualContent">
 
-        {section === 'view' && <ViewProducts />}
-
         {section === 'create' && <CreateProduct />}
 
-        {section === 'update' && <ViewProducts editMode productId={productId} />}
+        {section === 'view' && <ViewProducts />}
+
+        {section === 'update' && <CreateProduct editMode productId={productId} />}
       </div>
     </div>
   )
