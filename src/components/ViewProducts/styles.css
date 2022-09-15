@@ -9,7 +9,7 @@
 }
 
 .cardProducts {
-  width: 180px;
+  width: 190px;
   height: 290px;
   display: flex;
   flex-direction: column;
@@ -49,7 +49,7 @@
 }
 
 .cardText {
-  width: 40px;
+  width: 90px;
   margin: 5px 5px;
 }
 

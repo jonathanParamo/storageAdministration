@@ -67,7 +67,6 @@ const ViewProducts = () => {
   return (
     <div className="MainContainer">
       {hasData ? products.map(({ image, name, amount, storageId, _id}) => {
-        if(products.includes("storageId")) {
         return (
           <div className="cardProducts" key={_id}>
             <div className="containerImageProduct">
@@ -91,9 +90,8 @@ const ViewProducts = () => {
               <button
                 className="editProduct"
                 onClick={() => editProduct(_id)}
-              >
-                Edit product
-              </button>
+                children={"Edit Product"}
+              />
               <button
                 className="deleteProduct"
                 onClick={() => confirmDelete(_id)}
@@ -103,14 +101,13 @@ const ViewProducts = () => {
             </div>
           </div>
         )
-      }}) : (
+      }) : (
         <>
           <Toaster
             position="button-center"
             />
         </>
       )}
-      <p className="noProducts">There are no products</p>
     </div>
   )
 }

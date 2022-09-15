@@ -194,7 +194,7 @@ const CreateProduct = ({ editMode, productId }) => {
       }
       {editMode && (
         <button
-          className='createStorage'
+          className='createProduct'
           onClick={onCancel}
         >
           Cancel
