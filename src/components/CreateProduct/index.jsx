@@ -23,10 +23,10 @@ const CreateProduct = ({ editMode, productId }) => {
     error,
     storages,
     products
-  } = useSelector(({StorageReducer, ProductsReducer})=> ({
+  } = useSelector(({StorageReducer, ProductReducer})=> ({
     error: StorageReducer.error,
     storages : StorageReducer.storages,
-    products: ProductsReducer.products
+    products: ProductReducer.products
   }))
 
   useEffect(() =>{
@@ -187,7 +187,7 @@ const CreateProduct = ({ editMode, productId }) => {
       {!loading ?
         <button
           className="addNewProduct"
-          onClick={editMode ? handleEdit : handleCreate(destiny)}
+          onClick={editMode ? handleEdit : () => handleCreate(destiny)}
         >
           {editMode ? 'Update' : 'Add product'}
         </button> : <Loader />

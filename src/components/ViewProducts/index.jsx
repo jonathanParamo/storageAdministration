@@ -67,6 +67,7 @@ const ViewProducts = () => {
   return (
     <div className="MainContainer">
       {hasData ? products.map(({ image, name, amount, storageId, _id}) => {
+        if(products.includes("storageId")) {
         return (
           <div className="cardProducts" key={_id}>
             <div className="containerImageProduct">
@@ -102,11 +103,14 @@ const ViewProducts = () => {
             </div>
           </div>
         )
-      }) : (
-        <Toaster
-          position="button-center"
-        />
+      }}) : (
+        <>
+          <Toaster
+            position="button-center"
+            />
+        </>
       )}
+      <p className="noProducts">There are no products</p>
     </div>
   )
 }

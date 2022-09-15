@@ -92,6 +92,11 @@
   transition: 0.8s;
 }
 
+.noProducts {
+  color: #fff;
+  margin: 10px;
+}
+
 @media(max-width: 720px) {
 .cardProducts {
   width: 130px;
