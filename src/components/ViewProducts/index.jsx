@@ -6,6 +6,7 @@ import { useEffect } from "react"
 import axios from "axios"
 import "./styles.css"
 import { getStorages } from "../../Store/StorageReducer"
+import Carousel from "../Carousel"
 
 const ViewProducts = () => {
   const token = localStorage.getItem("token")
@@ -108,6 +109,7 @@ const ViewProducts = () => {
             />
         </>
       )}
+      <Carousel />
     </div>
   )
 }
