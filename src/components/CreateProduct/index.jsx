@@ -31,21 +31,8 @@ const CreateProduct = ({ editMode, productId }) => {
 
   useEffect(() =>{
     if(!token) navigate("/")
-    dataStorages()
     if(editMode) getProduct()
   }, [])
-
-  const dataStorages = async () => {
-    const {data} = await axios({
-      method: 'GET',
-      baseURL: process.env.REACT_APP_SERVER,
-      url: '/storages/getAll',
-      headers: {
-        'Authorization': `Bearer ${token}`
-      },
-    })
-    dispatch({type: "STORAGE_SUCCESS", payload: data.storages })
-  }
 
   const validationData = () => {
     setLoading(true)
