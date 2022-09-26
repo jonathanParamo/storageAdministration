@@ -1,0 +1,71 @@
+.cardContainerProfile {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cardProfile {
+  width: 50%;
+  background: #1f1c32;
+  color: #959d98;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cardImage {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  margin: 15px;
+}
+
+.cardTextProfile{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.cardName {
+  margin: 5px;
+}
+
+.cardLastName {
+  margin: 5px;
+}
+
+.cardButtons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.editButton {
+  width: 150px;
+  border: none;
+  border-radius: 5px;
+  padding: 7px;
+  color: #d1c4a7;
+  margin-right: 3px;
+  background: #a804bc;
+}
+
+.deleteButton {
+  width: 150px;
+  border: none;
+  border-radius: 5px;
+  padding: 7px;
+  margin-left: 3px;
+  color: #89049c;
+  background: #1f1c32;
+  border: 1px solid #89049c;
+}
