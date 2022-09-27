@@ -9,30 +9,31 @@
 }
 
 .cardProducts {
-  width: 190px;
-  height: 290px;
+  width: 220px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #ffffff70;
-  margin: 5px;
+  background: #24203b;
+  color: #a29fbc;
+  margin: 15px;
   border-radius: 5px;
 }
 
 .containerImageProduct {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #a29fbc;
 }
 
 .imageProduct {
   box-sizing: border-box;
-  width: 115px;
-  height: 80px;
-  border-radius: 5PX;
-  margin: 5px;
+  width: 100%;
+  height: 140px;
+  border-radius: 5px;
 }
 
 .cardSection {
@@ -53,21 +54,23 @@
   margin: 5px 5px;
 }
 
-.cardButton {
+.cardProductButton {
   width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  margin-bottom: 10px;
 }
 
 .editProduct {
-  width : 100px;
-  background: #0077b6;
+  width : 50%;
+  height: 34px;
+  margin: 4px;
+  font-weight: 12px;
   color: #fff;
+  background: #c500d6;
   border: none;
   border-radius: 5px;
-  box-shadow: 2px 3px 5px #00b4d8;
+  box-shadow: 1px 2px 3px #ea3af3;
 }
 
 .editProduct:hover {
@@ -77,13 +80,16 @@
 }
 
 .deleteProduct {
-  width: 100px;
-  margin: 8px;
+  width: 50%;
+  height: 34px;
+  margin: 4px;
+  font-weight: 9px;
   color: #fff;
-  background: #f21b3f;
+  background: #24203b;
   border: none;
   border-radius: 5px;
-  box-shadow: 2px 3px 5px #f21b3f;
+  box-shadow: 1px 2px 3px #c301d1;
+  border: 1px solid #c301d1;
 }
 
 .deleteProduct:hover {
@@ -110,12 +116,12 @@
 }
 
 .cardSection {
-  width: 100%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 2px;
-  padding: 2px 5px;
+  padding: 2px 8px;
 }
 
 .cardLabel {
@@ -123,6 +129,7 @@
   height: 16px;
   font-size: 12px;
   margin-right: 5px;
+  margin-left: 10px;
   padding: 2px;
 }
 
@@ -133,7 +140,7 @@
   margin: 5px 5px;
 }
 
-.cardButton {
+.cardProductButton {
   width: 100%;
   display: flex;
   flex-direction: column;

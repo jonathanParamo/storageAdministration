@@ -86,7 +86,7 @@ const ViewProducts = () => {
               <label className="cardLabel">Storage:</label>
               <p className="cardText">{storageName(storageId)}</p>
             </div>
-            <div className="cardButton">
+            <div className="cardProductButton">
               <button
                 className="editProduct"
                 onClick={() => editProduct(_id)}
