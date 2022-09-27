@@ -74,7 +74,7 @@ const ViewStorages = () => {
               <label className="cardLabel">Category:</label>
               <p className="cardText">{category}</p>
             </div>
-            <div className="cardButton">
+            <div className="cardStorageButton">
               <button
                 className="editStorage"
                 onClick={() => editStorage(_id)}
