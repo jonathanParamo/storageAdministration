@@ -47,7 +47,7 @@ const ViewProducts = () => {
       toast.success("Product has delete")
       dispatch({type: "PRODUCT_SUCCESS", payload: data })
     } catch (error) {
-      toast.error("Error in delete of the product")
+      toast.error("Error deleting the product")
       dispatch({ type: "PRODUCT_ERROR", payload: error })
     }
   }
@@ -90,13 +90,13 @@ const ViewProducts = () => {
               <button
                 className="editProduct"
                 onClick={() => editProduct(_id)}
-                children="Edit Product"
+                children="Edit"
               />
               <button
                 className="deleteProduct"
                 onClick={() => confirmDelete(_id)}
               >
-                Delete product
+                Delete
               </button>
             </div>
           </div>
