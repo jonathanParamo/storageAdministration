@@ -74,17 +74,17 @@ const ViewProducts = () => {
             </div>
             <div className="cardSection">
               <label className="cardLabel">Product:</label>
-              <p className="cardText">
+              <div className="cardTextProduct">
                 {name}
-              </p>
+              </div>
             </div>
             <div className="cardSection">
               <label className="cardLabel">Amount:</label>
-              <p className="cardText">{amount}</p>
+              <div className="cardTextProduct">{amount}</div>
             </div>
             <div className="cardSection">
               <label className="cardLabel">Storage:</label>
-              <p className="cardText">{storageName(storageId)}</p>
+              <div className="cardTextProduct">{storageName(storageId)}</div>
             </div>
             <div className="cardProductButton">
               <button
