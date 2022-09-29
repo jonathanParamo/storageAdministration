@@ -9,7 +9,7 @@
 }
 
 .card {
-  width: 220px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,52 +21,52 @@
   box-shadow: 2px 2px 3px #1e1c33;
 }
 
-.cardSection {
+.cardSectionStorage {
   width: 100%;
+  margin: 5px 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2px;
-  padding: 2px 5px;
 }
 
-.cardLabel {
-  width: 50%;
-  padding: 2px;
+.cardLabelStorage {
+  width: 40%;
+  margin-right: 10px;
+  text-align: end;
 }
 
-.cardText {
-  width: 50%;
-  padding: 2px;
+.cardTextStorage {
+  width: 40%;
+  margin-left: 10px;
+  padding-left: 5px;
 }
 
 .cardStorageButton {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin: 5px 0;
+  margin: 10px 0;
 }
 
 .editStorage {
-  width : 50%;
+  width : 40%;
   margin: 3px;
   background:  #a804bc;
   color: #fff;
   border: none;
   padding: 5px;
   border-radius: 5px;
-  box-shadow: 3px 1px 6px #840493;
   transition: .8s;
 }
 
 .editStorage:hover {
   cursor: pointer;
-  box-shadow: none;
+  box-shadow: none;  background-image: linear-gradient(to right, #c301d1, #ffffff90 );
+  animation:slidebg 3s linear infinite;
 }
 
 .deleteStorage {
-  width: 50%;
+  width: 40%;
   margin: 3px;
   color: #fff;
   background: #1f1c32;
@@ -74,18 +74,25 @@
   border: none;
   border: 1px solid #a804bc;
   border-radius: 5px;
-  box-shadow: 3px 1px 6px #840493;
+  transition: 0.8s;
 }
 
 .deleteStorage:hover {
   cursor: pointer;
   box-shadow: none;
-  transition: 0.8s;
+  background-image: linear-gradient(to right, #24203b, #c301d1 );
+  animation:slidebg 3s linear infinite;
+}
+
+@keyframes slidebg {
+  to {
+    background-position:20vw;
+  }
 }
 
 @media(max-width: 720px) {
 .card {
-  width: 150px;
+  width: 180px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -94,21 +101,13 @@
   border-radius: 3px;
 }
 
-.cardSection {
+.cardSectionStorage {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2px;
+  margin: 4px;
   padding: 2px 5px;
-}
-
-.cardLabel {
-  width: 50px;
-  height: 16px;
-  font-size: 12px;
-  margin-right: 5px;
-  padding: 2px;
 }
 
 .cardStorageButton {

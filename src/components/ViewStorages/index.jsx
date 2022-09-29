@@ -60,32 +60,32 @@ const ViewStorages = () => {
       {hasData ? storages.map(({ name, amount, category, _id }) => {
         return (
           <div className="card" key={_id}>
-            <div className="cardSection">
-              <label className="cardLabel">Storage:</label>
-              <p className="cardText">
+            <div className="cardSectionStorage">
+              <label className="cardLabelStorage">Storage:</label>
+              <div className="cardTextStorage">
                 {name}
-              </p>
+              </div>
             </div>
-            <div className="cardSection">
-              <label className="cardLabel">Amount:</label>
-              <p className="cardText">{amount}</p>
+            <div className="cardSectionStorage">
+              <label className="cardLabelStorage">Amount:</label>
+              <div className="cardTextStorage">{amount}</div>
             </div>
-            <div className="cardSection">
-              <label className="cardLabel">Category:</label>
-              <p className="cardText">{category}</p>
+            <div className="cardSectionStorage">
+              <label className="cardLabelStorage">Category:</label>
+              <div className="cardTextStorage">{category}</div>
             </div>
             <div className="cardStorageButton">
               <button
                 className="editStorage"
                 onClick={() => editStorage(_id)}
               >
-                Edit storage
+                Edit
               </button>
               <button
                 className="deleteStorage"
                 onClick={() => confirmDelete(_id)}
               >
-                Delete storage
+                Delete
               </button>
             </div>
           </div>
