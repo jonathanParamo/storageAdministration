@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { getProfile } from "../../Store/ProfileReducer"
 import "./styles.css"
 
 const Profile = () => {
@@ -11,18 +13,26 @@ const Profile = () => {
   const token = localStorage.getItem("token")
   const navigate = useNavigate()
 
+  const {
+    error,
+    profile
+  } = useSelector(({ProfileReducer}) => ({
+    error: ProfileReducer.error,
+    profile: ProfileReducer.profile,
+  }))
 
   useEffect(() =>{
     if(!token) navigate("/")
+    getProfile()
   }, [])
-
-  const user =[{name: "Andres",image: "", lastName: "Paramo"}]
+  console.log(profile);
+  const user =[{name: "Andres",image: "", lastName: "Paramo", _id: 123124324,}]
 
   return (
     <div className="cardContainerProfile">
-      {user.map(({name, image, lastName}) => {
+      {user.map(({_id, name, image, lastName}) => {
         return (
-          <div className="cardProfile">
+          <div className="cardProfile" key={_id}>
               <img className="cardImage" src={image || noImage} />
             <div className="cardTextProfile">
                 <p className="cardName" >{name}</p>

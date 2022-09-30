@@ -38,7 +38,7 @@ const MainMenu = () => {
         </p>
         <p
           className="buttonsMainMenu"
-          onClick={() => navigate('/profile')}
+          onClick={() => navigate('profile')}
         >
           Profile
         </p>
