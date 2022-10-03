@@ -13,23 +13,23 @@ const initialState = {
   profileId: ''
 }
 
-export const getProfile = () => {
-  return async function(dispatch){
-    try {
-      const { data } = await axios({
-        method: 'GET',
-        baseURL: process.env.REACT_APP_SERVER,
-        url: '/users/user',
-        headers: {
-          'Authorization': `Bearer ${token}`
-        },
-      })
-      dispatch({type: "PROFILE_SUCCESS", payload: data.profile })
-    } catch (error) {
-      dispatch({type: "PROFILE_ERROR", payload: error })
-    }
-  }
-}
+// export const getProfile = () => {
+//   return async function(dispatch){
+//     try {
+//       const { data } = await axios({
+//         method: 'GET',
+//         baseURL: process.env.REACT_APP_SERVER,
+//         url: '/users/user',
+//         headers: {
+//           'Authorization': `Bearer ${token}`
+//         },
+//       })
+//       dispatch({type: "PROFILE_SUCCESS", payload: data.profile })
+//     } catch (error) {
+//       dispatch({type: "PROFILE_ERROR", payload: error })
+//     }
+//   }
+// }
 
 export function ProfileReducer(state = initialState, action){
   switch(action.type) {

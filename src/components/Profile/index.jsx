@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getProfile } from "../../Store/ProfileReducer"
 import "./styles.css"
 
 const Profile = () => {
@@ -16,7 +15,7 @@ const Profile = () => {
 
   const {
     error,
-    profile
+    profile,
   } = useSelector(({ProfileReducer}) => ({
     error: ProfileReducer.error,
     profile: ProfileReducer.profile,
@@ -24,14 +23,14 @@ const Profile = () => {
 
   useEffect(() =>{
     if(!token) navigate("/")
-    dispatch(getProfile())
   }, [])
-  console.log(profile, 'xxxxx');
-  const user =[{name: "Andres",image: "", lastName: "Paramo", _id: 123124324,}]
+
+  const hasData = !!profile && profile.length > 0;
+  console.log(typeof(profile), "222");
 
   return (
     <div className="cardContainerProfile">
-      {user.map(({_id, name, image, lastName}) => {
+      { profile.map(({_id, name, image, lastName}) => {
         return (
           <div className="cardProfile" key={_id}>
               <img className="cardImage" src={image || noImage} />
@@ -54,7 +53,7 @@ const Profile = () => {
           </div>
         )
       })
-      }
+    }
     </div>
   )
 }
