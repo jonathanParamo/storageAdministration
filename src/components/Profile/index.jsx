@@ -12,6 +12,7 @@ const Profile = () => {
   const [image, setImage] = useState("")
   const token = localStorage.getItem("token")
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const {
     error,
@@ -23,9 +24,9 @@ const Profile = () => {
 
   useEffect(() =>{
     if(!token) navigate("/")
-    getProfile()
+    dispatch(getProfile())
   }, [])
-  console.log(profile);
+  console.log(profile, 'xxxxx');
   const user =[{name: "Andres",image: "", lastName: "Paramo", _id: 123124324,}]
 
   return (

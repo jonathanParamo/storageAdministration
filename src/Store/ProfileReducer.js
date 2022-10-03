@@ -19,7 +19,7 @@ export const getProfile = () => {
       const { data } = await axios({
         method: 'GET',
         baseURL: process.env.REACT_APP_SERVER,
-        url: '/user',
+        url: '/users/user',
         headers: {
           'Authorization': `Bearer ${token}`
         },
