@@ -1,9 +1,12 @@
 .cardContainerProfile {
   width: 100%;
+  height: calc(100vh - 54px);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-weight: 400;
+  font-size: 18px;
 }
 
 .cardProfile {
@@ -14,6 +17,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  border-radius: 5px;
 }
 
 .cardImage {
@@ -28,8 +32,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 22px;
-  font-weight: 700;
 }
 
 .cardName {
@@ -38,6 +40,36 @@
 
 .cardLastName {
   margin: 5px;
+}
+
+.cardDataUser {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardTextProfile {
+  width: 100%;
+  margin: 5px 0;
+}
+
+.labelCardProfile {
+  width: 45%;
+  margin: 0px;
+}
+
+.inputCard {
+  width: 45%;
+  border: none;
+  outline: none;
+}
+
+.selectCardProfile {
+  width: 45%;
+  height: 25px;
+  outline: none;
 }
 
 .cardButtons {
@@ -49,23 +81,26 @@
   font-weight: 500;
 }
 
-.editButton {
+.saveChanges {
   width: 150px;
   border: none;
+  margin: 10px;
   border-radius: 5px;
   padding: 7px;
   color: #d1c4a7;
   margin-right: 3px;
   background: #a804bc;
+  transition: 0.6s;
 }
 
-.deleteButton {
-  width: 150px;
-  border: none;
-  border-radius: 5px;
-  padding: 7px;
-  margin-left: 3px;
-  color: #89049c;
-  background: #1f1c32;
-  border: 1px solid #89049c;
+.saveChanges:hover {
+  background-image: linear-gradient(to right, #c301d1, #ffffff30, #c301d1, #ffffff40 );
+  animation:slidebg 2s linear infinite;
+}
+
+
+@keyframes slidebg {
+  to {
+    background-position:20vw;
+  }
 }
