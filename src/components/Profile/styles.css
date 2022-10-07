@@ -1,75 +1,105 @@
 .cardContainerProfile {
   width: 100%;
   height: calc(100vh - 54px);
+  box-sizing: border-box;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   font-weight: 400;
-  font-size: 18px;
 }
 
 .cardProfile {
-  width: 50%;
+  width: 70%;
   background: #1f1c32;
   color: #959d98;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   border-radius: 5px;
 }
 
-.cardImage {
-  width: 150px;
-  height: 150px;
-  border-radius: 100%;
-  margin: 15px;
-}
-
-.cardTextProfile{
+.containerImage {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  border-radius: 5px;
+  border-right: 1px solid #ffffff40;
 }
 
-.cardName {
-  margin: 5px;
+.cardImage {
+  width: 180px;
+  height: 180px;
+  border-radius: 100%;
+  margin: 15px;
 }
 
-.cardLastName {
-  margin: 5px;
+.inputImage {
+  width: 60%;
+  outline: none;
+  background: #1f1c32;
+  border-radius: 5px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  margin-bottom: 10px;
+  padding-left: 10px;
 }
 
 .cardDataUser {
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding: 20px;
   justify-content: center;
   align-items: center;
 }
 
 .cardTextProfile {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.inputCard {
+  width: 70%;
+  border: none;
+  margin: 8px;
+  outline: none;
+  background: #1f1c32;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  color: #ffffff;
+  padding-left: 10px;
+}
+
+select {
+  height: 25px;
+}
+
+.cardLabelInputProfile {
+  width: 100%;
+  display: flex;
+  justify-content: center;
   margin: 5px 0;
 }
 
 .labelCardProfile {
   width: 45%;
-  margin: 0px;
+  display: flex;
+  align-items: center;
+  margin: 0;
 }
 
-.inputCard {
-  width: 45%;
-  border: none;
-  outline: none;
-}
-
-.selectCardProfile {
-  width: 45%;
-  height: 25px;
-  outline: none;
+input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator{
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 2px;
+  opacity: 0.9;
+  filter: invert(0.9);
 }
 
 .cardButtons {
@@ -77,7 +107,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 500;
 }
 
@@ -98,9 +128,104 @@
   animation:slidebg 2s linear infinite;
 }
 
-
 @keyframes slidebg {
   to {
     background-position:20vw;
+  }
+}
+
+@media(max-width: 720px) {
+  .cardProfile {
+    width: 50%;
+    background: #1f1c32;
+    color: #959d98;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 5px;
+  }
+
+  .containerImage {
+    border-right: none;
+  }
+
+  .cardImage {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    margin: 15px;
+  }
+
+  .cardDataUser {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+  }
+
+  .cardTextProfile {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: 5px 0;
+  }
+
+  .inputCard {
+    width: 45%;
+    border: none;
+    outline: none;
+    background: #1f1c32;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    color: #ffffff;
+    padding-left: 10px;
+  }
+
+  select {
+    height: 25px;
+  }
+
+  .cardLabelInputProfile {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 5px 0;
+  }
+
+  .labelCardProfile {
+    width: 45%;
+    margin: 0;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator{
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 2px;
+    opacity: 0.9;
+    filter: invert(0.9);
+  }
+
+  .cardButtons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  .saveChanges {
+    width: 150px;
+    border: none;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 7px;
+    color: #d1c4a7;
+    margin-right: 3px;
+    background: #a804bc;
+    transition: 0.6s;
   }
 }

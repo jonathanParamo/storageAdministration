@@ -10,11 +10,6 @@ const Profile = () => {
   const noImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ71Tc9Tk2q1eJUUlX1bXhWrc0-g8O9xnAplw&usqp=CAU"
   const token = localStorage.getItem("token")
   const [loading, setLoading] = useState(false)
-  const [secundName, setSecundName] = useState("")
-  const [secundSurname, setSecundSurname] = useState("")
-  const [address, setAddress] = useState("")
-  const [birthday, setBirthday] = useState("")
-  const [role, setRole] = useState("")
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -35,7 +30,15 @@ const Profile = () => {
         method: 'PUT',
         baseURL: process.env.REACT_APP_SERVER,
         url: '/users/updateUser',
-        data: { secundName, secundSurname, address, birthday, role, image },
+        data: {
+          name: newName,
+          secondName: newSecondName,
+          surname: newSurname,
+          secundSurname: newSecondSurname,
+          address: newAddress,
+          birthday: newBirthday,
+          role: newRole,
+          image: newImage },
         headers: {
           'Authorization': `Bearer ${token}`
         },
@@ -49,68 +52,82 @@ const Profile = () => {
       setLoading(false)
     }
   }
-
   const hasData = !!profile && Object.entries(profile).length > 0
-  const {name, surname, image} = profile
+  const {
+    name,
+    secondName,
+    surname,
+    image,
+    address,
+    role,
+    secondSurname,
+    birthday} = profile
 
+  const [newName, setNewName] = useState(name)
+  const [newSecondName, setNewSecondName] = useState(secondName || "")
+  const [newSurname, setNewSurname] = useState(surname|| "")
+  const [newRole, setNewRole] = useState(role || "")
+  const [newAddress, setNewAddress] = useState(address || "")
+  const [newSecondSurname, setNewSecondSurname] = useState(secondSurname || "")
+  const [newBirthday, setNewBirthday] = useState(birthday || "")
+  const [newImage, setNewImage] = useState(image)
   return (
     <div className="cardContainerProfile">
       {hasData ? (
         <div className="cardProfile">
-            <img className="cardImage" src={image || noImage} />
-          <div className="cardTextProfile">
-              <p className="cardName" >{name}</p>
-              <p className="cardName">{secundName}</p>
-              <p className="cardSurname">{surname}</p>
-              <p className="cardSurname">{secundSurname}</p>
+          <div className="containerImage">
+            <img className="cardImage" src={newImage || noImage} />
+            <input
+              type="text"
+              className="inputImage"
+              placeholder="Link of the user image"
+              onChange={(e) => setNewImage(e.target.value)}
+              />
           </div>
           <div className="cardDataUser">
             <div className="cardTextProfile">
-              <label
-                htmlFor="secundName"
-                className="labelCardProfile"
-              >
-                Secund name:
-              </label>
               <input
-                id="secundName"
                 type="text"
-                placeholder="Secund name"
+                placeholder="Name"
                 className="inputCard"
-                onChange={(e) => setSecundName(e.target.value)}
+                value={newName}
+                onChange={(e) => setNewName(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Second name"
+                className="inputCard"
+                value={newSecondName}
+                onChange={(e) => setNewSecondName(e.target.value)}
               />
             </div>
             <div className="cardTextProfile">
-              <label
-                htmlFor="secundSurname"
-                className="labelCardProfile"
-              >
-                Secund surname:
-              </label>
               <input
-                id="secundSurname"
                 type="text"
-                placeholder="Secund surname"
+                placeholder="Surname"
                 className="inputCard"
-                onChange={(e) => setSecundSurname(e.target.value)}
+                value={newSurname}
+                onChange={(e) => setNewSurname(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Second surname"
+                className="inputCard"
+                value={newSecondSurname}
+                onChange={(e) => setNewSecondSurname(e.target.value)}
               />
             </div>
             <div className="cardTextProfile">
-              <label
-                htmlFor="address"
-                className="labelCardProfile"
-              >
-                Address:
-              </label>
               <input
                 id="address"
                 className="inputCard"
                 type="text"
                 placeholder="Address"
-                onChange={(e) => setAddress(e.target.value)}
+                value={newAddress}
+                onChange={(e) => setNewAddress(e.target.value)}
               />
             </div>
-            <div className="cardTextProfile">
+            <div className="cardLabelInputProfile">
               <label
                 htmlFor="birthday"
                 className="labelCardProfile"
@@ -121,16 +138,16 @@ const Profile = () => {
                 id="birthday"
                 className="inputCard"
                 type="date"
-                placeholder="birthday"
-                onChange={(e) => setBirthday(e.target.value)}
+                value={newBirthday}
+                onChange={(e) => setNewBirthday(e.target.value)}
               />
             </div>
-            <div className="cardTextProfile">
+            <div className="cardLabelInputProfile">
               <p className="labelCardProfile">Select your role:</p>
               <select
-                value={role}
-                className="selectCardProfile"
-                onChange={(e) => setRole(e.target.value)}
+                className="inputCard"
+                value={newRole}
+                onChange={(e) => setNewRole(e.target.value)}
               >
                 <option value="manager">Manager</option>
                 <option value="coordinator">Coordinator</option>
@@ -138,17 +155,17 @@ const Profile = () => {
                 <option value="headCellarman">Head cellarman</option>
               </select>
             </div>
-          </div>
-          <div className="cardButtons">
-            {!loading ?
+            <div className="cardButtons">
+              {!loading ?
 
-              <button
-              className="saveChanges"
-              onClick={editProfile}
-              >
-              Save changes
-            </button> : <Loader />
-            }
+                <button
+                  className="saveChanges"
+                  onClick={editProfile}
+                  >
+                  Save changes
+                </button> : <Loader />
+              }
+            </div>
           </div>
           <Toaster
             position="button-right"
