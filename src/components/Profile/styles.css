@@ -47,6 +47,22 @@
   padding-left: 10px;
 }
 
+.security {
+  width: 60%;
+  height: 25px;
+  background: #a804bc;
+  border: none;
+  color: #ffffff;
+  border-radius: 5px;
+  transition: 0.6s;
+}
+
+.security:hover {
+  background-image: linear-gradient(to right, #c301d1, #ffffff30, #c301d1, #ffffff40 );
+  animation:slidebg 2s linear infinite;
+
+}
+
 .cardDataUser {
   width: 100%;
   display: flex;
@@ -65,6 +81,18 @@
 }
 
 .inputCard {
+  width: 70%;
+  border: none;
+  margin: 8px;
+  outline: none;
+  background: #1f1c32;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  color: #ffffff;
+  padding-left: 10px;
+}
+
+.inputCardAddress {
   width: 70%;
   border: none;
   margin: 8px;
@@ -175,13 +203,12 @@ input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webk
 
   .inputCard {
     width: 45%;
-    border: none;
-    outline: none;
-    background: #1f1c32;
-    border: 1px solid #ffffff;
     border-radius: 8px;
-    color: #ffffff;
     padding-left: 10px;
+  }
+
+  .inputCardAddress {
+    width: 100%;
   }
 
   select {

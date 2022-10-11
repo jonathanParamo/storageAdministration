@@ -71,6 +71,7 @@ const Profile = () => {
   const [newSecondSurname, setNewSecondSurname] = useState(secondSurname || "")
   const [newBirthday, setNewBirthday] = useState(birthday || "")
   const [newImage, setNewImage] = useState(image)
+
   return (
     <div className="cardContainerProfile">
       {hasData ? (
@@ -82,7 +83,13 @@ const Profile = () => {
               className="inputImage"
               placeholder="Link of the user image"
               onChange={(e) => setNewImage(e.target.value)}
-              />
+            />
+            <button
+              className="security"
+              onClick={() => navigate('Security')}
+            >
+              Security
+            </button>
           </div>
           <div className="cardDataUser">
             <div className="cardTextProfile">
@@ -120,7 +127,7 @@ const Profile = () => {
             <div className="cardTextProfile">
               <input
                 id="address"
-                className="inputCard"
+                className="inputCardAddress"
                 type="text"
                 placeholder="Address"
                 value={newAddress}
