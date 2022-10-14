@@ -11,6 +11,7 @@ import Signin from './components/Signin';
 import Home from './components/Home';
 import Storages from './pages/Storages';
 import Products from './pages/Produtcs';
+import Segurity from './components/.Segurity';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="storages" element={<Storages />} />
           <Route path="products" element={<Products />} />
         </Route>
+        <Route path="/segurity" element={<Segurity />} />
       </Routes>
     </Router>
   );
