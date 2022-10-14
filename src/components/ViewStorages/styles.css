@@ -9,110 +9,107 @@
 }
 
 .card {
-  width: 160px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #ffffff70;
+  background: #1f1c32 ;
+  color: #d1c4a7;
   margin: 5px;
   border-radius: 5px;
+  box-shadow: 2px 2px 3px #1e1c33;
 }
 
-.cardSection {
+.cardSectionStorage {
   width: 100%;
+  margin: 5px 12px;
   display: flex;
   align-items: center;
-  margin: 2px;
-  padding: 2px 5px;
-}
-
-.cardLabel {
-  width: 90px;
-  padding: 2px;
-}
-
-.cardText {
-  width: 30px;
-  margin: 5px 5px;
-}
-
-.cardButton {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
+}
+
+.cardLabelStorage {
+  width: 40%;
+  margin-right: 10px;
+  text-align: end;
+}
+
+.cardTextStorage {
+  width: 40%;
+  margin-left: 15px;
+}
+
+.cardStorageButton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
 }
 
 .editStorage {
-  width : 100px;
-  background: #0077b6;
+  width : 40%;
+  margin: 3px;
+  background:  #a804bc;
   color: #fff;
   border: none;
+  padding: 5px;
   border-radius: 5px;
-  box-shadow: 2px 3px 5px #00b4d8;
+  transition: .8s;
 }
 
 .editStorage:hover {
   cursor: pointer;
-  box-shadow: none;
-  transition: 0.8s;
+  box-shadow: none;  background-image: linear-gradient(to right, #c301d1, #ffffff90 );
+  animation:slidebg 3s linear infinite;
 }
 
 .deleteStorage {
-  width: 100px;
-  margin: 8px;
+  width: 40%;
+  margin: 3px;
   color: #fff;
-  background: #f21b3f;
+  background: #1f1c32;
+  padding: 5px;
   border: none;
+  border: 1px solid #a804bc;
   border-radius: 5px;
-  box-shadow: 2px 3px 5px #f21b3f;
+  transition: 0.8s;
 }
 
 .deleteStorage:hover {
   cursor: pointer;
   box-shadow: none;
-  transition: 0.8s;
+  background-image: linear-gradient(to right, #24203b, #c301d1 );
+  animation:slidebg 3s linear infinite;
+}
+
+@keyframes slidebg {
+  to {
+    background-position:20vw;
+  }
 }
 
 @media(max-width: 720px) {
 .card {
-  width: 120px;
+  width: 180px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #ffffff90;
   margin: 5px;
   border-radius: 3px;
 }
 
-.cardSection {
+.cardSectionStorage {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2px;
+  margin: 4px;
   padding: 2px 5px;
 }
 
-.cardLabel {
-  width: 50px;
-  height: 16px;
-  font-size: 12px;
-  margin-right: 5px;
-  padding: 2px;
-}
-
-.cardText {
-  width: 30px;
-  height: 16px;
-  font-size: 12px;
-  margin: 5px 5px;
-}
-
-.cardButton {
+.cardStorageButton {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -121,33 +118,10 @@
 }
 
 .editStorage {
-  width : 100px;
-  background: #0077b6;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 2px 3px 5px #00b4d8;
-}
-
-.editStorage:hover {
-  cursor: pointer;
-  box-shadow: none;
-  transition: 0.8s;
+  width: 80%;
 }
 
 .deleteStorage {
-  width: 100px;
-  margin: 8px;
-  color: #fff;
-  background: #f21b3f;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 2px 3px 5px #f21b3f;
-}
-
-.deleteStorage:hover {
-  cursor: pointer;
-  box-shadow: none;
-  transition: 0.8s;
+  width: 80%;
 }
 }
