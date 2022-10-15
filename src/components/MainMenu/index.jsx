@@ -16,25 +16,52 @@ const MainMenu = () => {
   useEffect(() =>{
     if(!token) navigate("/")
   }, [])
-  console.log('xxx openMenu: ', openMenu);
+
   return (
     <div className="containerMainMenu">
       {openMenu && (
         <div className="menuPaper">
-          <ul>
+          <ul className="optionsMenuMobile">
             <li
+              className="optionMenu"
               onClick={() => {
                 setOpenMenu(!openMenu)
                 navigate('products')
-              }}>uno</li> <br /><br />
-            <li>dos</li> <br /><br />
-            <li>tres</li>
+              }}
+            >
+              Products
+            </li>
+            <li
+              className="optionMenu"
+              onClick={() => {
+                setOpenMenu(!openMenu)
+                navigate('storages')
+              }}
+            >
+              Storages
+            </li>
+            <li
+              className="optionMenu"
+              onClick={() => {
+                setOpenMenu(!openMenu)
+                navigate('profile')
+              }}
+            >
+              Profile
+            </li>
+            <input
+              className="optionMenuSearch"
+              placeholder="Search"
+              type="search"
+              name="search"
+            />
           </ul>
         </div>
       )}
       {!isMobile ? (
         <>
-          <div >
+          {openMenu ? setOpenMenu(false) : ""}
+          <div className="containerUserName">
             <img src={logo} className="logoMainMenu"/>
           </div>
           <input
@@ -65,9 +92,12 @@ const MainMenu = () => {
           </div>
         </>
       ) : (
-        <div className="menuMobile" onClick={() => setOpenMenu(!openMenu)}>
-          <img src={menuImage} alt="menu mobile" />
-        </div>
+        <>
+          <div className="menuMobile" onClick={() => setOpenMenu(!openMenu)}>
+            <img src={menuImage} alt="menu mobile" className="logoMainMenu"/>
+          </div>
+          <p className="menuMobileNombre">Hola nombre</p>
+        </>
       )}
       <LogOut />
     </div>
