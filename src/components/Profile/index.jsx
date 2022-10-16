@@ -31,10 +31,11 @@ const Profile = () => {
         baseURL: process.env.REACT_APP_SERVER,
         url: '/users/updateUser',
         data: {
+          _id: profile._id,
           name: newName,
           secondName: newSecondName,
           surname: newSurname,
-          secundSurname: newSecondSurname,
+          secondSurname: newSecondSurname,
           address: newAddress,
           birthday: newBirthday,
           role: newRole,
