@@ -1,3 +1,4 @@
+import { getProfileData } from "../../Store/ProfileReducer"
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
@@ -21,6 +22,7 @@ const Profile = () => {
 
   useEffect(() =>{
     if(!token) navigate("/")
+    dispatch(getProfileData())
   }, [])
 
   const editProfile = async (_id) => {
