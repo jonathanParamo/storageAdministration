@@ -9,126 +9,140 @@
 }
 
 .cardProducts {
-  width: 180px;
-  height: 290px;
+  width: 220px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #ffffff70;
-  margin: 5px;
+  background: #24203b;
+  color: #a29fbc;
+  margin: 15px;
   border-radius: 5px;
 }
 
 .containerImageProduct {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #a29fbc;
 }
 
 .imageProduct {
   box-sizing: border-box;
-  width: 115px;
-  height: 80px;
-  border-radius: 5PX;
-  margin: 5px;
+  width: 100%;
+  height: 140px;
+  border-radius: 5px;
 }
 
 .cardSection {
   width: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
-  margin: 2px;
   padding: 2px 5px;
 }
 
 .cardLabel {
   width: 90px;
-  padding: 2px;
-}
-
-.cardText {
-  width: 40px;
   margin: 5px 5px;
 }
 
-.cardButton {
+.cardTextProduct {
+  width: 90px;
+  margin: 5px 5px;
+}
+
+.cardProductButton {
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
+  margin-bottom: 10px;
 }
 
 .editProduct {
-  width : 100px;
-  background: #0077b6;
+  width : 40%;
+  height: 34px;
+  margin: 4px;
+  font-weight: 12px;
   color: #fff;
+  background: #c500d6;
   border: none;
   border-radius: 5px;
-  box-shadow: 2px 3px 5px #00b4d8;
+  transition: 0.8s;
 }
 
 .editProduct:hover {
   cursor: pointer;
-  box-shadow: none;
-  transition: 0.8s;
+  background-image: linear-gradient(to right, #c301d1, #ffffff30 );
+  animation:slidebg 3s linear infinite;
 }
 
 .deleteProduct {
-  width: 100px;
-  margin: 8px;
+  width: 40%;
+  height: 34px;
+  margin: 4px;
   color: #fff;
-  background: #f21b3f;
+  background: #24203b;
   border: none;
   border-radius: 5px;
-  box-shadow: 2px 3px 5px #f21b3f;
+  border: 1px solid #c301d1;
+  transition: 0.8s;
 }
 
 .deleteProduct:hover {
   cursor: pointer;
-  box-shadow: none;
-  transition: 0.8s;
+  background-image: linear-gradient(to right, #24203b, #c301d1 );
+  animation:slidebg 3s linear infinite;
+}
+
+@keyframes slidebg {
+  to {
+    background-position:20vw;
+  }
+}
+
+.noProducts {
+  color: #fff;
+  margin: 10px;
 }
 
 @media(max-width: 720px) {
 .cardProducts {
-  width: 130px;
+  width: 180px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #ffffff90;
   margin: 5px;
   border-radius: 3px;
 }
 
 .cardSection {
-  width: 100%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 2px;
-  padding: 2px 5px;
+  padding: 2px 8px;
 }
 
 .cardLabel {
-  width: 50px;
-  height: 16px;
-  font-size: 12px;
+  width: 50%;
   margin-right: 5px;
+  margin-left: 10px;
   padding: 2px;
 }
 
-.cardText {
-  width: 30px;
-  height: 16px;
+.cardTextProduct {
+  width: 50%;
   font-size: 12px;
-  margin: 5px 5px;
+  margin: 5px 2px;
 }
 
-.cardButton {
+.cardProductButton {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -137,33 +151,10 @@
 }
 
 .editProduct {
-  width : 100px;
-  background: #0077b6;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 2px 3px 5px #00b4d8;
-}
-
-.editProduct:hover {
-  cursor: pointer;
-  box-shadow: none;
-  transition: 0.8s;
+  width : 80%;
 }
 
 .deleteProduct {
-  width: 100px;
-  margin: 8px;
-  color: #fff;
-  background: #f21b3f;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 2px 3px 5px #f21b3f;
-}
-
-.deleteProduct:hover {
-  cursor: pointer;
-  box-shadow: none;
-  transition: 0.8s;
+  width: 80%;
 }
 }
