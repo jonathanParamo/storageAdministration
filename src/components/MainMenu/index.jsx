@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
-import menuImage from './menu.png';
+import menuImage from "./menu.png"
+import menuClose from "./stop.png"
 import LogOut from "../LogOut"
-import logo from "./logo.png"
 import "./styles.css"
 import useResponsive from '../../helpers/useResponsive';
+import { useSelector } from "react-redux";
 
 const MainMenu = () => {
   const { width } = useResponsive();
@@ -13,9 +14,17 @@ const MainMenu = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const navigate = useNavigate()
 
+  const {
+    profile,
+  } = useSelector(({ProfileReducer}) => ({
+    profile: ProfileReducer.profile,
+  }))
+
   useEffect(() =>{
     if(!token) navigate("/")
   }, [])
+
+  const { name } = profile
 
   return (
     <div className="containerMainMenu">
@@ -62,7 +71,7 @@ const MainMenu = () => {
         <>
           {openMenu ? setOpenMenu(false) : ""}
           <div className="containerUserName">
-            <img src={logo} className="logoMainMenu"/>
+            <div className="logoMainMenu">Hola {name}</div>
           </div>
           <input
             className="searchMainMenu"
@@ -85,7 +94,7 @@ const MainMenu = () => {
             </p>
             <p
               className="buttonsMainMenu"
-              onClick={() => navigate('/profile')}
+              onClick={() => navigate('profile')}
             >
               Profile
             </p>
@@ -94,9 +103,9 @@ const MainMenu = () => {
       ) : (
         <>
           <div className="menuMobile" onClick={() => setOpenMenu(!openMenu)}>
-            <img src={menuImage} alt="menu mobile" className="logoMainMenu"/>
+            <img src={openMenu ? menuClose : menuImage} alt="menu mobile" className="logoMainMenu"/>
           </div>
-          <p className="menuMobileNombre">Hola nombre</p>
+          <p className="menuMobileNombre">Hola {name}</p>
         </>
       )}
       <LogOut />

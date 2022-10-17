@@ -9,9 +9,6 @@ import { getStorages } from "../../Store/StorageReducer"
 
 const ViewProducts = () => {
   const token = localStorage.getItem("token")
-  const [image, setImage] = useState("")
-  const [name, setName] = useState("")
-  const [amount, setAmount] = useState(0)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
