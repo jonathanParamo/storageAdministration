@@ -7,7 +7,8 @@ import "./styles.css"
 import Loader from "../Loader"
 
 const Profile = () => {
-  const noImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ71Tc9Tk2q1eJUUlX1bXhWrc0-g8O9xnAplw&usqp=CAU"
+  const noImage = "https://encrypted-tbn0.gstatic.com/"
+    + "images?q=tbn:ANd9GcQ71Tc9Tk2q1eJUUlX1bXhWrc0-g8O9xnAplw&usqp=CAU"
   const token = localStorage.getItem("token")
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
@@ -38,7 +39,8 @@ const Profile = () => {
           address: newAddress,
           birthday: newBirthday,
           role: newRole,
-          image: newImage },
+          image: newImage,
+        },
         headers: {
           'Authorization': `Bearer ${token}`
         },
@@ -52,7 +54,7 @@ const Profile = () => {
       setLoading(false)
     }
   }
-  const hasData = !!profile && Object.entries(profile).length > 0
+
   const {
     name,
     secondName,
@@ -74,113 +76,110 @@ const Profile = () => {
 
   return (
     <div className="cardContainerProfile">
-      {hasData ? (
-        <div className="cardProfile">
-          <div className="containerImage">
-            <img className="cardImage" src={newImage || noImage} />
+      <div className="cardProfile">
+        <div className="containerImage">
+          <img className="cardImage" src={newImage || noImage} />
+          <input
+            type="text"
+            className="inputImage"
+            placeholder="Link of the user image"
+            onChange={(e) => setNewImage(e.target.value)}
+          />
+          <button
+            className="security"
+            onClick={() => navigate('Security')}
+          >
+            Security
+          </button>
+        </div>
+        <div className="cardDataUser">
+          <div className="cardTextProfile">
             <input
               type="text"
-              className="inputImage"
-              placeholder="Link of the user image"
-              onChange={(e) => setNewImage(e.target.value)}
+              placeholder="Name"
+              className="inputCard"
+              value={newName}
+              onChange={(e) => setNewName(e.target.value)}
             />
-            <button
-              className="security"
-              onClick={() => navigate('Security')}
+            <input
+              type="text"
+              placeholder="Second name"
+              className="inputCard"
+              value={newSecondName}
+              onChange={(e) => setNewSecondName(e.target.value)}
+            />
+          </div>
+          <div className="cardTextProfile">
+            <input
+              type="text"
+              placeholder="Surname"
+              className="inputCard"
+              value={newSurname}
+              onChange={(e) => setNewSurname(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Second surname"
+              className="inputCard"
+              value={newSecondSurname}
+              onChange={(e) => setNewSecondSurname(e.target.value)}
+            />
+          </div>
+          <div className="cardTextProfile">
+            <input
+              id="address"
+              className="inputCardAddress"
+              type="text"
+              placeholder="Address"
+              value={newAddress}
+              onChange={(e) => setNewAddress(e.target.value)}
+            />
+          </div>
+          <div className="cardLabelInputProfile">
+            <label
+              htmlFor="birthday"
+              className="labelCardProfile"
             >
-              Security
-            </button>
+              Birthday:
+            </label>
+            <input
+              id="birthday"
+              className="inputCard"
+              type="date"
+              value={newBirthday}
+              onChange={(e) => setNewBirthday(e.target.value)}
+            />
           </div>
-          <div className="cardDataUser">
-            <div className="cardTextProfile">
-              <input
-                type="text"
-                placeholder="Name"
-                className="inputCard"
-                value={newName}
-                onChange={(e) => setNewName(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Second name"
-                className="inputCard"
-                value={newSecondName}
-                onChange={(e) => setNewSecondName(e.target.value)}
-              />
-            </div>
-            <div className="cardTextProfile">
-              <input
-                type="text"
-                placeholder="Surname"
-                className="inputCard"
-                value={newSurname}
-                onChange={(e) => setNewSurname(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Second surname"
-                className="inputCard"
-                value={newSecondSurname}
-                onChange={(e) => setNewSecondSurname(e.target.value)}
-              />
-            </div>
-            <div className="cardTextProfile">
-              <input
-                id="address"
-                className="inputCardAddress"
-                type="text"
-                placeholder="Address"
-                value={newAddress}
-                onChange={(e) => setNewAddress(e.target.value)}
-              />
-            </div>
-            <div className="cardLabelInputProfile">
-              <label
-                htmlFor="birthday"
-                className="labelCardProfile"
-              >
-                Birthday:
-              </label>
-              <input
-                id="birthday"
-                className="inputCard"
-                type="date"
-                value={newBirthday}
-                onChange={(e) => setNewBirthday(e.target.value)}
-              />
-            </div>
-            <div className="cardLabelInputProfile">
-              <p className="labelCardProfile">Select your role:</p>
-              <select
-                className="inputCard"
-                value={newRole}
-                onChange={(e) => setNewRole(e.target.value)}
-              >
-                <option value="manager">Manager</option>
-                <option value="coordinator">Coordinator</option>
-                <option value="administrativeAssistant">Administrative assistant</option>
-                <option value="headCellarman">Head cellarman</option>
-              </select>
-            </div>
-            <div className="cardButtons">
-              {!loading ?
+          <div className="cardLabelInputProfile">
+            <p className="labelCardProfile">Select your role:</p>
+            <select
+              className="inputCard"
+              value={newRole}
+              onChange={(e) => setNewRole(e.target.value)}
+            >
+              <option value="manager">Manager</option>
+              <option value="coordinator">Coordinator</option>
+              <option value="administrativeAssistant">Administrative assistant</option>
+              <option value="headCellarman">Head cellarman</option>
+            </select>
+          </div>
+          <div className="cardButtons">
+            {!loading ?
 
-                <button
-                  className="saveChanges"
-                  onClick={editProfile}
-                  >
-                  Save changes
-                </button> : <Loader />
-              }
-            </div>
+              <button
+                className="saveChanges"
+                onClick={editProfile}
+                >
+                Save changes
+              </button> : <Loader />
+            }
           </div>
-          <Toaster
-            position="button-right"
-            duration="3000"
-          />
         </div>
-        ) : <p>no existen usuarios</p>
-      }
+        <Toaster
+          position="button-right"
+          duration="3000"
+        />
+      </div>
     </div>
   )
 }
