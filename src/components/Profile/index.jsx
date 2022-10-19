@@ -1,3 +1,4 @@
+import { getProfileData } from "../../Store/ProfileReducer"
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
@@ -22,6 +23,7 @@ const Profile = () => {
 
   useEffect(() =>{
     if(!token) navigate("/")
+    dispatch(getProfileData())
   }, [])
 
   const editProfile = async (_id) => {
@@ -32,10 +34,11 @@ const Profile = () => {
         baseURL: process.env.REACT_APP_SERVER,
         url: '/users/updateUser',
         data: {
+          _id: profile._id,
           name: newName,
           secondName: newSecondName,
           surname: newSurname,
-          secundSurname: newSecondSurname,
+          secondSurname: newSecondSurname,
           address: newAddress,
           birthday: newBirthday,
           role: newRole,
