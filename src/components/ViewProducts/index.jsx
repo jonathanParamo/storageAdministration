@@ -2,18 +2,21 @@ import { getProducts } from "../../Store/ProductReducer"
 import { useDispatch, useSelector } from "react-redux"
 import { Toaster, toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import axios from "axios"
 import "./styles.css"
 import { getStorages } from "../../Store/StorageReducer"
 
 const ViewProducts = () => {
   const token = localStorage.getItem("token")
-  const [image, setImage] = useState("")
-  const [name, setName] = useState("")
-  const [amount, setAmount] = useState(0)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+  useEffect(() =>{
+    if(!token) navigate("/")
+    dispatch(getProducts())
+    dispatch(getStorages())
+  }, [])
 
   const {
     products,
@@ -21,14 +24,14 @@ const ViewProducts = () => {
   } = useSelector(({ ProductReducer, StorageReducer }) => ({
     products: ProductReducer.products,
     storages: StorageReducer.storages,
-
   }));
 
-  useEffect(() =>{
-    if(!token) navigate("/")
-    dispatch(getProducts())
-    dispatch(getStorages())
-  }, [])
+  const confirmDelete = (_id) => {
+    const confirm = window.confirm("Are you sure you want to delete the product?")
+    if(confirm) {
+      handleDelete(_id)
+    }
+  }
 
   const handleDelete = async (_id) => {
     try {
@@ -41,11 +44,11 @@ const ViewProducts = () => {
           'Authorization': `Bearer ${token}`
         },
       })
-      toast.success("Storage has delete")
-      dispatch({type: "PRODUCTS_SUCCESS", payload: data })
+      toast.success("Product has delete")
+      dispatch({type: "PRODUCT_SUCCESS", payload: data })
     } catch (error) {
-      toast.error("Error in the creation of the storage")
-      dispatch({ type: "PRODUCTS_ERROR", payload: error })
+      toast.error("Error deleting the product")
+      dispatch({ type: "PRODUCT_ERROR", payload: error })
     }
   }
 
@@ -71,38 +74,39 @@ const ViewProducts = () => {
             </div>
             <div className="cardSection">
               <label className="cardLabel">Product:</label>
-              <p className="cardText">
+              <div className="cardTextProduct">
                 {name}
-              </p>
+              </div>
             </div>
             <div className="cardSection">
               <label className="cardLabel">Amount:</label>
-              <p className="cardText">{amount}</p>
+              <div className="cardTextProduct">{amount}</div>
             </div>
             <div className="cardSection">
               <label className="cardLabel">Storage:</label>
-              <p className="cardText">{storageName(storageId)}</p>
+              <div className="cardTextProduct">{storageName(storageId)}</div>
             </div>
-            <div className="cardButton">
+            <div className="cardProductButton">
               <button
                 className="editProduct"
                 onClick={() => editProduct(_id)}
-              >
-                Edit product
-              </button>
+                children="Edit"
+              />
               <button
                 className="deleteProduct"
-                onClick={() => handleDelete(_id)}
+                onClick={() => confirmDelete(_id)}
               >
-                Delete product
+                Delete
               </button>
             </div>
           </div>
         )
       }) : (
-        <Toaster
-          position="button-center"
-        />
+        <>
+          <Toaster
+            position="button-center"
+            />
+        </>
       )}
     </div>
   )
