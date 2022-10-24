@@ -83,6 +83,7 @@ const Profile = () => {
         <div className="containerImage">
           <img className="cardImage" src={newImage || noImage} />
           <input
+            value={image}
             type="text"
             className="inputImage"
             placeholder="Link of the user image"

@@ -121,6 +121,7 @@ select {
 
 .labelCardProfile {
   width: 45%;
+  color: #f5f5f5;
   display: flex;
   align-items: center;
   margin: 0;
@@ -149,7 +150,7 @@ input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webk
   margin: 10px;
   border-radius: 5px;
   padding: 7px;
-  color: #d1c4a7;
+  color: #f5f5f5;
   margin-right: 3px;
   background: #a804bc;
   transition: 0.6s;
@@ -168,7 +169,7 @@ input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webk
 
 @media(max-width: 720px) {
   .cardProfile {
-    width: 50%;
+    width: 85%;
     background: #1f1c32;
     color: #959d98;
     display: flex;
