@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getProfileData } from "../../Store/ProfileReducer"
 import { useNavigate } from "react-router-dom"
+import MailIcon from '@mui/icons-material/Mail';
+import HttpsIcon from '@mui/icons-material/Https'
 import axios from "axios"
 import Loader from "../Loader"
 import "./styles.css"
@@ -93,33 +95,46 @@ const Segurity = () => {
         Edit your email or password
       </p>
         <div className="divSegurity">
-          <input
-            className="inputSegurity"
-            type="text"
-            value={newEmail}
-            placeholder="Change your email"
-            onChange={(e) => setNewEmail(e.target.value)}
-          />
-          <input
-            className="inputSegurity"
-            type="password"
-            placeholder="Current password"
-            onChange={(e) => setCurrentPassword(e.target.value)}
-          />
+          <div className="divInputIcon">
+            <MailIcon className="icono"/>
+            <input
+              className="inputSegurity"
+              type="text"
+              autoComplete="off"
+              value={newEmail}
+              placeholder="Change your email"
+              onChange={(e) => setNewEmail(e.target.value)}
+              />
+          </div>
+          <div className="divInputIcon">
+            <HttpsIcon className="icono"/>
+            <input
+              className="inputSegurity"
+              type="password"
+              placeholder="Current password"
+              onChange={(e) => setCurrentPassword(e.target.value)}
+              />
+          </div>
         </div>
         <div className="divSegurity">
-          <input
-            className="inputSegurity"
-            type="password"
-            placeholder="New password"
-            onChange={(e) => setOneNewPassword(e.target.value)}
-          />
-          <input
-            className="inputSegurity"
-            type="password"
-            placeholder="Repeat the new password"
-            onChange={(e) => setTowNewPassword(e.target.value)}
-          />
+          <div className="divInputIcon">
+            <HttpsIcon className="icono"/>
+            <input
+              className="inputSegurity"
+              type="password"
+              placeholder="New password"
+              onChange={(e) => setOneNewPassword(e.target.value)}
+            />
+          </div>
+          <div className="divInputIcon">
+            <HttpsIcon className="icono"/>
+            <input
+              className="inputSegurity"
+              type="password"
+              placeholder="Repeat the new password"
+              onChange={(e) => setTowNewPassword(e.target.value)}
+            />
+          </div>
         </div>
         <div className="divSegurityButtons">
           {!loading ?
