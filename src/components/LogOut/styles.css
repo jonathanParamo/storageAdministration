@@ -1,9 +1,9 @@
 .logOut {
   box-sizing: border-box;
-  width: 150px;
+  width: 8%;
   height: 30px;
-  margin: 5px 20px;
-  background: #E91E63;
+  margin: 5px 10px;
+  background: #E91E69;
   color: #FFFFFF;
   border: none;
   border-radius: 4px;
@@ -17,16 +17,8 @@
 
 .logOut:hover {
   cursor: pointer;
-  background: #E91E69;
   box-shadow: none;
+  background-image: linear-gradient(to right, #f5f5f590, #E91E69, #f5f5f590 );
+  animation:slidebg 3s linear infinite;
 }
 
-@media(max-width: 720px) {
-  .logOut {
-    width: 90px;
-    height: 30px;
-    margin: 5px 10px;
-    font-size: 12px;
-  }
-
-}

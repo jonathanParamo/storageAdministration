@@ -1,11 +1,16 @@
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
-import menuImage from "./menu.png"
-import menuClose from "./stop.png"
 import LogOut from "../LogOut"
 import "./styles.css"
-import useResponsive from '../../helpers/useResponsive';
-import { useSelector } from "react-redux";
+import useResponsive from '../../helpers/useResponsive'
+import MenuIcon from '@mui/icons-material/Menu'
+import CloseIcon from '@mui/icons-material/Close'
+import Inventory2Icon from '@mui/icons-material/Inventory2'
+import WidgetsIcon from '@mui/icons-material/Widgets'
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline'
+import SearchIcon from '@mui/icons-material/Search'
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
+import { useSelector } from "react-redux"
 
 const MainMenu = () => {
   const { width } = useResponsive();
@@ -31,39 +36,51 @@ const MainMenu = () => {
       {openMenu && (
         <div className="menuPaper">
           <ul className="optionsMenuMobile">
-            <li
-              className="optionMenu"
-              onClick={() => {
-                setOpenMenu(!openMenu)
-                navigate('products')
-              }}
-            >
-              Products
-            </li>
-            <li
-              className="optionMenu"
-              onClick={() => {
-                setOpenMenu(!openMenu)
-                navigate('storages')
-              }}
-            >
-              Storages
-            </li>
-            <li
-              className="optionMenu"
-              onClick={() => {
-                setOpenMenu(!openMenu)
-                navigate('profile')
-              }}
-            >
-              Profile
-            </li>
-            <input
-              className="optionMenuSearch"
-              placeholder="Search"
-              type="search"
-              name="search"
-            />
+            <div className="divseccionMobile">
+              <WidgetsIcon />
+              <li
+                className="optionMenu"
+                onClick={() => {
+                  setOpenMenu(!openMenu)
+                  navigate('products')
+                }}
+              >
+                Products
+              </li>
+            </div>
+            <div className="divseccionMobile">
+              <Inventory2Icon />
+              <li
+                className="optionMenu"
+                onClick={() => {
+                  setOpenMenu(!openMenu)
+                  navigate('storages')
+                }}
+              >
+                Storages
+              </li>
+            </div>
+            <div className="divseccionMobile">
+              <PersonOutlineIcon />
+              <li
+                className="optionMenu"
+                onClick={() => {
+                  setOpenMenu(!openMenu)
+                  navigate('profile')
+                }}
+              >
+                Profile
+              </li>
+            </div>
+            <div className="divseccionMobileSearch">
+              <SearchIcon />
+              <input
+                className="optionMenuSearch"
+                placeholder="Search"
+                type="search"
+                name="search"
+                />
+            </div>
           </ul>
         </div>
       )}
@@ -71,14 +88,21 @@ const MainMenu = () => {
         <>
           {openMenu ? setOpenMenu(false) : ""}
           <div className="containerUserName">
-            <div className="logoMainMenu">Hola {name}</div>
+            <div className="logoMainMenu">
+              <EmojiPeopleIcon />
+              ¡Hola&nbsp;
+              {name}!
+            </div>
           </div>
-          <input
-            className="searchMainMenu"
-            placeholder="Search"
-            type="search"
-            name="search"
-          />
+          <div className="divSearch">
+            <SearchIcon />
+            <input
+              className="searchMainMenu"
+              placeholder="Search"
+              type="search"
+              name="search"
+              />
+          </div>
           <div className="containerButtonsMainMenu">
             <p
               className="buttonsMainMenu"
@@ -103,9 +127,19 @@ const MainMenu = () => {
       ) : (
         <>
           <div className="menuMobile" onClick={() => setOpenMenu(!openMenu)}>
-            <img src={openMenu ? menuClose : menuImage} alt="menu mobile" className="logoMainMenu"/>
+            {openMenu ?
+              <div className="MenuIcon">
+                <CloseIcon />
+              </div> :
+              <div className="MenuIcon">
+                <MenuIcon />
+              </div>
+              }
           </div>
-          <p className="menuMobileNombre">Hola {name}</p>
+          <div className="divGreets">
+            <EmojiPeopleIcon />
+            <p className="menuMobileNombre">¡Hola {name}!</p>
+          </div>
         </>
       )}
       <LogOut />

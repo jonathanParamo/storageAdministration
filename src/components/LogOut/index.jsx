@@ -1,3 +1,4 @@
+import LogoutIcon from '@mui/icons-material/Logout'
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useEffect } from "react"
@@ -19,7 +20,7 @@ const LogOut = () => {
       navigate("/signin")
     }}
     className="logOut">
-      Log out
+      <LogoutIcon />
     </p>
   )
 }
