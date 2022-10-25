@@ -11,6 +11,7 @@ import Signin from './components/Signin';
 import Home from './components/Home';
 import Storages from './pages/Storages';
 import Products from './pages/Produtcs';
+import Profile from './components/Profile';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard/*" element={<Home />} >
+          <Route path="profile" element={<Profile />} />
           <Route path="*" element={<Products />} />
           <Route path="storages" element={<Storages />} />
           <Route path="products" element={<Products />} />
