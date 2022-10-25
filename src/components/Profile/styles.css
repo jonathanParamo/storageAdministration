@@ -1,8 +1,10 @@
 .cardContainerProfile {
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
   height: calc(100vh - 54px);
   box-sizing: border-box;
-  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -11,6 +13,7 @@
 
 .cardProfile {
   width: 70%;
+  margin-top: 30px;
   background: #1f1c32;
   color: #959d98;
   display: flex;
@@ -32,6 +35,7 @@
 .cardImage {
   width: 180px;
   height: 180px;
+  object-fit: cover;
   border-radius: 100%;
   margin: 15px;
 }
@@ -117,6 +121,7 @@ select {
 
 .labelCardProfile {
   width: 45%;
+  color: #f5f5f5;
   display: flex;
   align-items: center;
   margin: 0;
@@ -145,7 +150,7 @@ input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webk
   margin: 10px;
   border-radius: 5px;
   padding: 7px;
-  color: #d1c4a7;
+  color: #f5f5f5;
   margin-right: 3px;
   background: #a804bc;
   transition: 0.6s;
@@ -164,7 +169,7 @@ input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webk
 
 @media(max-width: 720px) {
   .cardProfile {
-    width: 50%;
+    width: 85%;
     background: #1f1c32;
     color: #959d98;
     display: flex;
@@ -176,6 +181,7 @@ input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webk
 
   .containerImage {
     border-right: none;
+    padding-bottom: 5px;
   }
 
   .cardImage {
@@ -194,21 +200,14 @@ input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webk
     padding: 0px;
   }
 
-  .cardTextProfile {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    margin: 5px 0;
-  }
-
   .inputCard {
-    width: 45%;
-    border-radius: 8px;
-    padding-left: 10px;
+    width: 75%;
+    margin: 5px;
   }
 
   .inputCardAddress {
-    width: 100%;
+    width: 75%;
+    margin: 5px;
   }
 
   select {
@@ -218,13 +217,15 @@ input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webk
   .cardLabelInputProfile {
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-around;
-    margin: 5px 0;
+    margin: 0px;
   }
 
   .labelCardProfile {
     width: 45%;
-    margin: 0;
+    margin: 5px;
+    color: #f5f5f5;
   }
 
   input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator{
@@ -250,7 +251,7 @@ input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webk
     margin: 10px;
     border-radius: 5px;
     padding: 7px;
-    color: #d1c4a7;
+    color: #f5f5f5;
     margin-right: 3px;
     background: #a804bc;
     transition: 0.6s;

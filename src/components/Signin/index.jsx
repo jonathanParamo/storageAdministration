@@ -35,7 +35,6 @@ const Signin = () => {
         data: { email, password }
       })
       setLoading(false)
-      dispatch({type: "PROFILE_SUCCESS", payload: data.user})
       localStorage.setItem("token", data.token)
       navigate('/dashboard')
     } catch(error){
