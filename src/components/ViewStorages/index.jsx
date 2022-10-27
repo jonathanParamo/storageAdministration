@@ -1,4 +1,5 @@
 import { getStorages } from "../../Store/StorageReducer"
+import { getProducts } from "../../Store/ProductReducer"
 import { useDispatch, useSelector } from "react-redux"
 import { Toaster, toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
@@ -14,17 +15,27 @@ const ViewStorages = () => {
   useEffect(() =>{
     if(!token) navigate("/")
     dispatch(getStorages())
+    dispatch(getProducts())
   }, [])
 
   const {
     storages,
-  } = useSelector(({StorageReducer})=> ({
-    storages : StorageReducer.storages
+    products,
+  } = useSelector(({StorageReducer, ProductReducer})=> ({
+    storages : StorageReducer.storages,
+    products : ProductReducer.products,
   }))
+
 
   const confirmDelete = (_id) => {
     const confirm = window.confirm("Are you sure you want to delete the storage?")
-    if(confirm) {
+    const deleteStorage = products.filter(product => product.storageId === _id)
+
+    if(confirm && deleteStorage.length || !confirm) {
+      toast.error("Cannot delete a storage")
+      console.log("a ver si entra");
+    } else {
+      toast.success("Deleted storage")
       handleDelete(_id)
     }
   }
