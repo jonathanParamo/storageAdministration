@@ -12,19 +12,19 @@ const ViewProducts = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  useEffect(() =>{
-    if(!token) navigate("/")
-    dispatch(getProducts())
-    dispatch(getStorages())
-  }, [])
-
   const {
     products,
     storages,
   } = useSelector(({ ProductReducer, StorageReducer }) => ({
     products: ProductReducer.products,
     storages: StorageReducer.storages,
-  }));
+  }))
+
+  useEffect(() =>{
+    if(!token) navigate("/")
+    dispatch(getProducts())
+    dispatch(getStorages())
+  }, [])
 
   const confirmDelete = (_id) => {
     const confirm = window.confirm("Are you sure you want to delete the product?")

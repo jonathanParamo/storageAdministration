@@ -12,12 +12,6 @@ const ViewStorages = () => {
   const token = localStorage.getItem("token")
   const dispatch = useDispatch()
 
-  useEffect(() =>{
-    if(!token) navigate("/")
-    dispatch(getStorages())
-    dispatch(getProducts())
-  }, [])
-
   const {
     storages,
     products,
@@ -26,18 +20,19 @@ const ViewStorages = () => {
     products : ProductReducer.products,
   }))
 
+  useEffect(() =>{
+    if(!token) navigate("/")
+    dispatch(getStorages())
+    dispatch(getProducts())
+  }, [])
 
   const confirmDelete = (_id) => {
     const confirm = window.confirm("Are you sure you want to delete the storage?")
     const deleteStorage = products.filter(product => product.storageId === _id)
 
-    if(confirm && deleteStorage.length || !confirm) {
-      toast.error("Cannot delete a storage")
-      console.log("a ver si entra");
-    } else {
-      toast.success("Deleted storage")
-      handleDelete(_id)
-    }
+    if (!confirm) return
+    if (confirm && deleteStorage.length) toast.error("Cannot delete a storage")
+    if (confirm && !deleteStorage.length) handleDelete(_id)
   }
 
   const handleDelete = async (_id) => {
@@ -68,7 +63,7 @@ const ViewStorages = () => {
 
   return (
     <div className="MainContainer">
-      {hasData ? storages.map(({ name, amount, category, _id }) => {
+      {hasData && storages.map(({ name, amount, category, _id }) => {
         return (
           <div className="card" key={_id}>
             <div className="cardSectionStorage">
@@ -101,11 +96,10 @@ const ViewStorages = () => {
             </div>
           </div>
         )
-      }) : (
-        <Toaster
+      })}
+      <Toaster
           position="button-center"
         />
-      )}
     </div>
   )
 }
