@@ -6,12 +6,14 @@ const CANCEL_UPDATE = 'CANCEL_UPDATE'
 const UPDATE_STORAGE = 'UPDATE_STORAGE'
 const STORAGE_SUCCESS = 'STORAGE_SUCCESS'
 const STORAGE_LOADING = 'STORAGE_LOADING'
+const STORAGE_CAPACITY = 'STORAGE_CAPACITY'
 
 const initialState = {
   storages: {},
   loading: false,
   error: null,
   storageId: '',
+  capacity: 2000,
 }
 
 export const getStorages = () => {
@@ -58,6 +60,11 @@ export function StorageReducer(state = initialState, action){
       return {
         ...state,
         storageId: '',
+      }
+    case STORAGE_CAPACITY:
+      return {
+        ...state,
+        capacity: action.payload,
       }
     default:
       return state

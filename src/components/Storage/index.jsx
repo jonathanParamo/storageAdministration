@@ -19,9 +19,11 @@ const Storages = ({ editMode, storageId }) => {
   const {
     error,
     storages,
+    capacity,
   } = useSelector(({StorageReducer})=> ({
     error: StorageReducer.error,
     storages: StorageReducer.storages,
+    capacity: StorageReducer.capacity,
   }))
 
   useEffect(() =>{
@@ -29,8 +31,26 @@ const Storages = ({ editMode, storageId }) => {
     if (editMode) getStorage()
   }, [])
 
+  const storageAmount = () => {
+    const count = storages.map(storage => {
+      return storage.amount
+    })
+    let allAmount = [...count]
+
+    return allAmount.reduce((a,b)=> a+b,0)
+  }
+
+  const storageSpace = () => {
+    return capacity - storageAmount()
+  }
+
   const validationData = () => {
     setLoading(true)
+    if(storageAmount() >= capacity) {
+      setValidation("se excedio la capacidad de la bodega")
+      setLoading(false)
+      return false
+    }
     if(!name) {
       setValidation("Title's required")
       setLoading(false)
@@ -128,6 +148,7 @@ const Storages = ({ editMode, storageId }) => {
             Code store:
           </label>
           <input
+            autoComplete="off"
             className="titleStoreInput"
             placeholder="For example A25"
             type="text"
@@ -140,6 +161,7 @@ const Storages = ({ editMode, storageId }) => {
         <div className="categoryStorage">
           <label className="categoryTitle">Category store: </label>
           <input
+            autoComplete="off"
             className="inputOption"
             name="amount"
             placeholder="For example cereals"
@@ -150,6 +172,7 @@ const Storages = ({ editMode, storageId }) => {
         <div className="amountStore">
           <label className="amountTitle">Amount store:</label>
           <input
+            autoComplete="off"
             type="number"
             className="inputOption"
             name="amount"
@@ -158,6 +181,9 @@ const Storages = ({ editMode, storageId }) => {
             value={amount}
           />
         </div>
+        <p className="storageSpace">
+          Storage space: {storageSpace()}
+        </p>
         {!loading ?
           <button
             className='createStorage'
@@ -167,13 +193,16 @@ const Storages = ({ editMode, storageId }) => {
           </button> : <Loader />
         }
         {editMode && (
-          <button
-            className='createStorage'
-            onClick={onCancel}
-          >
-            Cancel
-          </button>
-          )}
+          <>
+            <button
+              className='createStorage'
+              onClick={onCancel}
+              >
+              Cancel
+            </button>
+            <p>{storageSpace()}</p>
+          </>
+        )}
         <Toaster
           position="button-center"
           duration="3000"

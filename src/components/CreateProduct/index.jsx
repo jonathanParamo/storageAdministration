@@ -8,7 +8,8 @@ import "./styles.css"
 
 
 const CreateProduct = ({ editMode, productId }) => {
-  const noImage = "https://t4.ftcdn.net/jpg/04/00/24/31/240_F_400243185_BOxON3h9avMUX10RsDkt3pJ8iQx72kS3.jpg"
+  const noImage = "https://t4.ftcdn.net/jpg/04/00/24/31/" +
+    "240_F_400243185_BOxON3h9avMUX10RsDkt3pJ8iQx72kS3.jpg"
   const [image, setImage] = useState("")
   const [validation, setValidation] = useState("")
   const [loading, setLoading] = useState(false)
@@ -34,8 +35,41 @@ const CreateProduct = ({ editMode, productId }) => {
     if(editMode) getProduct()
   }, [])
 
+  const validationAmount = () => {
+    if (amount > 100) {
+      setAmount(100)
+    }
+    if(amount < 0) {
+      setAmount(0)
+    }
+  }
+
+  const productAmount = (destiny) => {
+    const product = products.filter(({storageId})  => destiny === storageId )
+    const cantidad = product.map(products => {
+      return products.amount
+    })
+    const allAmount2 = [...cantidad]
+
+    return allAmount2.reduce((a,b)=> a+b,0)
+  }
+
+  const storageAmount = () => {
+    const count = storages.map(storage => {
+      return storage.amount
+    })
+    let allAmount = [...count]
+
+    return allAmount.reduce((a,b)=> a+b,0)
+  }
+
   const validationData = () => {
     setLoading(true)
+    if(!productAmount > storageAmount) {
+      setValidation("Amount invalid")
+      setLoading(false)
+      return false
+    }
     if(!storages) {
       setValidation("must be assigned to a storage")
       setLoading(false)
@@ -137,14 +171,22 @@ const CreateProduct = ({ editMode, productId }) => {
           <button
             className="buttonCountMas"
             onClick={() => {
-              setAmount(amount >= 20 ? amount : amount + 1)}}>
+              setAmount(amount >= 100 ? amount : amount + 1)}}>
             +
           </button>
-          <p className="unids">{amount} unids:</p>
+          <input
+            type="number"
+            className="unids"
+            value={amount}
+            onChange={e => {
+              validationAmount()
+              setAmount(e.target.value)
+            }}
+            />
           <button
             className="buttonCountMenos"
             onClick={() => {
-              setAmount(amount <= 1 ? amount : amount - 1)}}>
+              setAmount(amount <= 0 ? amount : amount - 1)}}>
             -
           </button>
         </div>
@@ -162,6 +204,7 @@ const CreateProduct = ({ editMode, productId }) => {
               <option
                 key={_id}
                 value={_id}
+                onClick={productAmount(destiny)}
               >
                 {name}
               </option>
@@ -180,12 +223,15 @@ const CreateProduct = ({ editMode, productId }) => {
         </button> : <Loader />
       }
       {editMode && (
-        <button
-          className='createProduct'
-          onClick={onCancel}
-        >
-          Cancel
-        </button>
+        <>
+          <button
+            className='createProduct'
+            onClick={onCancel}
+            >
+            Cancel
+          </button>
+          <>{productAmount(destiny)}</>
+        </>
       )}
       <Toaster
         position="button-right"
