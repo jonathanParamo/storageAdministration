@@ -24,7 +24,8 @@ const ViewStorages = () => {
     if(!token) navigate("/")
     dispatch(getStorages())
     dispatch(getProducts())
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [storages])
 
   const confirmDelete = (_id) => {
     const confirm = window.confirm("Are you sure you want to delete the storage?")

@@ -29,16 +29,19 @@ const Storages = ({ editMode, storageId }) => {
   useEffect(() =>{
     if(!token) navigate("/")
     if (editMode) getStorage()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const existStorageData = !!storages && storages.length > 0;
+
   const storageAmount = () => {
-    const count = storages.map(storage => {
+    const count = existStorageData && storages.map(storage => {
       return storage.amount
     })
-    let allAmount = [...count]
 
-    return allAmount.reduce((a,b)=> a+b,0)
+    return count?.reduce((a, b)=> a + b, 0)
   }
+
 
   const storageSpace = () => {
     return capacity - storageAmount()
@@ -182,7 +185,7 @@ const Storages = ({ editMode, storageId }) => {
           />
         </div>
         <p className="storageSpace">
-          Storage space: {storageSpace()}
+          Available space: { existStorageData ? storageSpace() : 'wait...' }
         </p>
         {!loading ?
           <button
