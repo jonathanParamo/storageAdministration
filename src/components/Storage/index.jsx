@@ -34,7 +34,7 @@ const Storages = ({ editMode, storageId }) => {
 
   const existStorageData = !!storages && storages.length > 0;
 
-  const storageAmount = () => {
+  const storageAmount = async () => {
     const count = existStorageData && storages.map(storage => {
       return storage.amount
     })
@@ -79,7 +79,7 @@ const Storages = ({ editMode, storageId }) => {
     setAmount("")
   }
 
-  const getStorage = () => {
+  const getStorage = async () => {
     const storage = storages?.filter(({ _id }) => storageId === _id );
     setName(storage[0].name)
     setCategory(storage[0].category)

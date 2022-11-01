@@ -46,6 +46,7 @@ const ViewProducts = () => {
       })
       toast.success("Product has delete")
       dispatch({type: "PRODUCT_SUCCESS", payload: data })
+      dispatch(getProducts())
     } catch (error) {
       toast.error("Error deleting the product")
       dispatch({ type: "PRODUCT_ERROR", payload: error })
