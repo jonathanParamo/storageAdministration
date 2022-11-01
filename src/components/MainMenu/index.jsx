@@ -8,9 +8,10 @@ import CloseIcon from '@mui/icons-material/Close'
 import Inventory2Icon from '@mui/icons-material/Inventory2'
 import WidgetsIcon from '@mui/icons-material/Widgets'
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline'
+import { getProfileData } from "../../Store/ProfileReducer"
 import SearchIcon from '@mui/icons-material/Search'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 
 const MainMenu = () => {
   const { width } = useResponsive();
@@ -18,6 +19,7 @@ const MainMenu = () => {
   const token = localStorage.getItem("token");
   const [openMenu, setOpenMenu] = useState(false);
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const {
     profile,
@@ -27,6 +29,7 @@ const MainMenu = () => {
 
   useEffect(() =>{
     if(!token) navigate("/")
+    dispatch(getProfileData())
   }, [])
 
   const { name } = profile
@@ -90,8 +93,7 @@ const MainMenu = () => {
           <div className="containerUserName">
             <div className="logoMainMenu">
               <EmojiPeopleIcon />
-              ¡Hola&nbsp;
-              {name}!
+              ¡Hola {name}!
             </div>
           </div>
           <div className="divSearch">
@@ -101,6 +103,7 @@ const MainMenu = () => {
               placeholder="Search"
               type="search"
               name="search"
+              autoComplete="off"
               />
           </div>
           <div className="containerButtonsMainMenu">
