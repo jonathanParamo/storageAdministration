@@ -1,30 +1,139 @@
 .containerMainMenu {
   width: 100%;
   display: flex;
-  justify-content: baseline;
+  justify-content: space-between;
+  align-items: center;
   margin: 0px;
   padding: 5px 0px;
   background-color: #ffffff30;
+  box-sizing: border-box;
 }
 
+.containerUserName {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f5f5f5;
+  margin: 0;
+}
 
 .logoMainMenu {
   box-sizing: border-box;
-  width: 40px;
+  font-weight: 500;
+  width:  100%;
+  height: 32PX;
+  margin: 5px 10px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.divSearch {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding-left: 5px;
   height: 30px;
+}
+
+.menuMobile {
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  transition: 0.6s;
+}
+
+.divGreets {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f5f5f5;
+}
+
+.optionsMenuMobile {
+  list-style: none;
+  color: #ffffff;
+  padding: 0 20px;
+}
+
+.MenuIcon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background: #100d20;
+  color: #f5f5f5;
+}
+
+.optionMenu {
+  width: 100%;
+  font-size: medium;
+  margin: 3px 8px 10px;
+}
+
+.divseccionMobile {
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
   margin: 5px;
-  margin-right: 130px;
-  margin-left: 20px;
+}
+
+.optionMenuSearch {
+  width: 90%;
+  font-size: 14px;
+  margin: 3px 8px 10px;
+  padding-left: 10px;
+  outline: none;
+  color: #f5f5f5;
+  background: #ffffff15;
+  border-color: #f5f5f5;
+}
+
+.divseccionMobileSearch {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 5px;
+}
+
+.menuMobileNombre {
+  height: 30px;
+  margin: 0px;
+  color: #f5f5f5;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menuPaper {
+  width: 100%;
+  height: 170px;
+  position: absolute;
+  background-color: #1f1c32;
+  box-shadow: 0 5px 6px #100d20;
+  top: 50px;
 }
 
 .searchMainMenu {
-  width: 260px;
-  height: 30px;
-  padding-left: 20px;
+  width: 170px;
+  height: 20px;
+  padding-left: 10px;
   border: none;
   outline: none;
-  border-radius: 5px;
-  margin: 5px 60px;
+  margin: 5px 7px;
+  border-left: 1px solid #ccc;
+  border-radius: 0;
+  caret-color: #E91E60;
+  color: #E91E60;
 }
 
 ::placeholder {
@@ -33,17 +142,16 @@
 }
 
 .containerButtonsMainMenu {
-  width: 550px;
+  width: 40%;
   display: flex;
   justify-content: space-around;
-  margin-left: 50px;
 }
 
 .buttonsMainMenu {
   width: 190px;
   height: 30px;
   outline: none;
-  margin: 5px 20px;
+  margin: 5px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,32 +161,20 @@
   border-radius: 4px;
   font-size: 15px;
   font-weight: 500;
-  box-shadow: #E91E63 3px 3px 5px;
+  transition: 0.5s;
 }
 
-.buttonsMainMenu {
+.buttonsMainMenu:hover {
   cursor: pointer;
-  box-shadow: none;
   background: #E91E60;
 }
 
 @media(max-width: 720px) {
   .containerMainMenu {
+    width: 100%;
     display: flex;
-    justify-content: space-around;
-  }
-
-  .logoMainMenu {
-    box-sizing: border-box;
-    width: 70px;
-    margin-left: 5px;
-    margin-right: 30px;
-  }
-
-  .searchMainMenu {
-    width: 110px;
-    padding-left: 5px;
-    margin: 5px 0px;
+    align-items: center;
+    justify-content: baseline;
   }
 
   ::placeholder {
