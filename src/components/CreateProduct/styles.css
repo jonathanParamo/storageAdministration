@@ -25,6 +25,7 @@
 .labelProductName {
   width: 100%;
   padding: 10px;
+  outline: none;
 }
 
 .titleProduct {
@@ -53,6 +54,7 @@
 .inputImageProduct {
   width: 270px;
   padding-left: 10px;
+  outline: none;
 }
 
 .amountProduct {
@@ -95,6 +97,7 @@
   justify-content: center;
   align-items: center;
   margin: 0px;
+  outline: none;
 }
 
 .inputAmount {
@@ -151,4 +154,37 @@
   font-size: 15px;
   box-shadow: 2px 3px 4px #E91E63;
   transition: 0.6s;
+}
+
+@media(max-width: 720px) {
+  .cardNewProduct {
+    width: 80%;
+  }
+
+  .inputImageProduct {
+    width: 100%;
+  }
+
+  .selectStorage {
+    width: 100%;
+    margin: 0;
+  }
+
+  .amountProduct {
+    width: 100%;
+  }
+  .unitsAvailable {
+    width: 100%;
+  }
+
+  .containerSelectStorage {
+    width: 100%;
+  }
+  .selectOptionsStorage {
+    width: 100%;
+  }
+
+  .addNewProduct {
+    width: 80%;
+  }
 }

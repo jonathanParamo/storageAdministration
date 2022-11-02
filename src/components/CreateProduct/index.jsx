@@ -44,7 +44,7 @@ const CreateProduct = ({ editMode, productId }) => {
     }
   }
 
-  const productAmount = async (destiny) => {
+  const productAmount = (destiny) => {
     const product = products.filter(({storageId})  => destiny === storageId )
     const cantidad = product.map(products => {
       return products.amount

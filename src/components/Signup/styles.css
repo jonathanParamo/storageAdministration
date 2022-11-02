@@ -119,3 +119,9 @@ label{
   cursor: pointer;
   background: #E91E69;
 }
+
+@media(max-width: 720px) {
+  .cardSignUp {
+    width: 90%;
+  }
+}

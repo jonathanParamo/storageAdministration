@@ -34,7 +34,7 @@ const Storages = ({ editMode, storageId }) => {
 
   const existStorageData = !!storages && storages.length > 0;
 
-  const storageAmount = async () => {
+  const storageAmount = () => {
     const count = existStorageData && storages.map(storage => {
       return storage.amount
     })
@@ -44,6 +44,7 @@ const Storages = ({ editMode, storageId }) => {
 
 
   const storageSpace = () => {
+    console.log(storageAmount());
     return capacity - storageAmount()
   }
 
