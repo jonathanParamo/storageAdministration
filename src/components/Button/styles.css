@@ -1,0 +1,95 @@
+.general-styles {
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.4s;
+  border: none;
+}
+
+.small {
+  height: 28px;
+}
+
+.medium {
+  height: 35px;
+}
+
+.large {
+  width: 'auto';
+  height: 40px;
+  padding: 0px 15px;
+}
+
+
+/* CONVINATIONS PRIMARY */
+.primary-contained{
+  background-color: #17C3B2;
+  color: #fff;
+}
+
+.primary-contained:hover {
+  background-color: #128176;
+}
+
+.primary-outlined{
+  background-color: transparent;
+  color: #17C3B2;
+  border: 1px solid #17C3B2;
+}
+
+.primary-outlined:hover {
+  background-color: #17C3B2;
+  color: #fff;
+}
+/* ---------------------- */
+
+/* CONVINATIONS SECONDARY */
+.secondary-contained{
+  background-color: #6F448A;
+  color: #fff;
+}
+
+.secondary-contained:hover {
+  background-color: #462958;
+  color: #fff;
+}
+
+.secondary-outlined{
+  background-color: transparent;
+  color: #6F448A;
+  border: 1px solid #6F448A;
+}
+
+.secondary-outlined:hover {
+  background-color: #6F448A;
+  color: #fff;
+}
+/* ---------------------- */
+
+/* CONVINATIONS TERTIARY */
+.tertiary-none{
+  background-color: transparent;
+  color: #6F448A;
+}
+
+.tertiary-none:hover {
+  background-color: #6F448A20;
+  color: #6F448A;
+}
+/* ---------------------- */
+
+
+.contained {
+  color: #fff;
+}
+
+.outlined {
+  background-color: transparent;
+  border: 1px solid;
+  color: #6F448A;
+}
+
+.outlined:hover {
+  color: #fff;
+  border: none;
+}

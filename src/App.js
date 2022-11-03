@@ -12,6 +12,7 @@ import Home from './components/Home';
 import Storages from './pages/Storages';
 import Products from './pages/Produtcs';
 import Profile from './components/Profile';
+import Design from './pages/Design';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Signin />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/design" element={<Design />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard/*" element={<Home />} >
           <Route path="profile" element={<Profile />} />
