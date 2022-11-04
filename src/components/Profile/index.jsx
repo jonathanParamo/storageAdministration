@@ -66,7 +66,8 @@ const Profile = () => {
     address,
     role,
     secondSurname,
-    birthday} = profile
+    birthday
+  } = profile
 
   const [newName, setNewName] = useState(name)
   const [newSecondName, setNewSecondName] = useState(secondName || "")
@@ -90,7 +91,7 @@ const Profile = () => {
           />
           <button
             className="security"
-            onClick={() => navigate('/dashboard/segurity')}
+            onClick={() => navigate('/dashboard/security')}
           >
             Security
           </button>

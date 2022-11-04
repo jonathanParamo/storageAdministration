@@ -5,7 +5,6 @@ const PROFILE_SUCCESS = 'PROFILE_SUCCESS'
 const PROFILE_ERROR = 'PROFILE_ERROR'
 
 const initialState = {
-  loading: false,
   error: null,
   profile: {},
 }

@@ -9,7 +9,7 @@ import Loader from "../Loader"
 import "./styles.css"
 import toast, { Toaster } from "react-hot-toast"
 
-const Segurity = () => {
+const Security = () => {
   const [loading, setLoading] = useState(false)
   const token = localStorage.getItem("token")
   const dispatch = useDispatch()
@@ -30,7 +30,7 @@ const Segurity = () => {
 
   const [newEmail, setNewEmail] = useState(email)
   const [currentPassword, setCurrentPassword] = useState("")
-  const [oneNewPassword, setOneNewPassword] = useState("")
+  const [newPassword, setNewPassword] = useState("")
   const [twoNewPassword, setTowNewPassword] = useState("")
 
   const validationData = () => {
@@ -40,12 +40,12 @@ const Segurity = () => {
       setLoading(false)
       return false
     }
-    if(oneNewPassword !== twoNewPassword) {
+    if(newPassword !== twoNewPassword) {
       toast.error("Passwords do not match")
       setLoading(false)
       return false
     }
-    if(password === oneNewPassword || password === twoNewPassword) {
+    if(password === newPassword || password === twoNewPassword) {
       toast.error("The new password can't be the same")
       setLoading(false)
       return false
@@ -55,7 +55,7 @@ const Segurity = () => {
 
   const cleanForm = () => {
     setCurrentPassword("")
-    setOneNewPassword("")
+    setNewPassword("")
     setTowNewPassword("")
   }
 
@@ -68,7 +68,7 @@ const Segurity = () => {
           url: '/users/updateUser',
           data: {
             email: newEmail,
-            password: oneNewPassword,
+            password: newPassword,
           },
           headers: {
             'Authorization': `Bearer ${token}`
@@ -87,18 +87,18 @@ const Segurity = () => {
   }
 
   return (
-    <div className="containerSegurity">
-      <div className="containerSegurityCard">
+    <div className="containerSecurity">
+      <div className="containerSecurityCard">
       <p
-        className="titleSegurity"
+        className="titleSecurity"
       >
         Edit your email or password
       </p>
-        <div className="divSegurity">
+        <div className="divSecurity">
           <div className="divInputIcon">
             <MailIcon className="icono"/>
             <input
-              className="inputSegurity"
+              className="inputSecurity"
               type="text"
               autoComplete="off"
               value={newEmail}
@@ -109,44 +109,44 @@ const Segurity = () => {
           <div className="divInputIcon">
             <HttpsIcon className="icono"/>
             <input
-              className="inputSegurity"
+              className="inputSecurity"
               type="password"
               placeholder="Current password"
               onChange={(e) => setCurrentPassword(e.target.value)}
               />
           </div>
         </div>
-        <div className="divSegurity">
+        <div className="divSecurity">
           <div className="divInputIcon">
             <HttpsIcon className="icono"/>
             <input
-              className="inputSegurity"
+              className="inputSecurity"
               type="password"
               placeholder="New password"
-              onChange={(e) => setOneNewPassword(e.target.value)}
+              onChange={(e) => setNewPassword(e.target.value)}
             />
           </div>
           <div className="divInputIcon">
             <HttpsIcon className="icono"/>
             <input
-              className="inputSegurity"
+              className="inputSecurity"
               type="password"
               placeholder="Repeat the new password"
               onChange={(e) => setTowNewPassword(e.target.value)}
             />
           </div>
         </div>
-        <div className="divSegurityButtons">
+        <div className="divSecurityButtons">
           {!loading ?
             <button
-              className="seguritySave"
+              className="securitySave"
               onClick={() => handleEdit()}
             >
               Save changes
             </button> : <Loader />
           }
           <button
-            className="segurityBack"
+            className="securityBack"
             onClick={() => navigate("/dashboard/profile")}
           >
             Back
@@ -161,4 +161,4 @@ const Segurity = () => {
   )
 }
 
-export default Segurity
+export default Security

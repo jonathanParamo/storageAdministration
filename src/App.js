@@ -11,7 +11,7 @@ import Signin from './components/Signin';
 import Home from './components/Home';
 import Storages from './pages/Storages';
 import Products from './pages/Produtcs';
-import Segurity from './components/Segurity';
+import Security from './components/Security';
 import Profile from './components/Profile';
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
           <Route path="*" element={<Products />} />
           <Route path="storages" element={<Storages />} />
           <Route path="products" element={<Products />} />
-          <Route path="segurity" element={<Segurity />} />
+          <Route path="security" element={<Security />} />
         </Route>
       </Routes>
     </Router>

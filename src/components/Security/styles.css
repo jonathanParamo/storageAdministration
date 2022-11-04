@@ -1,4 +1,4 @@
-.containerSegurity {
+.containerSecurity {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -10,7 +10,7 @@
   font-weight: 400;
 }
 
-.containerSegurityCard {
+.containerSecurityCard {
   width: 45%;
   background: #1f1c32;
   display: flex;
@@ -20,13 +20,13 @@
   box-shadow: 3px 5px 5px #1f1c32;
 }
 
-.titleSegurity {
+.titleSecurity {
   width: 100%;
   color: #f5f5f5;
   text-align: center;
 }
 
-.divSegurity {
+.divSecurity {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -45,7 +45,7 @@
   color: #f5f5f5;
 }
 
-.divSegurityButtons {
+.divSecurityButtons {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -53,7 +53,7 @@
   margin: 10px 0px;
 }
 
-.inputSegurity {
+.inputSecurity {
   width: 80%;
   padding: 10px;
   margin: 5px 0;
@@ -63,7 +63,7 @@
   border-color: #f5f5f5;
 }
 
-.seguritySave {
+.securitySave {
   width: 40%;
   height: 30px;
   margin: 5px;
@@ -73,7 +73,7 @@
   border-radius: 5px;
 }
 
-.seguritySave:hover {
+.securitySave:hover {
   cursor: pointer;
   background: #a804bc;
   box-shadow: none;
@@ -81,7 +81,7 @@
   animation:slidebg 2s linear infinite;
 }
 
-.segurityBack {
+.securityBack {
   width: 40%;
   height: 30px;
   margin: 5px;
@@ -91,7 +91,7 @@
   border-radius: 5px;
 }
 
-.segurityBack:hover {
+.securityBack:hover {
   cursor: pointer;
   box-shadow: none;
   background-image: linear-gradient(to right, #24203b, #c301d1 );
@@ -106,32 +106,32 @@
 
 
 @media(max-width: 720px) {
-  .containerSegurityCard {
+  .containerSecurityCard {
     width: 70%;
   }
 
-  .divSegurity {
+  .divcegurity {
     width: 100%;
     margin: 0;
     flex-direction: column;
   }
 
-  .inputSegurity {
+  .inputSecurity {
     width: 80%;
   }
 
-  .divSegurityButtons {
+  .divSecurityButtons {
     width: 100%;
     flex-direction: column;
   }
 
-  .seguritySave {
+  .securitySave {
     width: 80%;
     height: 25px;
     border-radius: 5px;
   }
 
-  .seguritySave:hover {
+  .securitySave:hover {
     cursor: pointer;
     background: #a804bc;
     box-shadow: none;
@@ -139,13 +139,13 @@
     animation:slidebg 2s linear infinite;
   }
 
-  .segurityBack {
+  .securityBack {
     width: 80%;
     height: 25px;
     border-radius: 5px;
   }
 
-  .segurityBack:hover {
+  .securityBack:hover {
     cursor: pointer;
     box-shadow: none;
     background-image: linear-gradient(to right, #c301d1, #c301d1, #24203b, #c301d1);
