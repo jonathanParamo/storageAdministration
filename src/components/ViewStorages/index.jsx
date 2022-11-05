@@ -15,9 +15,11 @@ const ViewStorages = () => {
   const {
     storages,
     products,
+    storageSearch,
   } = useSelector(({StorageReducer, ProductReducer})=> ({
     storages : StorageReducer.storages,
     products : ProductReducer.products,
+    storageSearch : StorageReducer.storageSearch,
   }))
 
   useEffect(() =>{
@@ -25,7 +27,7 @@ const ViewStorages = () => {
     dispatch(getStorages())
     dispatch(getProducts())
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [storageSearch])
 
   const confirmDelete = (_id) => {
     const confirm = window.confirm("Are you sure you want to delete the storage?")
@@ -57,6 +59,7 @@ const ViewStorages = () => {
   }
 
   const hasData = !!storages && storages.length > 0;
+  const hasSataSearch = !!storageSearch && storageSearch.length > 0
 
   const editStorage = (id) => {
     dispatch({ type: 'UPDATE_STORAGE', payload: id })
@@ -65,7 +68,7 @@ const ViewStorages = () => {
 
   return (
     <div className="MainContainer">
-      {hasData && storages.map(({ name, amount, category, _id }) => {
+      {hasSataSearch ? storageSearch.map(({ name, amount, category, _id }) => {
         return (
           <div className="card" key={_id}>
             <div className="cardSectionStorage">
@@ -97,8 +100,42 @@ const ViewStorages = () => {
               </button>
             </div>
           </div>
-        )
-      })}
+        )}) :
+        hasData && storages.map(({ name, amount, category, _id }) => {
+          return (
+            <div className="card" key={_id}>
+              <div className="cardSectionStorage">
+                <label className="cardLabelStorage">Storage:</label>
+                <div className="cardTextStorage">
+                  {name}
+                </div>
+              </div>
+              <div className="cardSectionStorage">
+                <label className="cardLabelStorage">Amount:</label>
+                <div className="cardTextStorage">{amount}</div>
+              </div>
+              <div className="cardSectionStorage">
+                <label className="cardLabelStorage">Category:</label>
+                <div className="cardTextStorage">{category}</div>
+              </div>
+              <div className="cardStorageButton">
+                <button
+                  className="editStorage"
+                  onClick={() => editStorage(_id)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="deleteStorage"
+                  onClick={() => confirmDelete(_id)}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          )
+        })
+      }
       <Toaster
         position="button-center"
       />

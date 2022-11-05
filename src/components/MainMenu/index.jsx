@@ -20,32 +20,39 @@ const MainMenu = () => {
   const token = localStorage.getItem("token")
   const [openMenu, setOpenMenu] = useState(false)
   const [search, setSearch] = useState("")
-  const [searchProd, setSearchProd] = useState("")
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const {
     profile,
     products,
-  } = useSelector(({ ProfileReducer, ProductReducer }) => ({
+    storages,
+  } = useSelector(({ ProfileReducer, ProductReducer, StorageReducer }) => ({
     profile: ProfileReducer.profile,
-    products: ProductReducer.products
+    products: ProductReducer.products,
+    storages: StorageReducer.storages,
   }))
 
   const handleChange=e=> {
     setSearch(e.target.value)
-    filtered(e.target.value)
+    handleFilter(e.target.value)
   }
 
-  const filtered = (finishingSearch) => {
-    const endSearch = products.filter((element) => {
-      if (element.name.toString().toLowerCase().includes(finishingSearch.toLowerCase())) {
+  const handleFilter = (loadingSearch) => {
+    const productSearch = products.filter((element) => {
+      if (element.name.toString().toLowerCase().includes(loadingSearch.toLowerCase())) {
         return element
       }
     })
-    setSearchProd(endSearch)
+    const storageSearch = storages.filter((element) => {
+      if (element.name.toString().toLowerCase().includes(loadingSearch.toLowerCase())) {
+        return element
+      }
+    })
+    dispatch({ type: "PRODUCT_SEARCH", payload: productSearch})
+    dispatch({ type: "STORAGE_SEARCH", payload: storageSearch})
   }
-  console.log(searchProd);
+
   useEffect(() =>{
     if(!token) navigate("/")
     dispatch(getProfileData())

@@ -5,12 +5,14 @@ const CANCEL_UPDATE = 'CANCEL_UPDATE'
 const PRODUCT_SUCCESS = 'PRODUCT_SUCCESS'
 const UPDATE_PRODUCT = 'UPDATE_PRODUCT'
 const PRODUCT_ERROR = 'PRODUCT_ERROR'
+const PRODUCT_SEARCH = 'PRODUCT_SEARCH'
 
 const initialState = {
   loading: false,
   error: null,
   products: {},
-  productId: ''
+  productId: '',
+  productSearch: {},
 }
 
 export const getProducts = () => {
@@ -52,6 +54,11 @@ export function ProductReducer(state = initialState, action){
       return {
         ...state,
         error: action.payload,
+      }
+    case PRODUCT_SEARCH:
+      return {
+        ...state,
+        productSearch: action.payload,
       }
     default:
       return state

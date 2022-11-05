@@ -34,17 +34,13 @@ const Storages = ({ editMode, storageId }) => {
 
   const existStorageData = !!storages && storages.length > 0;
 
-  const storageAmount = async () => {
+  const storageAmount = () => {
     const count = existStorageData && storages.map(storage => {
       return storage.amount
     })
-
-    return count?.reduce((a, b)=> a + b, 0)
-  }
-
-
-  const storageSpace = () => {
-    return capacity - storageAmount()
+    const res = count.reduce((a, b)=> a + b, 0)
+    const space = capacity - res
+    return space
   }
 
   const validationData = () => {
@@ -185,7 +181,7 @@ const Storages = ({ editMode, storageId }) => {
           />
         </div>
         <p className="storageSpace">
-          Available space: { existStorageData ? storageSpace() : 'wait...' }
+          Available space: { existStorageData ? storageAmount() : 'wait...' }
         </p>
         {!loading ?
           <button
@@ -203,7 +199,7 @@ const Storages = ({ editMode, storageId }) => {
               >
               Cancel
             </button>
-            <p>{storageSpace()}</p>
+            <p>{storageAmount()}</p>
           </>
         )}
         <Toaster

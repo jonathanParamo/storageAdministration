@@ -15,16 +15,18 @@ const ViewProducts = () => {
   const {
     products,
     storages,
+    productSearch
   } = useSelector(({ ProductReducer, StorageReducer }) => ({
     products: ProductReducer.products,
     storages: StorageReducer.storages,
+    productSearch: ProductReducer.productSearch,
   }))
 
   useEffect(() =>{
     if(!token) navigate("/")
     dispatch(getProducts())
     dispatch(getStorages())
-  }, [])
+  }, [productSearch])
 
   const confirmDelete = (_id) => {
     const confirm = window.confirm("Are you sure you want to delete the product?")
@@ -54,6 +56,7 @@ const ViewProducts = () => {
   }
 
   const hasData = !!products && products.length > 0;
+  const hasDataSearch = !! productSearch && productSearch.length > 0
 
   const editProduct = (id) => {
     dispatch({ type: 'UPDATE_PRODUCT', payload: id })
@@ -67,7 +70,7 @@ const ViewProducts = () => {
 
   return (
     <div className="MainContainer">
-      {hasData && products.map(({ image, name, amount, storageId, _id}) => {
+      {hasDataSearch ? productSearch.map(({image, name, amount, storageId, _id}) => {
         return (
           <div className="cardProducts" key={_id}>
             <div className="containerImageProduct">
@@ -102,7 +105,44 @@ const ViewProducts = () => {
             </div>
           </div>
         )
-      })}
+        }) :
+        hasData && products.map(({ image, name, amount, storageId, _id}) => {
+          return (
+            <div className="cardProducts" key={_id}>
+              <div className="containerImageProduct">
+                <img className="imageProduct" src={image} alt="product ilustration" />
+              </div>
+              <div className="cardSection">
+                <label className="cardLabel">Product:</label>
+                <div className="cardTextProduct">
+                  {name}
+                </div>
+              </div>
+              <div className="cardSection">
+                <label className="cardLabel">Amount:</label>
+                <div className="cardTextProduct">{amount}</div>
+              </div>
+              <div className="cardSection">
+                <label className="cardLabel">Storage:</label>
+                <div className="cardTextProduct">{storageName(storageId)}</div>
+              </div>
+              <div className="cardProductButton">
+                <button
+                  className="editProduct"
+                  onClick={() => editProduct(_id)}
+                  children="Edit"
+                />
+                <button
+                  className="deleteProduct"
+                  onClick={() => confirmDelete(_id)}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          )
+        })
+      }
       <Toaster
         position="button-center"
       />
