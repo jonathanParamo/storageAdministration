@@ -12,21 +12,40 @@ import { getProfileData } from "../../Store/ProfileReducer"
 import SearchIcon from '@mui/icons-material/Search'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
 import { useSelector, useDispatch } from "react-redux"
+import Search from "../Search"
 
 const MainMenu = () => {
-  const { width } = useResponsive();
-  const isMobile = width <= 720;
-  const token = localStorage.getItem("token");
-  const [openMenu, setOpenMenu] = useState(false);
+  const { width } = useResponsive()
+  const isMobile = width <= 720
+  const token = localStorage.getItem("token")
+  const [openMenu, setOpenMenu] = useState(false)
+  const [search, setSearch] = useState("")
+  const [searchProd, setSearchProd] = useState("")
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const {
     profile,
-  } = useSelector(({ProfileReducer}) => ({
+    products,
+  } = useSelector(({ ProfileReducer, ProductReducer }) => ({
     profile: ProfileReducer.profile,
+    products: ProductReducer.products
   }))
 
+  const handleChange=e=> {
+    setSearch(e.target.value)
+    filtered(e.target.value)
+  }
+
+  const filtered = (finishingSearch) => {
+    const endSearch = products.filter((element) => {
+      if (element.name.toString().toLowerCase().includes(finishingSearch.toLowerCase())) {
+        return element
+      }
+    })
+    setSearchProd(endSearch)
+  }
+  console.log(searchProd);
   useEffect(() =>{
     if(!token) navigate("/")
     dispatch(getProfileData())
@@ -77,12 +96,14 @@ const MainMenu = () => {
             </div>
             <div className="divseccionMobileSearch">
               <SearchIcon />
-              <input
+              <Search
+                value={search}
+                onChange={handleChange}
                 className="optionMenuSearch"
                 placeholder="Search"
                 type="search"
                 name="search"
-                />
+              />
             </div>
           </ul>
         </div>
@@ -98,13 +119,15 @@ const MainMenu = () => {
           </div>
           <div className="divSearch">
             <SearchIcon />
-            <input
-              className="searchMainMenu"
+            <Search
+              value={search}
+              onChange={handleChange}
               placeholder="Search"
               type="search"
               name="search"
+              className="searchMainMenu"
               autoComplete="off"
-              />
+            />
           </div>
           <div className="containerButtonsMainMenu">
             <p
