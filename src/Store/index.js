@@ -3,7 +3,7 @@ import { StorageReducer } from './StorageReducer';
 import { ProductReducer } from './ProductReducer';
 import { ProfileReducer } from './ProfileReducer'
 import { MenuReducer } from './MenuReducer';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
 const appReducers = combineReducers({
@@ -20,6 +20,8 @@ const rootReducer = (state, action) => {
   return appReducers(state, action)
 }
 
-const middlewares = applyMiddleware(thunk, logger)
+const middlewares = applyMiddleware(thunk)
+// Enable this line in dev process
+// const middlewares = applyMiddleware(thunk, logger)
 
 export const store = createStore(rootReducer, middlewares)
