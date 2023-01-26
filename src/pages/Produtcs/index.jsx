@@ -40,6 +40,7 @@ const Products = () => {
         {section === 'view' && <ViewProducts />}
 
         {section === 'update' && <CreateProduct editMode productId={productId} />}
+
       </div>
     </div>
   )

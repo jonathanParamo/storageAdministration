@@ -84,6 +84,7 @@ const Profile = () => {
         <div className="containerImage">
           <img className="cardImage" src={newImage || noImage} />
           <input
+            value={image}
             type="text"
             className="inputImage"
             placeholder="Link of the user image"
@@ -148,9 +149,10 @@ const Profile = () => {
             </label>
             <input
               id="birthday"
+              pattern="\d{4}-\d{2}-\d{2}"
               className="inputCard"
               type="date"
-              value={newBirthday}
+              value={newBirthday || birthday}
               onChange={(e) => setNewBirthday(e.target.value)}
             />
           </div>
