@@ -92,7 +92,7 @@ const Profile = () => {
           />
           <button
             className="security"
-            onClick={() => navigate('Security')}
+            onClick={() => navigate('/dashboard/security')}
           >
             Security
           </button>
