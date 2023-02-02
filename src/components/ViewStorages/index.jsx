@@ -1,4 +1,5 @@
 import { getStorages } from "../../Store/StorageReducer"
+import { getProducts } from "../../Store/ProductReducer"
 import { useDispatch, useSelector } from "react-redux"
 import { Toaster, toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
@@ -11,22 +12,27 @@ const ViewStorages = () => {
   const token = localStorage.getItem("token")
   const dispatch = useDispatch()
 
+  const {
+    storages,
+    products,
+  } = useSelector(({StorageReducer, ProductReducer})=> ({
+    storages : StorageReducer.storages,
+    products : ProductReducer.products,
+  }))
+
   useEffect(() =>{
     if(!token) navigate("/")
     dispatch(getStorages())
+    dispatch(getProducts())
   }, [])
-
-  const {
-    storages,
-  } = useSelector(({StorageReducer})=> ({
-    storages : StorageReducer.storages
-  }))
 
   const confirmDelete = (_id) => {
     const confirm = window.confirm("Are you sure you want to delete the storage?")
-    if(confirm) {
-      handleDelete(_id)
-    }
+    const deleteStorage = products.filter(product => product.storageId === _id)
+
+    if (!confirm) return
+    if (confirm && deleteStorage.length) toast.error("Cannot delete a storage")
+    if (confirm && !deleteStorage.length) handleDelete(_id)
   }
 
   const handleDelete = async (_id) => {
@@ -57,7 +63,7 @@ const ViewStorages = () => {
 
   return (
     <div className="MainContainer">
-      {hasData ? storages.map(({ name, amount, category, _id }) => {
+      {hasData && storages.map(({ name, amount, category, _id }) => {
         return (
           <div className="card" key={_id}>
             <div className="cardSectionStorage">
@@ -90,11 +96,10 @@ const ViewStorages = () => {
             </div>
           </div>
         )
-      }) : (
-        <Toaster
-          position="button-center"
-        />
-      )}
+      })}
+      <Toaster
+        position="button-center"
+      />
     </div>
   )
 }

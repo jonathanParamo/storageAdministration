@@ -13,19 +13,19 @@ const ViewProducts = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  useEffect(() =>{
-    if(!token) navigate("/")
-    dispatch(getProducts())
-    dispatch(getStorages())
-  }, [])
-
   const {
     products = [],
     storages = [],
   } = useSelector(({ ProductReducer, StorageReducer }) => ({
     products: ProductReducer.products,
     storages: StorageReducer.storages,
-  }));
+  }))
+
+  useEffect(() =>{
+    if(!token) navigate("/")
+    dispatch(getProducts())
+    dispatch(getStorages())
+  }, [])
 
   const confirmDelete = (_id) => {
     const confirm = window.confirm("Are you sure you want to delete the product?")
@@ -71,7 +71,7 @@ const ViewProducts = () => {
 
   return (
     <div className="MainContainer">
-      {hasData ? products.map(({ image, name, amount, storageId, _id}) => {
+      {hasData && products.map(({ image, name, amount, storageId, _id}) => {
         return (
           <div className="cardProducts" key={_id}>
             <div className="containerImageProduct">
@@ -106,13 +106,10 @@ const ViewProducts = () => {
             </div>
           </div>
         )
-      }) : (
-        <>
-          <Toaster
-            position="button-center"
-            />
-        </>
-      )}
+      })}
+      <Toaster
+        position="button-center"
+      />
     </div>
   )
 }

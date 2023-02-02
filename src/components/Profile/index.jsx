@@ -66,7 +66,8 @@ const Profile = () => {
     address,
     role,
     secondSurname,
-    birthday} = profile
+    birthday
+  } = profile
 
   const [newName, setNewName] = useState(name)
   const [newSecondName, setNewSecondName] = useState(secondName || "")
@@ -91,7 +92,7 @@ const Profile = () => {
           />
           <button
             className="security"
-            onClick={() => navigate('Security')}
+            onClick={() => navigate('/dashboard/security')}
           >
             Security
           </button>
@@ -148,9 +149,10 @@ const Profile = () => {
             </label>
             <input
               id="birthday"
+              pattern="\d{4}-\d{2}-\d{2}"
               className="inputCard"
               type="date"
-              value={newBirthday}
+              value={newBirthday || birthday}
               onChange={(e) => setNewBirthday(e.target.value)}
             />
           </div>
