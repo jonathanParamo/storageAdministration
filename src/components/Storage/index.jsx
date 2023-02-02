@@ -44,7 +44,6 @@ const Storages = ({ editMode, storageId }) => {
 
 
   const storageSpace = () => {
-    console.log(storageAmount());
     return capacity - storageAmount()
   }
 
@@ -80,7 +79,7 @@ const Storages = ({ editMode, storageId }) => {
     setAmount("")
   }
 
-  const getStorage = async () => {
+  const getStorage = () => {
     const storage = storages?.filter(({ _id }) => storageId === _id );
     setName(storage[0].name)
     setCategory(storage[0].category)
@@ -201,7 +200,7 @@ const Storages = ({ editMode, storageId }) => {
             <button
               className='createStorage'
               onClick={onCancel}
-              >
+            >
               Cancel
             </button>
             <p>{storageSpace()}</p>

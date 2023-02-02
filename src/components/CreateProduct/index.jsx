@@ -171,7 +171,9 @@ const CreateProduct = ({ editMode, productId }) => {
           <button
             className="buttonCountMas"
             onClick={() => {
-              setAmount(amount >= 100 ? amount : amount + 1)}}>
+              setAmount(amount >= 100 ? amount : amount + 1)
+            }}
+          >
             +
           </button>
           <input
@@ -182,11 +184,13 @@ const CreateProduct = ({ editMode, productId }) => {
               validationAmount()
               setAmount(e.target.value)
             }}
-            />
+          />
           <button
             className="buttonCountMenos"
             onClick={() => {
-              setAmount(amount <= 0 ? amount : amount - 1)}}>
+              setAmount(amount <= 0 ? amount : amount - 1)
+            }}
+          >
             -
           </button>
         </div>
@@ -227,10 +231,10 @@ const CreateProduct = ({ editMode, productId }) => {
           <button
             className='createProduct'
             onClick={onCancel}
-            >
+          >
             Cancel
           </button>
-          <>{productAmount(destiny)}</>
+          <p>{productAmount(destiny)}</p>
         </>
       )}
       <Toaster
