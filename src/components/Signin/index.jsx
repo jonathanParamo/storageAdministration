@@ -4,6 +4,7 @@ import Loader from "../Loader"
 import axios from "axios"
 import "./styles.css"
 import { useDispatch, useSelector } from "react-redux"
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const Signin = () => {
   const [errorFieldValidation, setErrorFieldValidation] = useState(false)
@@ -46,14 +47,25 @@ const Signin = () => {
   return(
     <div className="containerSignIn">
       <div className="cardSignIn">
-        <h2>Sign in</h2>
-        <div className="email">
+        <AccountCircleIcon
+          sx={{
+            width: "30%",
+            height: "30%",
+            color: "#559BD9"
+          }}
+        />
+        <h2 className="titleSingIn">
+          Sign in
+        </h2>
+        <div className="textCardSignIn">
           <label
+            className="textCard"
             htmlFor="email"
           >
             Email:
           </label>
           <input
+            className="inputCardSingIn"
             type="email"
             name="email"
             id="email"
@@ -64,13 +76,15 @@ const Signin = () => {
             value={email}
           />
         </div>
-        <div className="password">
+        <div className="textCardSignIn">
           <label
+            className="textCard"
             htmlFor="password"
           >
             Password:
           </label>
           <input
+            className="inputCardSingIn"
             type="password"
             name="password"
             id="password"
@@ -91,12 +105,12 @@ const Signin = () => {
               Enter
             </button> : <Loader />
           }
-          <p
+          <button
             className="register"
             onClick={() => navigate('/signup')}
           >
-            Sign Up
-          </p>
+            Sign up
+          </button>
         </div>
         {error ? <p>Email or password invalid</p> : "" }
         {errorFieldValidation && <p>Missing fields to fill</p>}
