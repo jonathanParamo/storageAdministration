@@ -18,6 +18,10 @@
   align-items: center;
 }
 
+input {
+  outline: none;
+}
+
 .email {
   margin-top: 50px;
 }
@@ -90,4 +94,17 @@
   cursor: pointer;
   color: #ffffff;
   background:#E91E69;
+}
+@media(max-width: 720px) {
+  .cardSignIn {
+    width: 90%;
+  }
+
+  .email {
+    margin-top: 30px;
+  }
+
+  .register {
+    margin: 10px;
+  }
 }

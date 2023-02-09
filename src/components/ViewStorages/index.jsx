@@ -24,6 +24,7 @@ const ViewStorages = () => {
     if(!token) navigate("/")
     dispatch(getStorages())
     dispatch(getProducts())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const confirmDelete = (_id) => {
@@ -48,6 +49,7 @@ const ViewStorages = () => {
       })
       toast.success("Storage deleted")
       dispatch({type: "STORAGE_SUCCESS", payload: data })
+      dispatch(getStorages())
     } catch (error) {
       toast.error("Error deleting the storage")
       dispatch({ type: "STORAGE_ERROR", payload: error })
