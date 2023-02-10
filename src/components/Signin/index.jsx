@@ -49,12 +49,12 @@ const Signin = () => {
       <div className="cardSignIn">
         <AccountCircleIcon
           sx={{
-            width: "30%",
-            height: "30%",
+            width: "20%",
+            height: "20%",
             color: "#559BD9"
           }}
         />
-        <h2 className="titleSingIn">
+        <h2 className="titleSignIn">
           Sign in
         </h2>
         <div className="textCardSignIn">
@@ -65,7 +65,7 @@ const Signin = () => {
             Email:
           </label>
           <input
-            className="inputCardSingIn"
+            className="inputCardSignIn"
             type="email"
             name="email"
             id="email"
@@ -84,7 +84,7 @@ const Signin = () => {
             Password:
           </label>
           <input
-            className="inputCardSingIn"
+            className="inputCardSignIn"
             type="password"
             name="password"
             id="password"
@@ -95,7 +95,7 @@ const Signin = () => {
             value={password}
           />
         </div>
-        <div className="singUpSingIn">
+        <div className="signUpSignIn">
           {!loading ?
             <button
               className="signInButton"
