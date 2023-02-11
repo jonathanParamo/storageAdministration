@@ -6,6 +6,7 @@
   align-items: center;
   background: #ffffff90;
   border: 1px solid #264653;
+  border-radius: 4px;
   color: #023047;
   padding: 5px 15px;
   margin: 10px;
@@ -37,9 +38,9 @@
 }
 
 .imageNewProduct {
-  box-sizing: border-box;
   width: 60px;
   height: 60px;
+  box-sizing: border-box;
   background: #ffffff90;
   margin: 10px;
 }
@@ -50,9 +51,14 @@
   text-align: center;
 }
 
-.inputImageProduct {
+.inputCardAddProduct {
   width: 270px;
+  height: 25px;
+  outline: none;
+  border-radius: 4px;
+  border: none;
   padding-left: 10px;
+  color: #E91E60;
 }
 
 .amountProduct {
@@ -95,15 +101,15 @@
   justify-content: center;
   align-items: center;
   margin: 0px;
-}
-
-.inputAmount {
-  width: 270px;
+  outline: none;
+  color: #E91E60;
+  border-radius: 4px;
+  border: none;
   padding-left: 10px;
 }
 
 .selectStorage {
-  margin: 5px;
+  margin: 5px 0;
 }
 
 .containerSelectStorage {
@@ -125,7 +131,7 @@
 .addNewProduct {
   width: 40%;
   height: 30px;
-  margin-bottom: 10px;
+  margin: 20px 0 10px 0;
   border: none;
   border-radius: 5px;
   background: #023047;
@@ -151,4 +157,8 @@
   font-size: 15px;
   box-shadow: 2px 3px 4px #E91E63;
   transition: 0.6s;
+}
+
+input::-webkit-inner-spin-button {
+  opacity: 1
 }

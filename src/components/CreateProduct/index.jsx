@@ -2,13 +2,14 @@ import { useDispatch, useSelector } from "react-redux"
 import { Toaster, toast } from "react-hot-toast"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import Loader from "../Loader"
 import axios from "axios"
 import "./styles.css"
 
 
 const CreateProduct = ({ editMode, productId }) => {
-  const noImage = "https://t4.ftcdn.net/jpg/04/00/24/31/240_F_400243185_BOxON3h9avMUX10RsDkt3pJ8iQx72kS3.jpg"
+  const noImage = <AddPhotoAlternateIcon />
   const [image, setImage] = useState("")
   const [validation, setValidation] = useState("")
   const [loading, setLoading] = useState(false)
@@ -106,7 +107,24 @@ const CreateProduct = ({ editMode, productId }) => {
   return (
     <div className="cardNewProduct">
         <h3 className="titleProduct">{editMode ? 'Edit product' : 'Create Product'}</h3>
+        <p className="productImage">Product image:</p>
+        <div>
+          {
+            image ?
+            <img className="imageNewProduct" src={image} />
+            : <AddPhotoAlternateIcon
+                sx={{width: "60px", height: "60px", margin: "0px"}}
+              />
+          }
+        </div>
         <div className="productTitle">
+          <label className="productImage">Product image:</label>
+          <input
+            className="inputCardAddProduct"
+            type="text"
+            placeholder="Add link image"
+            onChange={e => setImage(e.target.value)}
+          />
           <label
             htmlFor="productName"
             className="productName"
@@ -115,61 +133,56 @@ const CreateProduct = ({ editMode, productId }) => {
           </label>
           <input
             id="productName"
-            className="labelProductName"
+            className="inputCardAddProduct"
             type="text"
             placeholder="Product name"
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <p className="productImage">Product image:</p>
-      <div>
-        <img className="imageNewProduct" src={image || noImage} />
-      </div>
-        <input
-          className="inputImageProduct"
-          type="text"
-          placeholder="Add link image"
-          onChange={e => setImage(e.target.value)}
-        />
+        <div className="containerSelectStorage">
+          <p className="selectStorage">Add to storage:</p>
+          <select
+            className="inputCardAddProduct"
+            value={destiny}
+            onChange={(e) => setDestiny(e.target.value)}
+          >
+            <option>Choose storage ...</option>
+            {!!storages && storages.length > 0 ? storages.map(({ name, _id }) => {
+              return (
+                <option
+                  key={_id}
+                  value={_id}
+                >
+                  {name}
+                </option>
+              )
+            }) : (
+              <option>There are no products</option>
+            )}
+          </select>
+        </div>
       <div className="amountProduct">
         <p className="unitsAvailable">Units available:</p>
         <div className="containerAmount">
           <button
             className="buttonCountMas"
             onClick={() => {
-              setAmount(amount >= 20 ? amount : amount + 1)}}>
+              setAmount(amount >= 20 ? amount = setAmount(20) : amount + 1)}}>
             +
           </button>
-          <p className="unids">{amount} unids:</p>
+          <input
+            type="number"
+            className="unids"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+          />
           <button
             className="buttonCountMenos"
             onClick={() => {
-              setAmount(amount <= 1 ? amount : amount - 1)}}>
+              setAmount(amount <= 0 ? amount = setAmount(0) : amount - 1)}}>
             -
           </button>
         </div>
-      </div>
-      <div className="containerSelectStorage">
-        <p className="selectStorage">Add to storage:</p>
-        <select
-          className="selectOptionsStorage"
-          value={destiny}
-          onChange={(e) => setDestiny(e.target.value)}
-        >
-          <option>Choose on storage ...</option>
-          {!!storages && storages.length > 0 ? storages.map(({ name, _id }) => {
-            return (
-              <option
-                key={_id}
-                value={_id}
-              >
-                {name}
-              </option>
-            )
-          }) : (
-            <option>There are no products</option>
-          )}
-        </select>
       </div>
       {!loading ?
         <button
