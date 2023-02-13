@@ -36,6 +36,7 @@
 }
 
 .inputCardSignIn {
+  width: 45%;
   outline: none;
   background: #f5f5f5;
 }
@@ -91,7 +92,15 @@
 }
 
 @media(max-width: 720px) {
+  .containerSignIn {
+    height: 90vh;
+  }
+
   .cardSignIn {
-    width: 80%;
+    width: 85%;
+  }
+
+  .inputCardSignIn {
+    width: 50%;
   }
 }
