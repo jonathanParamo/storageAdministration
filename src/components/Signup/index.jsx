@@ -72,6 +72,7 @@ const Signup = () => {
             Name:
           </label>
           <input
+            autoComplete="none"
             className="inputCardSignup"
             type="text"
             name="name"
@@ -88,6 +89,7 @@ const Signup = () => {
             Surname:
           </label>
           <input
+            autoComplete="none"
             className="inputCardSignup"
             type="text"
             name="surname"

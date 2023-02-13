@@ -63,12 +63,12 @@ body {
   border-radius: 4px;
   font-size: 18px;
   font-weight: 500;
-  transition: 0.6s;
+  transition: 0.6s ease;
 }
 
 .createAccount:hover {
   cursor: pointer;
-  background: #E91E69;
+  filter: brightness(90%);
 }
 
 .regis {
@@ -87,7 +87,7 @@ body {
 
 .regis:hover {
   cursor: pointer;
-  filter: contrast(70%);
+  filter: brightness(90%);
   border-radius: 4px;
 }
 
@@ -116,5 +116,11 @@ body {
 
 .cleanForm:hover {
   cursor: pointer;
-  background: #E91E69;
+  filter: brightness(90%);
+}
+
+@media(max-width: 720px) {
+  .cardSignUp {
+    width: 80%;
+  }
 }
