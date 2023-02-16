@@ -5,6 +5,8 @@ import { useState } from "react"
 import Loader from "../Loader"
 import axios from "axios"
 import "./styles.css"
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import { borderRadius } from "@mui/system"
 
 const Signup = () => {
   const [failValidation, setFailValidation] = useState(false)
@@ -59,6 +61,14 @@ const Signup = () => {
   return(
     <div className="containerSingUp">
       <div className="cardSignUp">
+        <PersonAddIcon
+          sx={{
+            marginTop: "30px",
+            width: "19%",
+            height: "19%",
+            color: "#559BD9"
+          }}
+        />
         <h2
           className="titleSignup"
         >
