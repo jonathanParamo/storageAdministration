@@ -6,7 +6,6 @@ import { useEffect } from "react"
 import axios from "axios"
 import "./styles.css"
 import { getStorages } from "../../Store/StorageReducer"
-import Loader from "../Loader"
 
 const ViewProducts = () => {
   const token = localStorage.getItem("token")
@@ -14,8 +13,8 @@ const ViewProducts = () => {
   const dispatch = useDispatch()
 
   const {
-    products = [],
-    storages = [],
+    products,
+    storages,
   } = useSelector(({ ProductReducer, StorageReducer }) => ({
     products: ProductReducer.products,
     storages: StorageReducer.storages,
@@ -64,10 +63,6 @@ const ViewProducts = () => {
     const [{ name }] = storages.filter(({ _id }) => (_id === storageId))
     return name
   }
-
-  if (!storages.length) return (
-    <Loader />
-  );
 
   return (
     <div className="MainContainer">
