@@ -98,8 +98,8 @@ const ViewStorages = () => {
         )
       })}
       <Toaster
-          position="button-center"
-        />
+        position="button-center"
+      />
     </div>
   )
 }
