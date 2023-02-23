@@ -55,24 +55,17 @@ const Signup = () => {
     setPassword("")
     setSurname("")
   }
-
   return(
     <div className="containerSingUp">
       <div className="cardSignUp">
-        <h2
-          className="titleSignup"
-        >
-          Sign up
-        </h2>
-        <div className="cardSeccion">
+        <h2>Sign up</h2>
+        <div className="name">
           <label
-            className="cardTextSignup"
             htmlFor="name"
           >
             Name:
           </label>
           <input
-            className="inputCardSignup"
             type="text"
             name="name"
             id="name"
@@ -80,15 +73,13 @@ const Signup = () => {
             value={name}
           />
         </div>
-        <div className="cardSeccion">
+        <div className="surname">
           <label
-            className="cardTextSignup"
             htmlFor="surname"
           >
             Surname:
           </label>
           <input
-            className="inputCardSignup"
             type="text"
             name="surname"
             id="surname"
@@ -96,15 +87,13 @@ const Signup = () => {
             value={surname}
           />
         </div>
-        <div className="cardSeccion">
+        <div className="userEmail">
           <label
-            className="cardTextSignup"
             htmlFor="email"
           >
             Email:
           </label>
           <input
-            className="inputCardSignup"
             type="text"
             name="email"
             id="email"
@@ -112,15 +101,13 @@ const Signup = () => {
             value={email}
           />
         </div>
-        <div className="cardSeccion">
+        <div className="userPassword">
           <label
-            className="cardTextSignup"
             htmlFor="userPassword"
           >
             Password:
           </label>
           <input
-            className="inputCardSignup"
             type="password"
             name="password"
             id="userPassword"
@@ -152,11 +139,7 @@ const Signup = () => {
           className="regis"
           onClick={() => navigate('/signin')}
         >
-          <p
-            className="cardButtonSignin"
-          >
-            You have an account? Enter
-          </p>
+          <p>You have an account? Enter</p>
         </div>
         {failValidation && <p className="errorValidation">All fields are required</p>}
       </div>
