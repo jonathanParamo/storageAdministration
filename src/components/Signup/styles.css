@@ -27,33 +27,28 @@ body {
   align-items: center;
 }
 
-.name {
-  margin-top: 50px;
+.titleSignup {
+  margin: 2px 0 20px 0;
 }
 
-.surname {
+.cardSeccion {
   margin-top: 15px;
 }
 
-.userEmail {
-  margin-top: 15px;
-}
-
-.userPassword {
-  margin-top: 15px;
-}
-
-input {
+.inputCardSignup {
   border: none;
-  border-radius: 3px;
+  border-radius: 4px;
+  outline: none;
   border: 1px solid #a98467;
   width: 150px;
   height: 25px;
 }
 
-label{
-  display: inline-block;
+.cardTextSignup {
   width: 90px;
+  display: inline-block;
+  text-align: end;
+  margin-right: 10px;
 }
 
 .createAccount {
@@ -67,16 +62,16 @@ label{
   border-radius: 4px;
   font-size: 18px;
   font-weight: 500;
-  transition: 0.6s;
+  transition: 0.6s ease;
 }
 
 .createAccount:hover {
   cursor: pointer;
-  background: #E91E69;
+  filter: brightness(90%);
 }
 
 .regis {
-  width: 300px;
+  width: 190px;
   height: 30px;
   margin: 15px;
   display: flex;
@@ -84,7 +79,6 @@ label{
   align-items: center;
   color: #E91E69;
   border: none;
-  border-radius: 4px;
   font-size: 18px;
   font-weight: 500;
   transition: 0.6s;
@@ -92,8 +86,12 @@ label{
 
 .regis:hover {
   cursor: pointer;
-  color: #ffffff;
-  background: #E91E69;
+  filter: brightness(90%);
+  border-radius: 4px;
+}
+
+.cardButtonSignin {
+  font-size: 15px;
 }
 
 .account {
@@ -115,7 +113,17 @@ label{
   transition: 0.6s;
 }
 
-.creanForm:hover {
+.cleanForm:hover {
   cursor: pointer;
-  background: #E91E69;
+  filter: brightness(90%);
+}
+
+@media(max-width: 720px) {
+  .containerSingUp {
+    height: 90vh;
+  }
+
+  .cardSignUp {
+    width: 80%;
+  }
 }
