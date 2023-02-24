@@ -43,19 +43,6 @@ body {
   margin-top: 15px;
 }
 
-input {
-  border: none;
-  border-radius: 3px;
-  border: 1px solid #a98467;
-  width: 150px;
-  height: 25px;
-}
-
-label{
-  display: inline-block;
-  width: 90px;
-}
-
 .createAccount {
   width: 180px;
   height: 30px;
