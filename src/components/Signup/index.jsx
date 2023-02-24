@@ -5,6 +5,8 @@ import { useState } from "react"
 import Loader from "../Loader"
 import axios from "axios"
 import "./styles.css"
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import { borderRadius } from "@mui/system"
 
 const Signup = () => {
   const [failValidation, setFailValidation] = useState(false)
@@ -55,17 +57,33 @@ const Signup = () => {
     setPassword("")
     setSurname("")
   }
+
   return(
     <div className="containerSingUp">
       <div className="cardSignUp">
-        <h2>Sign up</h2>
-        <div className="name">
+        <PersonAddIcon
+          sx={{
+            marginTop: "30px",
+            width: "19%",
+            height: "19%",
+            color: "#559BD9"
+          }}
+        />
+        <h2
+          className="titleSignup"
+        >
+          Sign up
+        </h2>
+        <div className="cardSeccion">
           <label
+            className="cardTextSignup"
             htmlFor="name"
           >
             Name:
           </label>
           <input
+            autoComplete="none"
+            className="inputCardSignup"
             type="text"
             name="name"
             id="name"
@@ -73,13 +91,16 @@ const Signup = () => {
             value={name}
           />
         </div>
-        <div className="surname">
+        <div className="cardSeccion">
           <label
+            className="cardTextSignup"
             htmlFor="surname"
           >
             Surname:
           </label>
           <input
+            autoComplete="none"
+            className="inputCardSignup"
             type="text"
             name="surname"
             id="surname"
@@ -87,13 +108,15 @@ const Signup = () => {
             value={surname}
           />
         </div>
-        <div className="userEmail">
+        <div className="cardSeccion">
           <label
+            className="cardTextSignup"
             htmlFor="email"
           >
             Email:
           </label>
           <input
+            className="inputCardSignup"
             type="text"
             name="email"
             id="email"
@@ -101,13 +124,15 @@ const Signup = () => {
             value={email}
           />
         </div>
-        <div className="userPassword">
+        <div className="cardSeccion">
           <label
+            className="cardTextSignup"
             htmlFor="userPassword"
           >
             Password:
           </label>
           <input
+            className="inputCardSignup"
             type="password"
             name="password"
             id="userPassword"
@@ -139,7 +164,11 @@ const Signup = () => {
           className="regis"
           onClick={() => navigate('/signin')}
         >
-          <p>You have an account? Enter</p>
+          <p
+            className="cardButtonSignin"
+          >
+            You have an account? Enter
+          </p>
         </div>
         {failValidation && <p className="errorValidation">All fields are required</p>}
       </div>
