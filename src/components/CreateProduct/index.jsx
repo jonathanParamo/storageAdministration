@@ -9,7 +9,6 @@ import "./styles.css"
 
 
 const CreateProduct = ({ editMode, productId }) => {
-  const noImage = <AddPhotoAlternateIcon />
   const [image, setImage] = useState("")
   const [validation, setValidation] = useState("")
   const [loading, setLoading] = useState(false)
@@ -132,6 +131,7 @@ const CreateProduct = ({ editMode, productId }) => {
               Product name:
           </label>
           <input
+            autoComplete="off"
             id="productName"
             className="inputCardAddProduct"
             type="text"
