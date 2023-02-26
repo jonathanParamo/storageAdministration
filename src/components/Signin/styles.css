@@ -26,8 +26,8 @@
   margin: 10px 0;
 }
 
-.titleSingIn {
-  margin: 5px 0;;
+.titleSignIn {
+  margin: 2px 0 20px 0;;
 }
 
 .textCard {
@@ -35,12 +35,13 @@
   margin-right: 10px;
 }
 
-.inputCardSingIn {
+.inputCardSignIn {
+  width: 45%;
   outline: none;
   background: #f5f5f5;
 }
 
-.singUpSingIn {
+.signUpSignIn {
   display: flex;
   margin-top: 10px;
   flex-direction: column;
@@ -91,7 +92,15 @@
 }
 
 @media(max-width: 720px) {
+  .containerSignIn {
+    height: 90vh;
+  }
+
   .cardSignIn {
-    width: 90%;
+    width: 85%;
+  }
+
+  .inputCardSignIn {
+    width: 50%;
   }
 }

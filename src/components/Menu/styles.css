@@ -45,16 +45,16 @@
 
 @media(max-width: 720px) {
   .containerProducMenu {
-    width: 120px;
+    width: 80%;
   }
 
   .titleProducts {
-    width: 100px;
+    width: auto;
     font-size: 14px;
   }
 
   .btnProducts {
-    width: 100px;
+    width: auto;
     margin: 5px 5px;
     font-size: 12px;
   }

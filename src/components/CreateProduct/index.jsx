@@ -112,13 +112,13 @@ const CreateProduct = ({ editMode, productId }) => {
           {
             image ?
             <img className="imageNewProduct" src={image} />
-            : <AddPhotoAlternateIcon
-                sx={{width: "60px", height: "60px", margin: "0px"}}
-              />
+            :
+            <AddPhotoAlternateIcon
+              sx={{width: "60px", height: "60px", m: "0px", mb: "20px"}}
+            />
           }
         </div>
         <div className="productTitle">
-          <label className="productImage">Product image:</label>
           <input
             className="inputCardAddProduct"
             type="text"
@@ -165,22 +165,23 @@ const CreateProduct = ({ editMode, productId }) => {
         <p className="unitsAvailable">Units available:</p>
         <div className="containerAmount">
           <button
-            className="buttonCountMas"
-            onClick={() => {
-              setAmount(amount >= 20 ? amount = setAmount(20) : amount + 1)}}>
-            +
+            className="buttonCountMenos"
+            onClick={() => setAmount(amount <= 0 ? amount = setAmount(0) : amount - 1)}
+          >
+            -
           </button>
-          <input
+          <label
             type="number"
             className="unids"
-            value={amount}
             onChange={(e) => setAmount(e.target.value)}
-          />
+          >
+            {amount}
+          </label>
           <button
-            className="buttonCountMenos"
-            onClick={() => {
-              setAmount(amount <= 0 ? amount = setAmount(0) : amount - 1)}}>
-            -
+            className="buttonCountMas"
+            onClick={() => setAmount(amount >= 20 ? amount = setAmount(20) : amount + 1)}
+          >
+            +
           </button>
         </div>
       </div>

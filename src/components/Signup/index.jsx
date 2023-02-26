@@ -5,6 +5,7 @@ import { useState } from "react"
 import Loader from "../Loader"
 import axios from "axios"
 import "./styles.css"
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 const Signup = () => {
   const [failValidation, setFailValidation] = useState(false)
@@ -59,6 +60,14 @@ const Signup = () => {
   return(
     <div className="containerSingUp">
       <div className="cardSignUp">
+        <PersonAddIcon
+          sx={{
+            marginTop: "30px",
+            width: "19%",
+            height: "19%",
+            color: "#559BD9"
+          }}
+        />
         <h2
           className="titleSignup"
         >
@@ -72,6 +81,7 @@ const Signup = () => {
             Name:
           </label>
           <input
+            autoComplete="none"
             className="inputCardSignup"
             type="text"
             name="name"
@@ -88,6 +98,7 @@ const Signup = () => {
             Surname:
           </label>
           <input
+            autoComplete="none"
             className="inputCardSignup"
             type="text"
             name="surname"
