@@ -6,7 +6,6 @@ import Loader from "../Loader"
 import axios from "axios"
 import "./styles.css"
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import { borderRadius } from "@mui/system"
 
 const Signup = () => {
   const [failValidation, setFailValidation] = useState(false)
