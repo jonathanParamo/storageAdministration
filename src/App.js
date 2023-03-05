@@ -13,6 +13,7 @@ import Storages from './pages/Storages';
 import Products from './pages/Produtcs';
 import Security from './components/Security';
 import Profile from './components/Profile';
+import PasswordRecovery from './pages/PasswordRecovery';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Signin />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/passwordrecovery" element={<PasswordRecovery />} />
         <Route path="/dashboard/*" element={<Home />} >
           <Route path="*" element={<Products />} />
           <Route path="profile" element={<Profile />} />
