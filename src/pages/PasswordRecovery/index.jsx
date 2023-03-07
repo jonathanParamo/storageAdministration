@@ -42,7 +42,7 @@ const PasswordRecovery = () => {
     <div className="countainerForgotPassword">
       <div className="cardForgotPassword">
         <div className="TitleForgotPassword">
-          <p className="titlePassword">Forgot Password</p>
+          <p className="titlePassword">Forgot password</p>
         </div>
         <div className="countainerInput">
           <input

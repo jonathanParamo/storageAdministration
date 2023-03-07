@@ -97,11 +97,10 @@ const Signin = () => {
           />
         </div>
         <seccion className="containerOptionPassword">
-          <div className="emptyDiv"></div>
           <p
             className="forgotPassword"
-            onClick={() => navigate("/passwordrecovery")}
-            >
+            onClick={() => navigate("/password-recovery")}
+          >
             Forgot password?
           </p>
         </seccion>
