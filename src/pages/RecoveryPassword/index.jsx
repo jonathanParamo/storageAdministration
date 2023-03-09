@@ -6,7 +6,7 @@ import Loader from "../../components/Loader"
 import { toast, Toaster } from "react-hot-toast"
 
 
-const PasswordRecovery = () => {
+const RecoveryPassword = () => {
   const [email, setEmail] = useState("")
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
@@ -19,7 +19,7 @@ const PasswordRecovery = () => {
       return;
     }
     try {
-      const { data } = await axios({
+      await axios({
         method: 'POST',
         baseURL: process.env.REACT_APP_SERVER,
         url: '/recovery-password',
@@ -29,7 +29,7 @@ const PasswordRecovery = () => {
       clearEmail()
       setLoading(false)
     } catch(error){
-      toast.error(error)
+      toast.error("Something went wrong, please, try later")
       setLoading(false)
     }
   }
@@ -53,7 +53,7 @@ const PasswordRecovery = () => {
             className="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
-            placeholder="Your email addres"
+            placeholder="Your email address"
           />
         </div>
         {
@@ -68,7 +68,7 @@ const PasswordRecovery = () => {
             </button>
         }
         <button
-          className="backPassword"
+          className="goBackButton"
           onClick={() => navigate("../")}
         >
           Back
@@ -81,4 +81,4 @@ const PasswordRecovery = () => {
   )
 }
 
-export default PasswordRecovery
+export default RecoveryPassword

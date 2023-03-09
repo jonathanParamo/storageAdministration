@@ -99,7 +99,7 @@ const Signin = () => {
         <seccion className="containerOptionPassword">
           <p
             className="forgotPassword"
-            onClick={() => navigate("/password-recovery")}
+            onClick={() => navigate("/recovery-password")}
           >
             Forgot password?
           </p>
