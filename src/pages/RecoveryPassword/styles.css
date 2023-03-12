@@ -1,0 +1,107 @@
+.countainerForgotPassword {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardForgotPassword {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 4px;
+}
+
+.TitleForgotPassword {
+  width: 90%;
+  margin: 20px 10px 10px 10px;
+  text-align: center;
+}
+
+.titlePassword {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.countainerInput {
+  width: 90%;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.email {
+  width: 90%;
+  height: 30px;
+  outline: none;
+  padding-left: 10px;
+}
+
+.resetPassword {
+  width: 50%;
+  height: 30px;
+  margin: 10px 0;
+  color: #ffffff;
+  background: #E91E63;
+  border: none;
+  border-radius: 4px;
+  transition: 0.6s;
+}
+
+.resetPassword:hover{
+  cursor: pointer;
+  filter: brightness(90%);
+}
+
+.goBackButton {
+  width: 50%;
+  height: 30px;
+  margin: 0 0 30px 0;
+  color: #f5f5f5;
+  background: #559BD9;
+  border: none;
+  border-radius: 4px;
+  transition: 0.6s;
+}
+
+.goBackButton:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+}
+
+@media screen and (min-width: 721px) and (max-width: 1000px) {
+  .resetPassword {
+    width: 50%;
+  }
+
+  .goBackButton {
+    width: 50%;
+  }
+}
+
+@media(max-width: 720px) {
+  .cardForgotPassword {
+    width: 85%;
+  }
+
+  .titlePassword {
+    font-size: 23px;
+  }
+
+  .email {
+    width: 80%;
+  }
+
+  .resetPassword {
+    width: 40%;
+  }
+
+  .goBackButton {
+    width: 40%;
+  }
+}

@@ -96,6 +96,14 @@ const Signin = () => {
             value={password}
           />
         </div>
+        <seccion className="containerOptionPassword">
+          <p
+            className="forgotPassword"
+            onClick={() => navigate("/recovery-password")}
+          >
+            Forgot password?
+          </p>
+        </seccion>
         <div className="signUpSignIn">
           {!loading ?
             <button
