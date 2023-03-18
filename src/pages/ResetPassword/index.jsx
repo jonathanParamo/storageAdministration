@@ -4,57 +4,60 @@ import { Toaster, toast } from "react-hot-toast"
 import Loader from "../../components/Loader"
 import "./styles.css"
 import axios from "axios"
+import Input from "../../components/Input"
 
 const ResetPassword = () => {
-  const [oneNewPassword, setOneNewPassword] = useState("")
-  const [twoNewPassword, setTwoNewPassword] = useState("")
+  const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const { token } = useParams()
   const navigate = useNavigate()
 
-  const sendResetPassword = async () => {
-    // try {
-    //   await axios({
-    //     method: 'POST',
-    //     baseURL: process.env.REACT_APP_SERVER,
-    //     url: '/reset-password',
-    //     body: {
-    //       password: oneNewPassword,
-    //       token: token
-    //     }
-    //   })
-    //   setLoading(false)
-    //   toast.success("Password changed successfully")
-    //   navigate("/signin")
-    // } catch (error) {
-    //   toast.error("Something went wrong, please try again later")
-    //   navigate("/signin")
-    // }
+  const onSubmit = async () => {
+    try {
+      await axios({
+        method: 'PUT',
+        baseURL: process.env.REACT_APP_SERVER,
+        url: '/reset-password',
+        body: {
+          password,
+          token
+        }
+      })
+      setLoading(false)
+      toast.success("Password changed successfully")
+      navigate("/signin")
+    } catch (error) {
+      toast.error("Something went wrong, please try again later")
+    }
   }
 
-  const newPassword = () => {
+  const messageErrorPassword = (msn) => {
+    toast.error(msn)
+    setLoading(false)
+  }
+
+  const validation = () => {
     setLoading(true)
 
-    if(!oneNewPassword || !twoNewPassword) {
-      toast.error("The fields are required")
-      setLoading(false)
+    if(!password || !confirmPassword) {
+      messageErrorPassword("The fields are required")
       return
     }
-    if (oneNewPassword !== twoNewPassword) {
-      toast.error("Passwords do not match")
-      setLoading(false)
+    if (password !== confirmPassword) {
+      messageErrorPassword("Passwords do not match")
       return
     }
-    if(oneNewPassword.length < 6 || twoNewPassword.length <= 6) {
-      toast.error("the number of characters is less than 6")
-      setLoading(false)
+    if(password.length < 6 || confirmPassword.length <= 6) {
+      messageErrorPassword("the number of characters is less than 6")
       return
     }
-    sendResetPassword()
+
+    onSubmit()
   }
 
   useEffect(() => {
-    // if(!token) navigate("/signin")
+    if(!token) navigate("/signin")
   }, []);
 
   return (
@@ -65,27 +68,27 @@ const ResetPassword = () => {
           Please create a new password should have
           atleast 6 characters.
         </p>
-        <input
-          className="inputResetPassword"
+        <Input
           type="password"
           placeholder="New password"
-          onChange={e => setOneNewPassword(e.target.value)}
+          onChange={e => setPassword(e.target.value)}
         />
-        <input
-          className="inputResetPassword"
+        <Input
           type="password"
           placeholder="Confirm new password"
-          onChange={e => setTwoNewPassword(e.target.value)}
+          onChange={e => setConfirmPassword(e.target.value)}
         />
         {
-          loading ?
-          <Loader /> :
-          <button
-            className="buttonResetPassword"
-            onClick={() => newPassword()}
-          >
-            Change
-          </button>
+          loading ? (
+            <Loader />
+          ) : (
+            <button
+              className="buttonResetPassword"
+              onClick={() => validation()}
+            >
+              Change
+            </button>
+          )
         }
       </div>
       <Toaster
