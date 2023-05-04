@@ -1,6 +1,6 @@
 import Menu from '../../components/Menu';
-import CreateProduct from '../../components/CreateProduct';
-import ViewProducts from '../../components/ViewProducts';
+import CreateProduct from '../../pages/CreateProduct';
+import ViewProducts from '../../pages/ViewProducts';
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
 

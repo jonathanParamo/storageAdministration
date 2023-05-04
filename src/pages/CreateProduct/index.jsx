@@ -3,7 +3,7 @@ import { Toaster, toast } from "react-hot-toast"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
-import Loader from "../Loader"
+import Loader from "../../components/Loader"
 import axios from "axios"
 import "./styles.css"
 

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { Toaster, toast } from "react-hot-toast"
 import { useState } from "react"
-import Loader from "../Loader"
+import Loader from "../../components/Loader"
 import axios from "axios"
 import "./styles.css"
 import PersonAddIcon from '@mui/icons-material/PersonAdd';

@@ -1,6 +1,6 @@
 import Menu from '../../components/Menu';
-import Storage from '../../components/Storage';
-import ViewStorages from '../../components/ViewStorages';
+import Storage from '../../pages/Storage';
+import ViewStorages from '../ViewStorages';
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
 

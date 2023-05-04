@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { Toaster, toast } from "react-hot-toast"
 import axios from "axios"
 import "./styles.css"
-import Loader from "../Loader"
+import Loader from "../../components/Loader"
 
 const Profile = () => {
   const noImage = "https://encrypted-tbn0.gstatic.com/"

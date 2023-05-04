@@ -6,13 +6,13 @@ import {
   Routes
   } from 'react-router-dom';
 import './App.css';
-import Signup from './components/Signup';
-import Signin from './components/Signin';
-import Home from './components/Home';
+import Signup from './pages/Signup';
+import Signin from './pages/Signin';
+import Home from './pages/Home';
 import Storages from './pages/Storages';
 import Products from './pages/Produtcs';
-import Security from './components/Security';
-import Profile from './components/Profile';
+import Security from './pages/Security';
+import Profile from './pages/Profile';
 import RecoveryPassword from './pages/RecoveryPassword';
 
 function App() {
