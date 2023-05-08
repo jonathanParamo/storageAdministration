@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom"
-import MainMenu from "../MainMenu"
+import MainMenu from "../../components/MainMenu"
 import React from "react"
 import "./styles.css"
 
