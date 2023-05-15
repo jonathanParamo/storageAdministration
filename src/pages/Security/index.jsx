@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import MailIcon from '@mui/icons-material/Mail';
 import HttpsIcon from '@mui/icons-material/Https'
 import axios from "axios"
-import Loader from "../Loader"
+import Loader from "../../components/Loader"
 import "./styles.css"
 import toast, { Toaster } from "react-hot-toast"
 

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
-import Loader from "../Loader"
+import Loader from "../../components/Loader"
 import axios from "axios"
 import "./styles.css"
 import { useDispatch, useSelector } from "react-redux"

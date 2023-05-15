@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { Toaster, toast } from "react-hot-toast"
 import { useEffect, useState } from "react"
-import Loader from "../Loader"
+import Loader from "../../components/Loader"
 import axios from "axios"
 import "./styles.css"
 
