@@ -5,6 +5,7 @@ import axios from "axios"
 import "./styles.css"
 import { useDispatch, useSelector } from "react-redux"
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LabelledInput from "../../components/LabelledInput"
 
 const Signin = () => {
   const [errorFieldValidation, setErrorFieldValidation] = useState(false)
@@ -58,44 +59,31 @@ const Signin = () => {
         <h2 className="titleSignIn">
           Sign in
         </h2>
-        <div className="textCardSignIn">
-          <label
-            className="textCard"
-            htmlFor="email"
-          >
-            Email:
-          </label>
-          <input
-            className="inputCardSignIn"
-            type="email"
-            name="email"
-            id="email"
-            onChange={e => {
-              setEmail(e.target.value)
-              setErrorFieldValidation(false)
-            }}
-            value={email}
-          />
-        </div>
-        <div className="textCardSignIn">
-          <label
-            className="textCard"
-            htmlFor="password"
-          >
-            Password:
-          </label>
-          <input
-            className="inputCardSignIn"
-            type="password"
-            name="password"
-            id="password"
-            onChange={e => {
-              setPassword(e.target.value)
-              setErrorFieldValidation(false)
-            }}
-            value={password}
-          />
-        </div>
+        <LabelledInput
+          htmlFor="email"
+          children="Email:"
+          className="inputCardSignIn"
+          type="email"
+          name="email"
+          id="email"
+          onChange={e => {
+            setEmail(e.target.value)
+            setErrorFieldValidation(false)
+          }}
+          value={email}
+        />
+        <LabelledInput
+          htmlFor="password"
+          children="Password:"
+          type="password"
+          name="password"
+          id="password"
+          onChange={e => {
+            setPassword(e.target.value)
+            setErrorFieldValidation(false)
+          }}
+          value={password}
+        />
         <seccion className="containerOptionPassword">
           <p
             className="forgotPassword"
