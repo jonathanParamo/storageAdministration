@@ -3,32 +3,24 @@ import { useState } from "react"
 import Loader from "../../components/Loader"
 import axios from "axios"
 import "./styles.css"
-import { useDispatch, useSelector } from "react-redux"
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LabelledInput from "../../components/LabelledInput"
+import { Toaster, toast } from "react-hot-toast"
 
 const Signin = () => {
-  const [errorFieldValidation, setErrorFieldValidation] = useState(false)
   const [loading, setLoading] = useState(false)
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
   const navigate = useNavigate()
-  const dispatch = useDispatch()
-
-  const {
-    error,
-  } = useSelector(({StorageReducer})=> ({
-    error: StorageReducer.error,
-  }))
 
   const handleSubmit = async () => {
     setLoading(true)
     if(!email || !password ) {
-      setErrorFieldValidation(true)
+      toast.error("Missing fields to fill")
       setLoading(false)
       return;
     }
-    setErrorFieldValidation(false)
+
     try {
       const {data} = await axios({
         method: 'POST',
@@ -40,7 +32,7 @@ const Signin = () => {
       localStorage.setItem("token", data.token)
       navigate('/dashboard')
     } catch(error){
-      dispatch({ type: "STORAGE_ERROR", payload: error })
+      toast.error("Email or password invalid")
       setLoading(false)
     }
   }
@@ -60,28 +52,19 @@ const Signin = () => {
           Sign in
         </h2>
         <LabelledInput
-          htmlFor="email"
-          children="Email:"
-          className="inputCardSignIn"
+          label="Email:"
           type="email"
           name="email"
           id="email"
-          onChange={e => {
-            setEmail(e.target.value)
-            setErrorFieldValidation(false)
-          }}
+          onChange={e => setEmail(e.target.value)}
           value={email}
         />
         <LabelledInput
-          htmlFor="password"
-          children="Password:"
+          label="Password:"
           type="password"
           name="password"
           id="password"
-          onChange={e => {
-            setPassword(e.target.value)
-            setErrorFieldValidation(false)
-          }}
+          onChange={e => setPassword(e.target.value)}
           value={password}
         />
         <seccion className="containerOptionPassword">
@@ -109,8 +92,12 @@ const Signin = () => {
             Sign up
           </button>
         </div>
-        {error ? <p>Email or password invalid</p> : "" }
-        {errorFieldValidation && <p>Missing fields to fill</p>}
+        <Toaster
+          toastOptions={{
+            duration: 2000,
+          }}
+          position="button-center"
+        />
       </div>
     </div>
   )

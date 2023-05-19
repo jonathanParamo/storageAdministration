@@ -1,9 +1,8 @@
 import "./styles.css"
 
 const LabelledInput = ({
-  children,
-  htmlFor,
-  type,
+  label,
+  type="text",
   name,
   id,
   onChange,
@@ -12,10 +11,10 @@ const LabelledInput = ({
   return (
     <div className="textContainerLabelledInput">
       <label
-        htmlFor={htmlFor}
+        htmlFor={id}
         className="textCardLabelLabelledInput"
       >
-        {children}
+        {label}
       </label>
       <input
         className="inputCardLabelledInput"

@@ -9,7 +9,6 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import LabelledInput from "../../components/LabelledInput"
 
 const Signup = () => {
-  const [failValidation, setFailValidation] = useState(false)
   const [loading, setLoading] = useState(false)
   const [password, setPassword] = useState('')
   const [surname, setSurname] = useState('')
@@ -21,11 +20,10 @@ const Signup = () => {
   const handleSubmit = async () => {
     setLoading(true)
     if(!name || !surname || !email || !password) {
-      setFailValidation(true);
+      toast.error("All fields are required")
       setLoading(false)
       return;
     }
-    setFailValidation(false);
 
     const newUser = {
       name,
@@ -33,6 +31,7 @@ const Signup = () => {
       email,
       password,
     }
+
     try {
       const {data} = await axios({
         method: 'POST',
@@ -75,8 +74,7 @@ const Signup = () => {
           Sign up
         </h2>
         <LabelledInput
-          htmlFor="name"
-          children="Name:"
+          label="Name:"
           autoComplete="none"
           type="text"
           name="name"
@@ -85,8 +83,7 @@ const Signup = () => {
           value={name}
         />
         <LabelledInput
-          htmlFor="surname"
-          children="Surname:"
+          label="Surname:"
           autoComplete="none"
           type="text"
           name="surname"
@@ -95,8 +92,7 @@ const Signup = () => {
           value={surname}
         />
         <LabelledInput
-          htmlFor="email"
-          children="Email:"
+          label="Email:"
           type="text"
           name="email"
           id="email"
@@ -104,8 +100,7 @@ const Signup = () => {
           value={email}
         />
         <LabelledInput
-          htmlFor="userPassword"
-          children="Password:"
+          label="Password:"
           type="password"
           name="password"
           id="userPassword"
@@ -130,6 +125,9 @@ const Signup = () => {
           Clean form
         </button>
         <Toaster
+          toastOptions={{
+            duration: 2000,
+          }}
           position="button-center"
         />
         <div
@@ -142,7 +140,6 @@ const Signup = () => {
             You have an account? Enter
           </p>
         </div>
-        {failValidation && <p className="errorValidation">All fields are required</p>}
       </div>
     </div>
   )
