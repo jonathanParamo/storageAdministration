@@ -76,7 +76,6 @@ const Signup = () => {
         <LabelledInput
           label="Name:"
           autoComplete="none"
-          type="text"
           name="name"
           id="name"
           onChange={e => setName(e.target.value)}
@@ -85,7 +84,6 @@ const Signup = () => {
         <LabelledInput
           label="Surname:"
           autoComplete="none"
-          type="text"
           name="surname"
           id="surname"
           onChange={e => setSurname(e.target.value)}
@@ -93,7 +91,7 @@ const Signup = () => {
         />
         <LabelledInput
           label="Email:"
-          type="text"
+          type="email"
           name="email"
           id="email"
           onChange={e => setEmail(e.target.value)}
