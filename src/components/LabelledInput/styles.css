@@ -1,0 +1,25 @@
+.textContainerLabelledInput {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.textCardLabelLabelledInput {
+  text-align: end;
+  margin-right: 10px;
+}
+
+.inputCardLabelledInput {
+  width: 45%;
+  outline: none;
+  background: #f5f5f5;
+  padding-left: 5px;
+}
+
+@media(max-width: 720px) {
+  .inputCardLabelledInput {
+    width: 50%;
+  }
+}

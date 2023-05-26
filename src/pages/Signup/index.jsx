@@ -6,9 +6,9 @@ import Loader from "../../components/Loader"
 import axios from "axios"
 import "./styles.css"
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import LabelledInput from "../../components/LabelledInput"
 
 const Signup = () => {
-  const [failValidation, setFailValidation] = useState(false)
   const [loading, setLoading] = useState(false)
   const [password, setPassword] = useState('')
   const [surname, setSurname] = useState('')
@@ -20,11 +20,10 @@ const Signup = () => {
   const handleSubmit = async () => {
     setLoading(true)
     if(!name || !surname || !email || !password) {
-      setFailValidation(true);
+      toast.error("All fields are required")
       setLoading(false)
       return;
     }
-    setFailValidation(false);
 
     const newUser = {
       name,
@@ -32,6 +31,7 @@ const Signup = () => {
       email,
       password,
     }
+
     try {
       const {data} = await axios({
         method: 'POST',
@@ -73,72 +73,38 @@ const Signup = () => {
         >
           Sign up
         </h2>
-        <div className="cardSeccion">
-          <label
-            className="cardTextSignup"
-            htmlFor="name"
-          >
-            Name:
-          </label>
-          <input
-            autoComplete="none"
-            className="inputCardSignup"
-            type="text"
-            name="name"
-            id="name"
-            onChange={e => setName(e.target.value)}
-            value={name}
-          />
-        </div>
-        <div className="cardSeccion">
-          <label
-            className="cardTextSignup"
-            htmlFor="surname"
-          >
-            Surname:
-          </label>
-          <input
-            autoComplete="none"
-            className="inputCardSignup"
-            type="text"
-            name="surname"
-            id="surname"
-            onChange={e => setSurname(e.target.value)}
-            value={surname}
-          />
-        </div>
-        <div className="cardSeccion">
-          <label
-            className="cardTextSignup"
-            htmlFor="email"
-          >
-            Email:
-          </label>
-          <input
-            className="inputCardSignup"
-            type="text"
-            name="email"
-            id="email"
-            onChange={e => setEmail(e.target.value)}
-            value={email}
-          />
-        </div>
-        <div className="cardSeccion">
-          <label
-            className="cardTextSignup"
-            htmlFor="userPassword"
-          >
-            Password:
-          </label>
-          <input
-            className="inputCardSignup"
-            type="password"
-            name="password"
-            id="userPassword"
-            onChange={e => setPassword(e.target.value)}
-            value={password}
-          />
-        </div>
+        <LabelledInput
+          label="Name:"
+          autoComplete="none"
+          name="name"
+          id="name"
+          onChange={e => setName(e.target.value)}
+          value={name}
+        />
+        <LabelledInput
+          label="Surname:"
+          autoComplete="none"
+          name="surname"
+          id="surname"
+          onChange={e => setSurname(e.target.value)}
+          value={surname}
+        />
+        <LabelledInput
+          label="Email:"
+          type="email"
+          name="email"
+          id="email"
+          onChange={e => setEmail(e.target.value)}
+          value={email}
+        />
+        <LabelledInput
+          label="Password:"
+          type="password"
+          name="password"
+          id="userPassword"
+          onChange={e => setPassword(e.target.value)}
+          value={password}
+        />
         {!loading ?
           <button
               className='createAccount'
@@ -157,6 +123,9 @@ const Signup = () => {
           Clean form
         </button>
         <Toaster
+          toastOptions={{
+            duration: 2000,
+          }}
           position="button-center"
         />
         <div
@@ -169,7 +138,6 @@ const Signup = () => {
             You have an account? Enter
           </p>
         </div>
-        {failValidation && <p className="errorValidation">All fields are required</p>}
       </div>
     </div>
   )
