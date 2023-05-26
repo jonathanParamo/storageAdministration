@@ -6,6 +6,7 @@ import "./styles.css"
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LabelledInput from "../../components/LabelledInput"
 import { Toaster, toast } from "react-hot-toast"
+import StyledButton from "../../components/StyledButton"
 
 const Signin = () => {
   const [loading, setLoading] = useState(false)
@@ -77,20 +78,17 @@ const Signin = () => {
         </seccion>
         <div className="signUpSignIn">
           {!loading ?
-            <button
-              className="signInButton"
-              name="signIn"
+            <StyledButton
+              style="primary"
               onClick={handleSubmit}
-            >
-              Enter
-            </button> : <Loader />
+              label="Enter"
+            /> : <Loader />
           }
-          <button
-            className="register"
+          <StyledButton
+            style="secondary"
             onClick={() => navigate('/signup')}
-          >
-            Sign up
-          </button>
+            label="Sign up"
+          />
         </div>
         <Toaster
           toastOptions={{

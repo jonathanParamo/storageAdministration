@@ -7,6 +7,7 @@ import axios from "axios"
 import "./styles.css"
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import LabelledInput from "../../components/LabelledInput"
+import StyledButton from "../../components/StyledButton"
 
 const Signup = () => {
   const [loading, setLoading] = useState(false)
@@ -106,22 +107,20 @@ const Signup = () => {
           value={password}
         />
         {!loading ?
-          <button
-              className='createAccount'
-              type="submit"
+          <StyledButton
+              style="primary"
               onClick={() => handleSubmit()}
-            >
-              Create Account
-          </button> : <Loader />
+            label="Create Account"
+          /> : <Loader />
         }
-        <button
-          className="cleanForm"
+        <StyledButton
+          style="secondary"
           onClick={(e) => {
             e.stopPropagation()
-            cleanForm()}}
-        >
-          Clean form
-        </button>
+            cleanForm()
+          }}
+          label="Clean form"
+        />
         <Toaster
           toastOptions={{
             duration: 2000,
