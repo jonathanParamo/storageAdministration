@@ -79,13 +79,12 @@ const Signin = () => {
         <div className="signUpSignIn">
           {!loading ?
             <StyledButton
-              style="primary"
               onClick={handleSubmit}
               label="Enter"
             /> : <Loader />
           }
           <StyledButton
-            style="secondary"
+            variant="secondary"
             onClick={() => navigate('/signup')}
             label="Sign up"
           />

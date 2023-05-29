@@ -108,18 +108,17 @@ const Signup = () => {
         />
         {!loading ?
           <StyledButton
-              style="primary"
               onClick={() => handleSubmit()}
             label="Create Account"
           /> : <Loader />
         }
         <StyledButton
-          style="secondary"
+          variant="secondary"
           onClick={(e) => {
             e.stopPropagation()
             cleanForm()
           }}
-          label="Clean form"
+          label="Clear form"
         />
         <Toaster
           toastOptions={{
