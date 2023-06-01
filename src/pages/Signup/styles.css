@@ -51,52 +51,14 @@ body {
   margin-right: 10px;
 }
 
-.createAccount {
-  width: 180px;
-  height: 30px;
-  margin: 15px;
-  background: #E91E63;
-  text-align: center;
-  color: #FFFFFF;
-  border: none;
-  border-radius: 4px;
-  font-size: 18px;
-  font-weight: 500;
-  transition: 0.6s ease;
-}
-
-.createAccount:hover {
-  cursor: pointer;
-  filter: brightness(90%);
-}
-
-.regis {
-  width: 190px;
-  height: 30px;
-  margin: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #E91E69;
-  border: none;
-  font-size: 18px;
-  font-weight: 500;
+.cardButtonSignin {
+  font-size: 15px;
   transition: 0.6s;
 }
 
-.regis:hover {
+.cardButtonSignin:hover {
   cursor: pointer;
-  filter: brightness(90%);
-  border-radius: 4px;
-}
-
-.cardButtonSignin {
-  font-size: 15px;
-}
-
-.account {
-  cursor: pointer;
-  color: #E91E69;
+  text-decoration: underline;
 }
 
 .cleanForm {
