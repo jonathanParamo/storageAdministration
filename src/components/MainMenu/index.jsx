@@ -18,14 +18,25 @@ const MainMenu = () => {
   const isMobile = width <= 720;
   const token = localStorage.getItem("token");
   const [openMenu, setOpenMenu] = useState(false);
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [selectedMenu, setSelectedMenu] = useState('');
 
   const {
     profile,
   } = useSelector(({ProfileReducer}) => ({
     profile: ProfileReducer.profile,
   }))
+
+  const handleSubMenuClick = ( menu ) => {
+    setSelectedMenu(menu);
+  };
+
+  const sectionSelected = (section) => {
+    navigate(section)
+    setOpenMenu(!openMenu)
+    setSelectedMenu(!selectedMenu)
+  }
 
   useEffect(() =>{
     if(!token) navigate("/")
@@ -43,13 +54,24 @@ const MainMenu = () => {
               <WidgetsIcon />
               <li
                 className="optionMenu"
-                onClick={() => {
-                  setOpenMenu(!openMenu)
-                  navigate('products')
-                }}
+                onClick={() => handleSubMenuClick('products')}
               >
                 Products
               </li>
+              {openMenu && selectedMenu === 'products' && (
+                <ul className="subMenu">
+                  <li
+                    onClick={sectionSelected("products")}
+                  >
+                    All products
+                  </li>
+                  <li
+                    onClick={sectionSelected("createProduct")}>
+                    Create Product
+                  </li>
+                  <li>Option 3</li>
+                </ul>
+              )}
             </div>
             <div className="divseccionMobile">
               <Inventory2Icon />
