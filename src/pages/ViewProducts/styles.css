@@ -110,51 +110,54 @@
 }
 
 @media(max-width: 720px) {
-.cardProducts {
-  width: 180px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 5px;
-  border-radius: 3px;
-}
+  .MainContainer {
+    justify-content: center;
+  }
+  .cardProducts {
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    border-radius: 3px;
+  }
 
-.cardSection {
-  width: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2px;
-  padding: 2px 8px;
-}
+  .cardSection {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px;
+    padding: 2px 8px;
+  }
 
-.cardLabel {
-  width: 50%;
-  margin-right: 5px;
-  margin-left: 10px;
-  padding: 2px;
-}
+  .cardLabel {
+    width: 50%;
+    margin-right: 5px;
+    margin-left: 10px;
+    padding: 2px;
+  }
 
-.cardTextProduct {
-  width: 50%;
-  font-size: 12px;
-  margin: 5px 2px;
-}
+  .cardTextProduct {
+    width: 50%;
+    font-size: 12px;
+    margin: 5px 2px;
+  }
 
-.cardProductButton {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+  .cardProductButton {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-.editProduct {
-  width : 80%;
-}
+  .editProduct {
+    width : 80%;
+  }
 
-.deleteProduct {
-  width: 80%;
-}
+  .deleteProduct {
+    width: 80%;
+  }
 }

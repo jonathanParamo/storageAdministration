@@ -28,14 +28,11 @@ const MainMenu = () => {
     profile: ProfileReducer.profile,
   }))
 
-  const handleSubMenuClick = ( menu ) => {
-    setSelectedMenu(menu);
-  };
-
-  const sectionSelected = (section) => {
+  const sectionSelected = ( section, type ) => {
+    setOpenMenu(false)
+    dispatch({ type: 'CHANGE_SECTION', payload: type})
+    setSelectedMenu('')
     navigate(section)
-    setOpenMenu(!openMenu)
-    setSelectedMenu(!selectedMenu)
   }
 
   useEffect(() =>{
@@ -54,22 +51,22 @@ const MainMenu = () => {
               <WidgetsIcon />
               <li
                 className="optionMenu"
-                onClick={() => handleSubMenuClick('products')}
+                onClick={() => setSelectedMenu('products')}
               >
                 Products
               </li>
               {openMenu && selectedMenu === 'products' && (
                 <ul className="subMenu">
                   <li
-                    onClick={sectionSelected("products")}
+                    onClick={() => sectionSelected("products", "view")}
                   >
                     All products
                   </li>
                   <li
-                    onClick={sectionSelected("createProduct")}>
+                    onClick={() => sectionSelected("products", "create")}
+                  >
                     Create Product
                   </li>
-                  <li>Option 3</li>
                 </ul>
               )}
             </div>
@@ -77,13 +74,24 @@ const MainMenu = () => {
               <Inventory2Icon />
               <li
                 className="optionMenu"
-                onClick={() => {
-                  setOpenMenu(!openMenu)
-                  navigate('storages')
-                }}
+                onClick={() => setSelectedMenu('storages')}
               >
                 Storages
               </li>
+              {openMenu && selectedMenu === 'storages' && (
+                <ul className="subMenu">
+                  <li
+                    onClick={() => sectionSelected("storages", "view")}
+                  >
+                    All storages
+                  </li>
+                  <li
+                    onClick={() => sectionSelected("storages", "create")}
+                  >
+                    Create storage
+                  </li>
+                </ul>
+              )}
             </div>
             <div className="divseccionMobile">
               <PersonOutlineIcon />
