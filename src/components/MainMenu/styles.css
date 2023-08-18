@@ -55,11 +55,7 @@
   color: #f5f5f5;
 }
 
-.optionsMenuMobile {
-  list-style: none;
-  color: #ffffff;
-  padding: 0 20px;
-}
+
 
 .MenuIcon {
   width: 30px;
@@ -78,14 +74,6 @@
   margin: 3px 8px 10px;
 }
 
-.divseccionMobile {
-  width: 150px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 18px;
-  margin: 5px;
-}
-
 .optionMenuSearch {
   width: 90%;
   font-size: 14px;
@@ -102,25 +90,6 @@
   display: flex;
   align-items: center;
   margin: 5px;
-}
-
-.menuMobileNombre {
-  height: 30px;
-  margin: 0px;
-  color: #f5f5f5;
-  font-weight: 700;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.menuPaper {
-  width: 100%;
-  height: 170px;
-  position: absolute;
-  background-color: #1f1c32;
-  box-shadow: 0 5px 6px #100d20;
-  top: 50px;
 }
 
 .searchMainMenu {
@@ -199,5 +168,54 @@
     cursor: pointer;
     box-shadow: none;
     background: #E91E60;
+  }
+
+  .menuPaper {
+    width: 100%;
+    height: 175px;
+    position: absolute;
+    background-color: #1f1c32;
+    box-shadow: 0 5px 6px #100d20;
+    top: 50px;
+  }
+
+  .divseccionMobile {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    margin: 5px;
+  }
+
+  .optionsMenuMobile {
+    list-style: none;
+    color: #ffffff;
+    padding: 0 20px;
+  }
+
+  .subMenu {
+    width: 65%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-left: 20%;
+    font-size: 14px;
+    list-style: none;
+  }
+
+  .subMenuLi {
+    margin: 8px 8px 10px;
+  }
+
+  .menuMobileNombre {
+    height: 30px;
+    margin: 0px;
+    color: #f5f5f5;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
