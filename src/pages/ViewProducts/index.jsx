@@ -7,7 +7,7 @@ import axios from "axios"
 import "./styles.css"
 import { getStorages } from "../../Store/StorageReducer"
 import Loader from "../../components/Loader"
-import ProductCard from "../../components/CardProduct"
+import ProductCard from "../../components/ProductCard"
 
 const ViewProducts = () => {
   const token = localStorage.getItem("token")

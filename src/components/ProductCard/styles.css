@@ -19,7 +19,6 @@
 }
 
 .product-image-container {
-  position: relative;
   overflow: hidden;
   border-radius: 50%;
   width: 170px;
