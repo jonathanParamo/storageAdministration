@@ -7,6 +7,7 @@ import axios from "axios"
 import "./styles.css"
 import { getStorages } from "../../Store/StorageReducer"
 import Loader from "../../components/Loader"
+import ProductCard from "../../components/CardProduct"
 
 const ViewProducts = () => {
   const token = localStorage.getItem("token")
@@ -73,38 +74,15 @@ const ViewProducts = () => {
     <div className="MainContainer">
       {hasData && products.map(({ image, name, amount, storageId, _id}) => {
         return (
-          <div className="cardProducts" key={_id}>
-            <div className="containerImageProduct">
-              <img className="imageProduct" src={image} alt="product ilustration" />
-            </div>
-            <div className="cardSection">
-              <label className="cardLabel">Product:</label>
-              <div className="cardTextProduct">
-                {name}
-              </div>
-            </div>
-            <div className="cardSection">
-              <label className="cardLabel">Amount:</label>
-              <div className="cardTextProduct">{amount}</div>
-            </div>
-            <div className="cardSection">
-              <label className="cardLabel">Storage:</label>
-              <div className="cardTextProduct">{storageName(storageId)}</div>
-            </div>
-            <div className="cardProductButton">
-              <button
-                className="editProduct"
-                onClick={() => editProduct(_id)}
-                children="Edit"
-              />
-              <button
-                className="deleteProduct"
-                onClick={() => confirmDelete(_id)}
-              >
-                Delete
-              </button>
-            </div>
-          </div>
+          <ProductCard
+            key={_id}
+            image={image}
+            name={name}
+            amount={amount}
+            storageId={storageName(storageId)}
+            editProduct={() => editProduct(_id)}
+            deleteProduct={() => confirmDelete(_id)}
+          />
         )
       })}
       <Toaster
