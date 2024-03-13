@@ -1,5 +1,4 @@
 import axios from "axios"
-const token = localStorage.getItem('token')
 
 const CANCEL_UPDATE = 'CANCEL_UPDATE'
 const PRODUCT_SUCCESS = 'PRODUCT_SUCCESS'
@@ -13,7 +12,7 @@ const initialState = {
   productId: ''
 }
 
-export const getProducts = () => {
+export const getProducts = (token) => {
   return async function(dispatch){
     try {
       const { data } = await axios({
