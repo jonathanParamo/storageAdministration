@@ -13,7 +13,6 @@ const ViewProducts = () => {
   const token = localStorage.getItem("token")
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
   const {
     products = [],
     storages = [],
@@ -24,8 +23,8 @@ const ViewProducts = () => {
 
   useEffect(() =>{
     if(!token) navigate("/")
-    dispatch(getProducts())
-    dispatch(getStorages())
+    dispatch(getProducts(token))
+    dispatch(getStorages(token))
   }, [])
 
   const confirmDelete = (_id) => {
@@ -72,7 +71,7 @@ const ViewProducts = () => {
 
   return (
     <div className="MainContainer">
-      {hasData && products.map(({ image, name, amount, storageId, _id}) => {
+      {hasData ? products.map(({ image, name, amount, storageId, _id}) => {
         return (
           <ProductCard
             key={_id}
@@ -84,7 +83,9 @@ const ViewProducts = () => {
             deleteProduct={() => confirmDelete(_id)}
           />
         )
-      })}
+      }) :
+        <p className="noProducts">At this time there are no products</p>
+      }
       <Toaster
         position="button-center"
       />
